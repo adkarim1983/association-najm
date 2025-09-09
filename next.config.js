@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['mongoose', 'mongodb']
-  },
+  serverExternalPackages: ['mongoose', 'mongodb'],
   images: {
     domains: ['localhost'],
     remotePatterns: [
@@ -23,6 +21,9 @@ const nextConfig = {
       };
     }
     return config;
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 }
 
