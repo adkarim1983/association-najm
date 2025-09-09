@@ -106,6 +106,22 @@ export default function GaleriePage() {
 
   return (
     <div className="min-h-screen">
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-up {
+          0% { opacity: 0; transform: translateY(40px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease forwards;
+        }
+        .animate-fade-up {
+          animation: fade-up 1s ease forwards;
+        }
+      `}</style>
       <Navbar />
       <main className="pt-16">
         <div className="px-8 py-12 bg-white min-h-screen font-sans text-gray-800 animate-fade-in">
@@ -246,27 +262,3 @@ export default function GaleriePage() {
   );
 }
 
-// Add CSS animations from association folder
-const style = document.createElement("style");
-style.innerHTML = `
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fade-up {
-    0% { opacity: 0; transform: translateY(40px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 1s ease forwards;
-  }
-
-  .animate-fade-up {
-    animation: fade-up 1s ease forwards;
-  }
-`;
-if (typeof document !== 'undefined') {
-  document.head.appendChild(style);
-}
