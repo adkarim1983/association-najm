@@ -3,7 +3,11 @@ import mongoose from 'mongoose';
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  }
+  // In development/build, use a placeholder to prevent build errors
+  console.warn('MONGODB_URI not defined, using placeholder for build');
 }
 
 /**
@@ -18,6 +22,10 @@ if (!cached) {
 }
 
 async function connectDB() {
+  if (!MONGODB_URI) {
+    throw new Error('MONGODB_URI is not defined');
+  }
+
   if (cached.conn) {
     return cached.conn;
   }
