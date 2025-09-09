@@ -1,0 +1,21 @@
+name: Mirror Repository
+
+on:
+  push:
+    branches:
+      - master   # change si ta branche par défaut est "master"
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0   # très important pour avoir tout l’historique
+
+      - name: Push to mirror
+        run: |
+          git remote add mirror https://x-access-token:${{ secrets.MIRROR_TOKEN }}@github.com/Ouss77/assos-najm.git
+          git push --mirror mirror
