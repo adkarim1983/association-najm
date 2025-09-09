@@ -2,6 +2,8 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import CountUp from "react-countup";
+import Navbar from "../../../components/layout/Navbar";
+import Footer from "../../../components/layout/Footer";
 
 export default function EntrepreneuriatPage() {
   // Content extracted from old translations (hardcoded here to avoid i18n setup)
@@ -67,7 +69,9 @@ export default function EntrepreneuriatPage() {
   }, [isOpen]);
 
   return (
-    <div className="min-h-screen bg-gray-100 py-16">
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <div className="bg-gray-100 py-16 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
@@ -170,6 +174,8 @@ export default function EntrepreneuriatPage() {
           </div>
         )}
       </div>
+      </div>
+      <Footer />
     </div>
   );
 }

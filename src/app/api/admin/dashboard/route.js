@@ -3,75 +3,90 @@ import connectDB from '../../../../lib/db/mongoose.js';
 import User from '../../../../lib/db/models/User.js';
 import Project from '../../../../lib/db/models/Project.js';
 import Contact from '../../../../lib/db/models/Contact.js';
-import { authMiddleware, requireAdmin } from '../../../../lib/auth/middleware.js';
+import { authMiddleware } from '../../../../lib/auth/middleware.js';
 
-// GET /api/admin/dashboard - Get admin dashboard statistics
+// GET /api/admin/dashboard - Get dashboard statistics (admin/moderator only)
 export async function GET(request) {
   try {
-    // Authenticate and check admin role
+    // Authenticate user (admin/moderator only)
     const { user } = await authMiddleware(request);
-    requireAdmin(user);
     
+    if (!['admin', 'moderator'].includes(user.role)) {
+      return NextResponse.json(
+        { error: 'Access forbidden', message: 'Admin or moderator role required' },
+        { status: 403 }
+      );
+    }
+
     // Connect to database
     await connectDB();
 
-    // Get statistics in parallel
-    const [
-      userStats,
-      projectStats,
-      contactStats,
-      recentContacts,
-      recentProjects
-    ] = await Promise.all([
-      // User statistics
-      User.aggregate([
-        {
-          $group: {
-            _id: null,
-            total: { $sum: 1 },
-            active: { $sum: { $cond: ['$isActive', 1, 0] } },
-            admins: { $sum: { $cond: [{ $eq: ['$role', 'admin'] }, 1, 0] } },
-            moderators: { $sum: { $cond: [{ $eq: ['$role', 'moderator'] }, 1, 0] } }
-          }
-        }
-      ]),
+    // Statistiques des utilisateurs
+    const totalUsers = await User.countDocuments();
+    const activeUsers = await User.countDocuments({ isActive: true });
+    const adminUsers = await User.countDocuments({ role: 'admin' });
+    const moderatorUsers = await User.countDocuments({ role: 'moderator' });
 
-      // Project statistics
-      Project.aggregate([
-        {
-          $group: {
-            _id: null,
-            total: { $sum: 1 },
-            active: { $sum: { $cond: [{ $eq: ['$status', 'active'] }, 1, 0] } },
-            pending: { $sum: { $cond: [{ $eq: ['$status', 'pending'] }, 1, 0] } },
-            featured: { $sum: { $cond: ['$featured', 1, 0] } }
-          }
-        }
-      ]),
+    // Statistiques des projets
+    const totalProjects = await Project.countDocuments();
+    const activeProjects = await Project.countDocuments({ status: 'active' });
+    const featuredProjects = await Project.countDocuments({ featured: true });
 
-      // Contact statistics
-      Contact.getStats(),
+    // Statistiques des contacts
+    const totalContacts = await Contact.countDocuments();
+    const newContacts = await Contact.countDocuments({ status: 'new' });
+    const repliedContacts = await Contact.countDocuments({ status: 'replied' });
+    const spamContacts = await Contact.countDocuments({ isSpam: true });
 
-      // Recent contacts
-      Contact.find({ isSpam: false })
-        .sort({ createdAt: -1 })
-        .limit(5)
-        .select('name email subject status priority createdAt'),
+    // Activité récente (derniers 7 jours)
+    const weekAgo = new Date();
+    weekAgo.setDate(weekAgo.getDate() - 7);
 
-      // Recent projects
-      Project.find({ status: 'active' })
-        .sort({ createdAt: -1 })
-        .limit(5)
-        .select('name category location status createdAt')
+    const recentUsers = await User.countDocuments({ createdAt: { $gte: weekAgo } });
+    const recentProjects = await Project.countDocuments({ createdAt: { $gte: weekAgo } });
+    const recentContacts = await Contact.countDocuments({ createdAt: { $gte: weekAgo } });
+
+    // Projets les plus vus
+    const topProjects = await Project.find()
+      .sort({ 'metadata.views': -1 })
+      .limit(5)
+      .select('name metadata.views metadata.likes');
+
+    // Contacts par priorité
+    const contactsByPriority = await Contact.aggregate([
+      { $match: { isSpam: false } },
+      { $group: { _id: '$priority', count: { $sum: 1 } } }
+    ]);
+
+    // Contacts par catégorie
+    const contactsByCategory = await Contact.aggregate([
+      { $match: { isSpam: false } },
+      { $group: { _id: '$category', count: { $sum: 1 } } }
     ]);
 
     return NextResponse.json({
-      users: userStats[0] || { total: 0, active: 0, admins: 0, moderators: 0 },
-      projects: projectStats[0] || { total: 0, active: 0, pending: 0, featured: 0 },
-      contacts: contactStats,
-      recent: {
-        contacts: recentContacts,
-        projects: recentProjects
+      users: {
+        total: totalUsers,
+        active: activeUsers,
+        admins: adminUsers,
+        moderators: moderatorUsers,
+        recent: recentUsers
+      },
+      projects: {
+        total: totalProjects,
+        active: activeProjects,
+        featured: featuredProjects,
+        recent: recentProjects,
+        topViewed: topProjects
+      },
+      contacts: {
+        total: totalContacts,
+        new: newContacts,
+        replied: repliedContacts,
+        spam: spamContacts,
+        recent: recentContacts,
+        byPriority: contactsByPriority,
+        byCategory: contactsByCategory
       }
     });
 

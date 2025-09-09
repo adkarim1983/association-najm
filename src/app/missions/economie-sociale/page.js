@@ -2,6 +2,8 @@
 
 import React from "react";
 import CountUp from "react-countup";
+import Navbar from "../../../components/layout/Navbar";
+import Footer from "../../../components/layout/Footer";
 
 export default function EconomieSocialePage() {
   const title = "Axe de Soutien à l'Économie Sociale et Solidaire";
@@ -45,7 +47,9 @@ export default function EconomieSocialePage() {
     "Sur la base de ces résultats également positifs, le Comité Provincial du Développement Humain a renouvelé sa confiance en l'Association Najm en signant un nouvel accord pour la mise en œuvre de l'axe « Soutien à l'Économie Sociale et Solidaire » dans les districts de Moulay Rachid pour l'année 2025.";
 
   return (
-    <div className="min-h-screen bg-gray-50 py-20">
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <div className="bg-gray-50 py-20 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -91,6 +95,8 @@ export default function EconomieSocialePage() {
           <p className="text-gray-800 text-justify">{renewalText}</p>
         </div>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 }

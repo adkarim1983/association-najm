@@ -3,6 +3,7 @@ import Joi from 'joi';
 import connectDB from '../../../lib/db/mongoose.js';
 import Contact from '../../../lib/db/models/Contact.js';
 import { getClientIP } from '../../../lib/auth/middleware.js';
+import { sendContactNotification, sendUserConfirmation } from '../../../lib/email/notifications.js';
 
 const contactSchema = Joi.object({
   name: Joi.string().max(100).required(),
@@ -102,6 +103,19 @@ export async function POST(request) {
     });
 
     await contact.save();
+
+    // Send email notifications (async, don't wait for completion)
+    if (!contact.isSpam) {
+      // Send admin notification
+      sendContactNotification(contact).catch(error => {
+        console.error('Failed to send admin notification:', error);
+      });
+      
+      // Send user confirmation
+      sendUserConfirmation(contact).catch(error => {
+        console.error('Failed to send user confirmation:', error);
+      });
+    }
 
     return NextResponse.json({
       message: 'Message sent successfully',

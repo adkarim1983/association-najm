@@ -1,10 +1,14 @@
 "use client";
 
 import React from "react";
+import Navbar from "../../../components/layout/Navbar";
+import Footer from "../../../components/layout/Footer";
 
 export default function DeveloppementCapacitesPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-20">
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <div className="bg-gray-50 py-20 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -141,6 +145,8 @@ export default function DeveloppementCapacitesPage() {
           </div>
         </div>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 }

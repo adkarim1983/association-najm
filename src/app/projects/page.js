@@ -127,27 +127,52 @@ export default function ProjectsPage() {
             <ProjectFilters onFilterChange={handleFilterChange} />
             
             {/* View Mode Toggle */}
-            <div className="flex justify-center mb-8">
-              <div className="bg-gray-100 rounded-lg p-1 flex">
+            <div className="flex justify-center mb-12">
+              <div className="bg-gradient-to-r from-gray-50 to-gray-100 backdrop-blur-sm border border-gray-200 rounded-2xl p-2 flex shadow-lg">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`px-4 py-2 rounded-md font-medium transition-colors ${
+                  className={`group relative px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-3 ${
                     viewMode === 'grid'
-                      ? 'bg-white text-blue-600 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-800'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg transform scale-105'
+                      : 'text-gray-600 hover:text-gray-800 hover:bg-white/50 hover:shadow-md'
                   }`}
                 >
-                  📋 Vue Grille
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                    viewMode === 'grid' 
+                      ? 'bg-white/20 backdrop-blur-sm' 
+                      : 'bg-gray-200 group-hover:bg-gray-300'
+                  }`}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                  </div>
+                  <span className="font-bold">Vue Grille</span>
+                  {viewMode === 'grid' && (
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+                  )}
                 </button>
+                
                 <button
                   onClick={() => setViewMode('map')}
-                  className={`px-4 py-2 rounded-md font-medium transition-colors ${
+                  className={`group relative px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-3 ${
                     viewMode === 'map'
-                      ? 'bg-white text-blue-600 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-800'
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg transform scale-105'
+                      : 'text-gray-600 hover:text-gray-800 hover:bg-white/50 hover:shadow-md'
                   }`}
                 >
-                  🗺️ Vue Carte
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                    viewMode === 'map' 
+                      ? 'bg-white/20 backdrop-blur-sm' 
+                      : 'bg-gray-200 group-hover:bg-gray-300'
+                  }`}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    </svg>
+                  </div>
+                  <span className="font-bold">Vue Carte</span>
+                  {viewMode === 'map' && (
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+                  )}
                 </button>
               </div>
             </div>

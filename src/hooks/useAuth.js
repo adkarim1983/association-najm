@@ -9,37 +9,72 @@ export const useAuth = useAuthContext;
 export function useRequireAuth() {
   const auth = useAuthContext();
   
-  if (!auth.isAuthenticated) {
-    throw new Error('Authentication required');
+  // Don't throw errors during loading
+  if (auth.isLoading) {
+    return { user: null, loading: true };
   }
   
-  return auth;
+  // Redirect to login if not authenticated
+  if (!auth.isAuthenticated) {
+    if (typeof window !== 'undefined') {
+      window.location.href = '/login';
+    }
+    return { user: null, loading: false };
+  }
+  
+  return { user: auth.user, loading: false };
 }
 
 export function useRequireAdmin() {
   const auth = useAuthContext();
   
+  // Don't throw errors during loading
+  if (auth.isLoading) {
+    return { user: null, loading: true };
+  }
+  
+  // Redirect to login if not authenticated
   if (!auth.isAuthenticated) {
-    throw new Error('Authentication required');
+    if (typeof window !== 'undefined') {
+      window.location.href = '/login?redirect=/admin';
+    }
+    return { user: null, loading: false };
   }
   
+  // Redirect to home if not admin
   if (!auth.isAdmin()) {
-    throw new Error('Admin privileges required');
+    if (typeof window !== 'undefined') {
+      window.location.href = '/?error=access_denied';
+    }
+    return { user: null, loading: false };
   }
   
-  return auth;
+  return { user: auth.user, loading: false };
 }
 
 export function useRequireModerator() {
   const auth = useAuthContext();
   
+  // Don't throw errors during loading
+  if (auth.isLoading) {
+    return { user: null, loading: true };
+  }
+  
+  // Redirect to login if not authenticated
   if (!auth.isAuthenticated) {
-    throw new Error('Authentication required');
+    if (typeof window !== 'undefined') {
+      window.location.href = '/login';
+    }
+    return { user: null, loading: false };
   }
   
+  // Redirect to home if not moderator or admin
   if (!auth.isAdminOrModerator()) {
-    throw new Error('Moderator or admin privileges required');
+    if (typeof window !== 'undefined') {
+      window.location.href = '/?error=access_denied';
+    }
+    return { user: null, loading: false };
   }
   
-  return auth;
+  return { user: auth.user, loading: false };
 }
