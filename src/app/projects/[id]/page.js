@@ -78,19 +78,15 @@ export default function ProjectDetailPage() {
   const fetchProject = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/projects?limit=1000`);
+      const response = await fetch(`/api/projects/${params.id}`);
       
       if (response.ok) {
         const data = await response.json();
-        const foundProject = data.projects.find(p => p._id === params.id);
-        
-        if (foundProject) {
-          setProject(foundProject);
-        } else {
-          setError('Projet non trouvé');
-        }
+        setProject(data.project);
+      } else if (response.status === 404) {
+        setError('Projet non trouvé');
       } else {
-        setError('Erreur lors du chargement des projets');
+        setError('Erreur lors du chargement du projet');
       }
     } catch (error) {
       console.error('Error fetching project:', error);

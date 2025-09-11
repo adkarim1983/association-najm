@@ -22,6 +22,7 @@ export default function ProjectsPage() {
   const router = useRouter();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'map'
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -38,8 +39,14 @@ export default function ProjectsPage() {
   });
 
   useEffect(() => {
-    fetchProjects();  
-  }, [filters, pagination.currentPage]);
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      fetchProjects();
+    }
+  }, [mounted, filters, pagination.currentPage]);
 
   const fetchProjects = async () => {
     try {
@@ -55,10 +62,14 @@ export default function ProjectsPage() {
       if (filters.search) queryParams.append('search', filters.search);
       if (filters.location) queryParams.append('location', filters.location);
 
-      const response = await fetch(`/api/projects?${queryParams}`);
+      const response = await fetch(`/api/projects?${queryParams}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       if (response.ok) {
         const data = await response.json();
-        console.log("the data fetched from db is ", data)
         setProjects(data.projects || []);
         
         // Update pagination state with response data
@@ -67,8 +78,8 @@ export default function ProjectsPage() {
             currentPage: data.pagination.currentPage,
             totalPages: data.pagination.totalPages,
             totalItems: data.pagination.totalItems,
-            hasNext: data.pagination.hasNext,
-            hasPrev: data.pagination.hasPrev
+            hasNext: data.pagination.hasNextPage,
+            hasPrev: data.pagination.hasPrevPage
           });
         }
       }
@@ -106,6 +117,34 @@ export default function ProjectsPage() {
   const handleProjectSelect = (project) => {
     router.push(`/projects/${project._id}`);
   };
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <main className="pt-16">
+          <div className="bg-blue-900 text-white py-16 px-6">
+            <div className="max-w-7xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                Nos Projets
+              </h1>
+              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+                Découvrez nos initiatives et réalisations qui créent un impact positif
+              </p>
+            </div>
+          </div>
+          <section className="py-16 px-6">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex justify-center items-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
