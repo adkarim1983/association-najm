@@ -5,15 +5,31 @@ import User from '../db/models/User.js';
 // Authentication middleware for API routes
 export async function authMiddleware(req) {
   try {
-    // Get token from header
-    const authHeader = req.headers.get('authorization');
+    let token = null;
     
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    // Try to get token from Authorization header first
+    const authHeader = req.headers.get('authorization');
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.substring(7); // Remove 'Bearer ' prefix
+    }
+    
+    // If no token in header, try to get from cookies
+    if (!token) {
+      const cookies = req.headers.get('cookie');
+      if (cookies) {
+        const cookieArray = cookies.split(';');
+        const accessTokenCookie = cookieArray.find(cookie => 
+          cookie.trim().startsWith('najm_access_token=')
+        );
+        if (accessTokenCookie) {
+          token = accessTokenCookie.split('=')[1];
+        }
+      }
+    }
+    
+    if (!token) {
       throw new Error('No token provided or invalid format');
     }
-
-    // Extract token
-    const token = authHeader.substring(7); // Remove 'Bearer ' prefix
 
     // Verify token
     const decoded = await verifyAccessToken(token);

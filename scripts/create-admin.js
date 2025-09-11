@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const dotenv = require('dotenv');
+
+// Load environment variables
+dotenv.config({ path: '.env.local' });
 
 // User schema (simplified version for script)
 const userSchema = new mongoose.Schema({
@@ -18,7 +22,8 @@ const User = mongoose.model('User', userSchema);
 async function createAdmin() {
   try {
     // Connect to MongoDB
-    await mongoose.connect('mongodb://localhost:27017/association-najm');
+    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/association-najm';
+    await mongoose.connect(mongoUri);
     console.log('Connected to MongoDB');
 
     // Admin user data

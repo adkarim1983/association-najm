@@ -14,12 +14,11 @@ export default function ProjectFilters({ onFilterChange }) {
 
   const categories = [
     { value: '', label: 'Toutes les catégories', icon: '📋' },
-    { value: 'Restauration', label: 'Restauration', icon: '🍽️' },
-    { value: 'Marketing Digital', label: 'Marketing Digital', icon: '📱' },
-    { value: 'Événementiel', label: 'Événementiel', icon: '🎉' },
-    { value: 'Design', label: 'Design', icon: '🎨' },
-    { value: 'Production Digitale', label: 'Production Digitale', icon: '🎬' },
-    { value: 'Pâtisserie', label: 'Pâtisserie', icon: '🧁' }
+    { value: 'restauration', label: 'Restauration', icon: '🍽️' },
+    { value: 'marketing_digital', label: 'Marketing Digital', icon: '📱' },
+    { value: 'evenementiel', label: 'Événementiel', icon: '🎉' },
+    { value: 'design', label: 'Design', icon: '🎨' },
+    { value: 'audio_visuel', label: 'Audio Visuel', icon: '🎬' }
   ];
 
   const statuses = [
@@ -31,14 +30,14 @@ export default function ProjectFilters({ onFilterChange }) {
 
   const locations = [
     { value: '', label: 'Toutes les localisations', icon: '🌍' },
-    { value: 'Sidi Othmane Admin', label: 'Sidi Othmane Admin', icon: '🏢' },
-    { value: 'Sidi Othmane Industriel', label: 'Sidi Othmane Industriel', icon: '🏭' },
-    { value: 'Moulay Rachid Admin', label: 'Moulay Rachid Admin', icon: '🏢' },
-    { value: 'Moulay Rachid Industriel', label: 'Moulay Rachid Industriel', icon: '🏭' },
-    { value: 'Sadri Admin', label: 'Sadri Admin', icon: '🏢' },
+    { value: 'Annexe administrative de Sidi Othmane', label: 'Sidi Othmane Admin', icon: '🏢' },
+    { value: 'Zone industrielle Sidi Othmane', label: 'Sidi Othmane Industriel', icon: '🏭' },
+    { value: 'Annexe administrative du quartier Moulay Rachid', label: 'Moulay Rachid Admin', icon: '🏢' },
+    { value: 'Zone industrielle Moulay Rachid', label: 'Moulay Rachid Industriel', icon: '🏭' },
+    { value: 'Annexe administrative du quartier Sadri', label: 'Sadri Admin', icon: '🏢' },
+    { value: 'Annexe administrative du quartier Mabrouka', label: 'Mabrouka Admin', icon: '🏢' },
     { value: 'Hay El Rajae', label: 'Hay El Rajae', icon: '🏘️' },
-    { value: 'El Harouiyine Admin', label: 'El Harouiyine Admin', icon: '🏢' },
-    { value: 'El Rajae Admin', label: 'El Rajae Admin', icon: '🏢' }
+    { value: 'Annexe administrative El Harouiyine', label: 'El Harouiyine Admin', icon: '🏢' }
   ];
 
   const handleFilterChange = (key, value) => {

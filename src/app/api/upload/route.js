@@ -24,8 +24,12 @@ async function ensureUploadDir() {
 // POST /api/upload - Upload file (requires authentication)
 export async function POST(request) {
   try {
+    console.log('🔍 Upload request received');
+    console.log('Headers:', Object.fromEntries(request.headers.entries()));
+    
     // Authenticate user
     const { user } = await authMiddleware(request);
+    console.log('✅ User authenticated:', user.email, user.role);
     
     // Connect to database
     await connectDB();
@@ -119,6 +123,7 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('Upload error:', error);
+    console.error('Error stack:', error.stack);
     
     if (error.message.includes('Authentication failed')) {
       return NextResponse.json(
@@ -129,8 +134,9 @@ export async function POST(request) {
 
     return NextResponse.json(
       {
-        error: 'Upload failed',
-        message: error.message
+        error: 'Erreur lors de l\'upload',
+        message: error.message,
+        details: process.env.NODE_ENV === 'development' ? error.stack : undefined
       },
       { status: 500 }
     );

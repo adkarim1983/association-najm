@@ -27,6 +27,15 @@ const projectSchema = Joi.object({
   products: Joi.string().allow('').optional(),
   partners: Joi.string().allow('').optional(),
   image: Joi.string().allow('').optional(),
+  images: Joi.array().items(Joi.object({
+    url: Joi.string().uri().required(),
+    filename: Joi.string().required(),
+    size: Joi.number().optional(),
+    uploadedAt: Joi.date().optional(),
+    uploadedBy: Joi.string().optional(),
+    alt: Joi.string().optional(),
+    isMain: Joi.boolean().optional()
+  })).optional(),
   status: Joi.string().valid('active', 'inactive', 'pending').default('active'),
   featured: Joi.boolean().default(false),
   tags: Joi.array().items(Joi.string()).optional()
@@ -185,6 +194,149 @@ export async function POST(request) {
     return NextResponse.json(
       {
         error: 'Failed to create project',
+        message: error.message
+      },
+      { status: 500 }
+    );
+  }
+}
+
+// PUT /api/projects - Update project (requires authentication)
+export async function PUT(request) {
+  try {
+    // Authenticate user (admin/moderator only)
+    const { user } = await authMiddleware(request);
+    
+    if (!['admin', 'moderator'].includes(user.role)) {
+      return NextResponse.json(
+        { error: 'Access forbidden', message: 'Admin or moderator role required' },
+        { status: 403 }
+      );
+    }
+
+    // Parse request body
+    const body = await request.json();
+    const { id, ...updateData } = body;
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Project ID is required' },
+        { status: 400 }
+      );
+    }
+
+    // Validate input (excluding id)
+    const { error, value } = projectSchema.validate(updateData);
+    if (error) {
+      return NextResponse.json(
+        {
+          error: 'Validation failed',
+          details: error.details.map(detail => ({
+            field: detail.path.join('.'),
+            message: detail.message
+          }))
+        },
+        { status: 400 }
+      );
+    }
+
+    // Connect to database
+    await connectDB();
+
+    // Update project
+    const project = await Project.findByIdAndUpdate(
+      id,
+      value,
+      { new: true, runValidators: true }
+    );
+    
+    if (!project) {
+      return NextResponse.json(
+        { error: 'Project not found' },
+        { status: 404 }
+      );
+    }
+    
+    return NextResponse.json({
+      message: 'Project updated successfully',
+      project
+    });
+
+  } catch (error) {
+    console.error('Error updating project:', error);
+    
+    if (error.name === 'ValidationError') {
+      const validationErrors = Object.values(error.errors).map(err => ({
+        field: err.path,
+        message: err.message
+      }));
+      
+      return NextResponse.json(
+        {
+          error: 'Validation failed',
+          details: validationErrors
+        },
+        { status: 400 }
+      );
+    }
+    
+    return NextResponse.json(
+      {
+        error: 'Failed to update project',
+        message: error.message
+      },
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE /api/projects - Delete project (requires authentication)
+export async function DELETE(request) {
+  try {
+    // Authenticate user (admin only)
+    const { user } = await authMiddleware(request);
+    
+    if (user.role !== 'admin') {
+      return NextResponse.json(
+        { error: 'Access forbidden', message: 'Admin role required' },
+        { status: 403 }
+      );
+    }
+
+    const url = new URL(request.url);
+    const id = url.searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Project ID is required' },
+        { status: 400 }
+      );
+    }
+
+    // Connect to database
+    await connectDB();
+
+    // Delete project
+    const project = await Project.findByIdAndDelete(id);
+    
+    if (!project) {
+      return NextResponse.json(
+        { error: 'Project not found' },
+        { status: 404 }
+      );
+    }
+    
+    return NextResponse.json({
+      message: 'Project deleted successfully',
+      deletedProject: { id: project._id, name: project.name }
+    });
+
+  } catch (error) {
+    console.error('Error deleting project:', error);
+    
+    return NextResponse.json(
+      {
+        error: 'Failed to delete project',
         message: error.message
       },
       { status: 500 }

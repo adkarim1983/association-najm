@@ -1,78 +1,10 @@
 const { MongoClient } = require('mongodb');
 
+// ATTENTION: Ce script contenait des projets fictifs qui ont été supprimés.
+// Utilisez plutôt le script 'seed-real-projects.js' pour peupler la base avec les vrais projets.
+
 const sampleProjects = [
-  {
-    name: "Centre de Formation Casablanca",
-    description: "Centre de formation professionnelle pour les jeunes",
-    category: "education",
-    location: "Casablanca",
-    address: "Avenue Mohammed V, Casablanca",
-    coordinates: {
-      lat: 33.5731,
-      lng: -7.5898
-    },
-    status: "active",
-    featured: true,
-    contact: {
-      phone: "+212 522 123 456",
-      email: "casablanca@association-najm.org"
-    },
-    createdAt: new Date()
-  },
-  {
-    name: "Projet Entrepreneuriat Rabat",
-    description: "Programme d'accompagnement des entrepreneurs",
-    category: "entrepreneuriat",
-    location: "Rabat",
-    address: "Quartier Agdal, Rabat",
-    coordinates: {
-      lat: 34.0209,
-      lng: -6.8417
-    },
-    status: "active",
-    featured: false,
-    contact: {
-      phone: "+212 537 123 456",
-      email: "rabat@association-najm.org"
-    },
-    createdAt: new Date()
-  },
-  {
-    name: "Centre Social Marrakech",
-    description: "Centre d'aide sociale et d'accompagnement",
-    category: "social",
-    location: "Marrakech",
-    address: "Medina, Marrakech",
-    coordinates: {
-      lat: 31.6295,
-      lng: -7.9811
-    },
-    status: "active",
-    featured: true,
-    contact: {
-      phone: "+212 524 123 456",
-      email: "marrakech@association-najm.org"
-    },
-    createdAt: new Date()
-  },
-  {
-    name: "Programme Jeunesse Fès",
-    description: "Activités et formations pour les jeunes",
-    category: "jeunesse",
-    location: "Fès",
-    address: "Ville Nouvelle, Fès",
-    coordinates: {
-      lat: 34.0181,
-      lng: -5.0078
-    },
-    status: "active",
-    featured: false,
-    contact: {
-      phone: "+212 535 123 456",
-      email: "fes@association-najm.org"
-    },
-    createdAt: new Date()
-  }
+  // Projets fictifs supprimés - utilisez seed-real-projects.js à la place
 ];
 
 async function seedProjectsWithCoordinates() {
