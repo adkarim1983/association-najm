@@ -59,17 +59,9 @@ export default function PresidentMessage() {
         {!showFullMessage ? (
           <div ref={scrollRef} className="flex-1 overflow-hidden">
             <div className="inline-block whitespace-nowrap text-gray-700 text-[18px] min-w-max">
-            Monsieur Hassan Rezk, Président de l’Association Najm, a le plaisir de vous accueillir sur la plateforme officielle de l’association, véritable reflet de sa vision et de son engagement profond en faveur de l’autonomisation économique et professionnelle des jeunes.
+            Monsieur Hassan Rezk, Président de l’Association Najm, vous souhaite la bienvenue sur la plateforme officielle de l’association, dédiée à l’autonomisation économique et professionnelle des jeunes. Convaincue que la jeunesse est le moteur du changement, l’association mise sur la formation, l’accompagnement et le soutien continu pour renforcer leur participation à la vie économique et sociale.
 
-L’association part d’une conviction solide : la jeunesse constitue le pilier fondamental de tout changement positif, et l’investissement dans ses capacités et ses compétences représente la voie la plus sûre vers un développement durable et inclusif.
-
-L’Association Najm considère que l’autonomisation des jeunes ne se limite pas à la création d’opportunités d’emploi, mais englobe également la formation, l’accompagnement et le soutien continu. Elle vise ainsi à leur ouvrir de nouveaux horizons et à renforcer leur participation active à la vie économique et sociale. C’est dans cet esprit que l’association développe des programmes et initiatives innovants, adaptés aux aspirations et aux défis de la jeunesse, tout en tenant compte de la diversité de leurs parcours et de leurs besoins.
-
-L’action de l’association s’appuie sur un socle de valeurs essentielles : le respect, la transparence, l’égalité, la confiance et le travail collaboratif. À travers ces principes, elle œuvre à bâtir un environnement inclusif et stimulant, garantissant la participation de tous sans distinction.
-
-Par ailleurs, l’association s’engage à élargir son réseau de partenariats aux niveaux national et international, convaincue que la coopération et l’échange d’expériences contribuent à renforcer son impact et à assurer des résultats durables.
-
-L’Association Najm aspire à devenir une plateforme de référence, tant sur le plan national que régional, dans l’orientation, la formation et l’inspiration des jeunes, afin qu’ils deviennent des acteurs du changement, des décideurs et des leaders de demain, pleinement engagés dans la construction de l’avenir.
+Guidée par des valeurs de respect, transparence, égalité et collaboration, elle développe des programmes innovants et élargit ses partenariats afin de devenir une référence nationale et régionale, inspirant les jeunes à devenir les leaders de demain.
             </div>
           </div>
         ) : (
@@ -81,17 +73,9 @@ L’Association Najm aspire à devenir une plateforme de référence, tant sur l
             />
             <div className="flex-1">
               <p className="text-gray-700 text-xs sm:text-sm md:text-base text-justify leading-relaxed">
-              Monsieur Hassan Rezk, Président de l’Association Najm, a le plaisir de vous accueillir sur la plateforme officielle de l’association, véritable reflet de sa vision et de son engagement profond en faveur de l’autonomisation économique et professionnelle des jeunes.
+              Monsieur Hassan Rezk, Président de l’Association Najm, vous souhaite la bienvenue sur la plateforme officielle de l’association, dédiée à l’autonomisation économique et professionnelle des jeunes. Convaincue que la jeunesse est le moteur du changement, l’association mise sur la formation, l’accompagnement et le soutien continu pour renforcer leur participation à la vie économique et sociale.
 
-L’association part d’une conviction solide : la jeunesse constitue le pilier fondamental de tout changement positif, et l’investissement dans ses capacités et ses compétences représente la voie la plus sûre vers un développement durable et inclusif.
-
-L’Association Najm considère que l’autonomisation des jeunes ne se limite pas à la création d’opportunités d’emploi, mais englobe également la formation, l’accompagnement et le soutien continu. Elle vise ainsi à leur ouvrir de nouveaux horizons et à renforcer leur participation active à la vie économique et sociale. C’est dans cet esprit que l’association développe des programmes et initiatives innovants, adaptés aux aspirations et aux défis de la jeunesse, tout en tenant compte de la diversité de leurs parcours et de leurs besoins.
-
-L’action de l’association s’appuie sur un socle de valeurs essentielles : le respect, la transparence, l’égalité, la confiance et le travail collaboratif. À travers ces principes, elle œuvre à bâtir un environnement inclusif et stimulant, garantissant la participation de tous sans distinction.
-
-Par ailleurs, l’association s’engage à élargir son réseau de partenariats aux niveaux national et international, convaincue que la coopération et l’échange d’expériences contribuent à renforcer son impact et à assurer des résultats durables.
-
-L’Association Najm aspire à devenir une plateforme de référence, tant sur le plan national que régional, dans l’orientation, la formation et l’inspiration des jeunes, afin qu’ils deviennent des acteurs du changement, des décideurs et des leaders de demain, pleinement engagés dans la construction de l’avenir.
+Guidée par des valeurs de respect, transparence, égalité et collaboration, elle développe des programmes innovants et élargit ses partenariats afin de devenir une référence nationale et régionale, inspirant les jeunes à devenir les leaders de demain.
               </p>
               <div className="mt-3 sm:hidden">
                 <button 
