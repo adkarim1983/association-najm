@@ -3,12 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
-import mk1 from '../../assets/imageFormation/mk1.jpg';
-import mk2 from '../../assets/imageFormation/mk2.jpg';
-import mk3 from '../../assets/imageFormation/mk3.jpg';
-import ds1 from '../../assets/imageFormation/ds1.jpg';
-import ds2 from '../../assets/imageFormation/ds2.jpg';
-import ds3 from '../../assets/imageFormation/ds3.jpg';
 
 export default function ProgrammesPage() {
   const [showTop, setShowTop] = useState(false);
@@ -26,12 +20,12 @@ export default function ProgrammesPage() {
     { src: "/assets/D.jpg", alt: "Étudiants en formation" },
     { src: "/assets/image1a.jpg", alt: "Atelier pratique" },
     // Marketing Digital images (mk1, mk2, mk3)
-    { src: mk1.src, alt: "Marketing digital - Image 1" },
-    { src: mk2.src, alt: "Marketing digital - Image 2" },
-    { src: mk3.src, alt: "Marketing digital - Image 3" },
+    { src: "/imageFormation/mk1.jpg", alt: "Marketing digital - Image 1" },
+    { src: "/imageFormation/mk2.jpg", alt: "Marketing digital - Image 2" },
+    { src: "/imageFormation/mk3.jpg", alt: "Marketing digital - Image 3" },
     // Design et Création Visuelle images (ds1, ds2)
-    { src: ds1.src, alt: "Design et création visuelle - Image 1" },
-    { src: ds2.src, alt: "Design et création visuelle - Image 2" }
+    { src: "/imageFormation/ds1.jpg", alt: "Design et création visuelle - Image 1" },
+    { src: "/imageFormation/ds2.jpg", alt: "Design et création visuelle - Image 2" }
   ];
 
   return (
@@ -343,7 +337,7 @@ export default function ProgrammesPage() {
                   </div>
                   <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                     <img
-                      src={ds3.src}
+                      src="/imageFormation/ds3.jpg"
                       alt="Design et création visuelle - Image 3"
                       className="w-full h-56 object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                     />
