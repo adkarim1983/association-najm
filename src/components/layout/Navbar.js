@@ -156,11 +156,7 @@ export default function Navbar() {
                 Déconnexion
               </button>
             </div>
-          ) : (
-            <Link href="/login" className="text-blue-600 hover:text-blue-800 font-medium">
-              Connexion
-            </Link>
-          )}
+          ) : (<></>)}
         </nav>
 
         {/* Mobile menu button */}

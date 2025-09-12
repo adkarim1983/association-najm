@@ -66,6 +66,29 @@ export default function NewProjectModal({ isOpen, onClose, onProjectCreated }) {
     }
   };
 
+  // Minimal helper to refresh access token when expired
+  const refreshAccessToken = async () => {
+    try {
+      const refreshToken = typeof window !== 'undefined' ? localStorage.getItem('najm_refresh_token') : null;
+      if (!refreshToken) return false;
+      const resp = await fetch('/api/auth/refresh', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ refreshToken })
+      });
+      if (!resp.ok) return false;
+      const data = await resp.json();
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('najm_access_token', data.tokens.accessToken);
+        localStorage.setItem('najm_user', JSON.stringify(data.user));
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const handleImageUpload = async (e) => {
     const files = Array.from(e.target.files);
     if (files.length === 0) return;
@@ -78,7 +101,7 @@ export default function NewProjectModal({ isOpen, onClose, onProjectCreated }) {
         formData.append('file', file);
 
         const token = typeof window !== 'undefined' ? localStorage.getItem('najm_access_token') : null;
-        const response = await fetch('/api/upload', {
+        let response = await fetch('/api/upload', {
           method: 'POST',
           credentials: 'include',
           headers: token ? { 'Authorization': `Bearer ${token}` } : undefined,
@@ -86,8 +109,20 @@ export default function NewProjectModal({ isOpen, onClose, onProjectCreated }) {
         });
 
         if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || 'Erreur lors de l\'upload');
+          // Try to refresh token on 401 and retry once
+          if (response.status === 401 && await refreshAccessToken()) {
+            const newToken = typeof window !== 'undefined' ? localStorage.getItem('najm_access_token') : null;
+            response = await fetch('/api/upload', {
+              method: 'POST',
+              credentials: 'include',
+              headers: newToken ? { 'Authorization': `Bearer ${newToken}` } : undefined,
+              body: formData,
+            });
+          }
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Erreur lors de l\'upload');
+          }
         }
 
         const result = await response.json();
@@ -142,7 +177,7 @@ export default function NewProjectModal({ isOpen, onClose, onProjectCreated }) {
       const headers = { 'Content-Type': 'application/json' };
       if (token) headers['Authorization'] = `Bearer ${token}`;
 
-      const response = await fetch('/api/projects', {
+      let response = await fetch('/api/projects', {
         method: 'POST',
         headers,
         credentials: 'include', // Include cookies for authentication
@@ -150,8 +185,21 @@ export default function NewProjectModal({ isOpen, onClose, onProjectCreated }) {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Erreur lors de la création du projet');
+        if (response.status === 401 && await refreshAccessToken()) {
+          const newToken = typeof window !== 'undefined' ? localStorage.getItem('najm_access_token') : null;
+          const retryHeaders = { 'Content-Type': 'application/json' };
+          if (newToken) retryHeaders['Authorization'] = `Bearer ${newToken}`;
+          response = await fetch('/api/projects', {
+            method: 'POST',
+            headers: retryHeaders,
+            credentials: 'include',
+            body: JSON.stringify(projectData),
+          });
+        }
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Erreur lors de la création du projet');
+        }
       }
 
       const newProject = await response.json();

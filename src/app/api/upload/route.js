@@ -7,8 +7,10 @@ import connectDB from '../../../lib/db/mongoose.js';
 import { authMiddleware } from '../../../lib/auth/middleware.js';
 
 const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads');
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+const MAX_FILE_SIZE = Number(process.env.MAX_FILE_SIZE) || 5 * 1024 * 1024; // default 5MB
+const MAX_FILE_SIZE_MB = Math.ceil(MAX_FILE_SIZE / (1024 * 1024));
+const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif', 'image/heic', 'image/heif', 'image/avif'];
+const ALLOWED_EXTENSIONS = ['.jpeg', '.jpg', '.png', '.webp', '.gif', '.heic', '.heif', '.avif'];
 
 // Ensure upload directory exists
 async function ensureUploadDir() {
@@ -48,41 +50,71 @@ export async function POST(request) {
       );
     }
 
-    // Validate file type
-    if (!ALLOWED_TYPES.includes(file.type)) {
+    // Validate file type/extension
+    const originalExt = path.extname(file.name || '').toLowerCase();
+    const typeAllowed = file.type ? ALLOWED_TYPES.includes(file.type.toLowerCase()) : false;
+    const extAllowed = ALLOWED_EXTENSIONS.includes(originalExt);
+    if (!typeAllowed && !extAllowed) {
+      const msg = 'Invalid file type. Allowed: JPEG, PNG, WebP, GIF, HEIC/HEIF, AVIF.';
       return NextResponse.json(
-        { error: 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.' },
+        { error: msg, message: msg },
         { status: 400 }
       );
     }
 
     // Validate file size
     if (file.size > MAX_FILE_SIZE) {
+      const msg = `File too large. Maximum size is ${MAX_FILE_SIZE_MB}MB.`;
       return NextResponse.json(
-        { error: 'File too large. Maximum size is 5MB.' },
+        { error: msg, message: msg },
         { status: 400 }
       );
     }
 
-    // Generate unique filename
-    const fileExtension = path.extname(file.name);
-    const uniqueFilename = `${uuidv4()}${fileExtension}`;
+    // Decide output format based on extension (fallback to JPEG)
+    let outputExt = '.jpg';
+    let outputFormat = 'jpeg';
+    if (originalExt === '.png') {
+      outputExt = '.png';
+      outputFormat = 'png';
+    } else if (originalExt === '.webp') {
+      outputExt = '.webp';
+      outputFormat = 'webp';
+    } else if (originalExt === '.jpeg' || originalExt === '.jpg' || originalExt === '') {
+      outputExt = '.jpg';
+      outputFormat = 'jpeg';
+    } else if (originalExt === '.gif') {
+      // Convert GIF to JPEG
+      outputExt = '.jpg';
+      outputFormat = 'jpeg';
+    } else if (originalExt === '.heic' || originalExt === '.heif' || originalExt === '.avif') {
+      // Convert HEIC/HEIF/AVIF to JPEG for broader compatibility
+      outputExt = '.jpg';
+      outputFormat = 'jpeg';
+    }
+
+    const uniqueFilename = `${uuidv4()}${outputExt}`;
     const filePath = path.join(UPLOAD_DIR, uniqueFilename);
 
     // Convert file to buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Process image with Sharp
+    // Process image with Sharp and preserve chosen output format
     let processedBuffer = buffer;
-    if (file.type.startsWith('image/')) {
-      processedBuffer = await sharp(buffer)
-        .resize(1200, 1200, { 
-          fit: 'inside',
-          withoutEnlargement: true 
-        })
-        .jpeg({ quality: 85 })
-        .toBuffer();
+    if ((file.type && file.type.startsWith('image/')) || extAllowed) {
+      let transformer = sharp(buffer).resize(1200, 1200, {
+        fit: 'inside',
+        withoutEnlargement: true
+      });
+      if (outputFormat === 'jpeg') {
+        transformer = transformer.jpeg({ quality: 85 });
+      } else if (outputFormat === 'png') {
+        transformer = transformer.png({ compressionLevel: 9 });
+      } else if (outputFormat === 'webp') {
+        transformer = transformer.webp({ quality: 85 });
+      }
+      processedBuffer = await transformer.toBuffer();
     }
 
     // Save file
@@ -90,7 +122,7 @@ export async function POST(request) {
 
     // Generate thumbnail
     let thumbnailFilename = null;
-    if (file.type.startsWith('image/')) {
+    if ((file.type && file.type.startsWith('image/')) || extAllowed) {
       thumbnailFilename = `thumb_${uniqueFilename}`;
       const thumbnailPath = path.join(UPLOAD_DIR, thumbnailFilename);
       

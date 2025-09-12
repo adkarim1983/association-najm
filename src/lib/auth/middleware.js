@@ -5,34 +5,46 @@ import User from '../db/models/User.js';
 // Authentication middleware for API routes
 export async function authMiddleware(req) {
   try {
-    let token = null;
-    
-    // Try to get token from Authorization header first
+    // Collect possible tokens: Authorization header and cookie
+    const possibleTokens = [];
     const authHeader = req.headers.get('authorization');
     if (authHeader && authHeader.startsWith('Bearer ')) {
-      token = authHeader.substring(7); // Remove 'Bearer ' prefix
+      possibleTokens.push(authHeader.substring(7));
     }
-    
-    // If no token in header, try to get from cookies
-    if (!token) {
-      const cookies = req.headers.get('cookie');
-      if (cookies) {
-        const cookieArray = cookies.split(';');
-        const accessTokenCookie = cookieArray.find(cookie => 
-          cookie.trim().startsWith('najm_access_token=')
-        );
-        if (accessTokenCookie) {
-          token = accessTokenCookie.split('=')[1];
-        }
+
+    const cookiesHeader = req.headers.get('cookie');
+    if (cookiesHeader) {
+      const cookieArray = cookiesHeader.split(';');
+      const accessTokenCookie = cookieArray.find(cookie =>
+        cookie.trim().startsWith('najm_access_token=')
+      );
+      if (accessTokenCookie) {
+        possibleTokens.push(accessTokenCookie.split('=')[1]);
       }
     }
-    
-    if (!token) {
+
+    if (possibleTokens.length === 0) {
       throw new Error('No token provided or invalid format');
     }
 
-    // Verify token
-    const decoded = await verifyAccessToken(token);
+    // Try tokens in order until one verifies
+    let decoded = null;
+    let lastError = null;
+    for (const t of possibleTokens) {
+      try {
+        decoded = await verifyAccessToken(t);
+        // If verified, use this token
+        var token = t;
+        break;
+      } catch (err) {
+        lastError = err;
+        continue;
+      }
+    }
+
+    if (!decoded) {
+      throw new Error('Invalid access token');
+    }
     
     // Connect to database
     await connectDB();
