@@ -77,9 +77,11 @@ export default function NewProjectModal({ isOpen, onClose, onProjectCreated }) {
         const formData = new FormData();
         formData.append('file', file);
 
+        const token = typeof window !== 'undefined' ? localStorage.getItem('najm_access_token') : null;
         const response = await fetch('/api/upload', {
           method: 'POST',
           credentials: 'include',
+          headers: token ? { 'Authorization': `Bearer ${token}` } : undefined,
           body: formData,
         });
 
@@ -136,11 +138,13 @@ export default function NewProjectModal({ isOpen, onClose, onProjectCreated }) {
         }))
       };
 
+      const token = typeof window !== 'undefined' ? localStorage.getItem('najm_access_token') : null;
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
       const response = await fetch('/api/projects', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
         credentials: 'include', // Include cookies for authentication
         body: JSON.stringify(projectData),
       });

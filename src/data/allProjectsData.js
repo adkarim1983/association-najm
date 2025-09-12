@@ -88,7 +88,7 @@ export const allProjectsData = [
     hours: "09:00 - 18:30",
     description: "Production audiovisuelle professionnelle pour vos événements et projets.",
     image: "https://associationnajm.ma/wp-content/uploads/classified-listing/2025/01/Image41-299x530.jpg",
-    founder_info: "Taha, fondateur de Taha Prod, est un jeune professionnel passionné par l'audiovisuel.",
+    founder_info: "Taha, fondateur de Taha Prod, est un jeune professionnel passionné par l'audiovisuel test test.",
     presentation: "Taha Prod est une entreprise spécialisée dans la production audiovisuelle.",
     support: "Le projet Taha Prod bénéficie du soutien de l'INDH et de la Plateforme des Jeunes Irchad.",
     products: "Production de vidéos promotionnelles, couverture d'événements, création de contenus pour réseaux sociaux.",

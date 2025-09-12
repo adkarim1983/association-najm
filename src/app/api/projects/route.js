@@ -28,7 +28,11 @@ const projectSchema = Joi.object({
   partners: Joi.string().allow('').optional(),
   image: Joi.string().allow('').optional(),
   images: Joi.array().items(Joi.object({
-    url: Joi.string().uri().required(),
+    // Accept absolute URLs (http/https) or relative paths starting with /uploads/
+    url: Joi.alternatives().try(
+      Joi.string().uri(),
+      Joi.string().pattern(/^\/uploads\//)
+    ).required(),
     filename: Joi.string().required(),
     size: Joi.number().optional(),
     uploadedAt: Joi.date().optional(),
