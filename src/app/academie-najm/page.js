@@ -196,7 +196,7 @@ export default function AcademieNajmPage() {
 
                     {section.buttonText && (
                       <a
-                        href="#programmes"
+                        href="/programmes"
                         className="inline-block self-start px-10 py-4 bg-blue-700 text-white font-semibold rounded-full shadow-lg hover:scale-105 hover:bg-blue-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-950 uppercase tracking-wide"
                       >
                         {section.buttonText}
