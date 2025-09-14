@@ -1,11 +1,152 @@
 'use client';
 
 import { useRef } from 'react';
-import OrgChart from '../OrgChart';
 
 
 
 // Remarque: Les images sont servies depuis public/images
+
+/**
+ * Organigramme Association Najm (FR) – React + Tailwind
+ * Version sans images (titres uniquement)
+ * - Cartes élégantes avec nom + fonction
+ * - Connecteurs symétriques en CSS pur
+ * - Responsive et professionnel
+ */
+
+const BRAND = {
+  blue: "#1B7CC1",
+  blueLight: "#E6F1FB",
+};
+
+const orgData = {
+  president: {
+    name: "Hassan Rezk",
+    role: "Président de l'association",
+  },
+  level1: [
+    { name: "Abd al‑Wahab Karoumi", role: "Trésorier", children: [
+      { name: "Hajar El Raji", role: "Vice‑trésorière" },
+    ]},
+    { name: "Said Hamdoun", role: "Secrétaire général", children: [
+      { name: "Chaimaa Meziane", role: "Vice‑secrétaire générale" },
+    ]},
+    { name: "Mohamed El Ghazouani", role: "Vice‑président chargé des SI & transformation numérique" },
+    { name: "Moulay Youssef El Hafeïdi", role: "Vice‑président chargé des entreprises & entrepreneuriat social" },
+    { name: "Sanaa El Filali", role: "Vice‑présidente chargée de l'innovation sociale & des partenariats" },
+  ],
+};
+
+function Badge({ text, className = "", style = {} }) {
+  return (
+    <div
+      className={`rounded-md px-3 py-1 text-center text-[13px] font-semibold leading-tight ${className}`}
+      style={{ boxShadow: "0 1px 0 rgba(0,0,0,0.06) inset", ...style }}
+    >
+      {text}
+    </div>
+  );
+}
+
+function PersonCard({ name, role }) {
+  return (
+    <div className="relative mx-auto w-[220px] select-none">
+      <div className="space-y-1">
+        <Badge
+          text={name}
+          className="bg-white text-zinc-900 border border-[color:var(--brand-blue)]"
+          style={{ ['--brand-blue']: BRAND.blue }}
+        />
+        <Badge
+          text={role}
+          className="text-white"
+          style={{ backgroundColor: BRAND.blue }}
+        />
+      </div>
+    </div>
+  );
+}
+
+const HLine = ({ className = "" }) => (
+  <div className={`pointer-events-none absolute left-0 right-0 mx-auto h-[2px] bg-[color:var(--brand-blue)] ${className}`}
+       style={{ ['--brand-blue']: BRAND.blue }} />
+);
+const VLine = ({ className = "" }) => (
+  <div className={`pointer-events-none absolute w-[2px] bg-[color:var(--brand-blue)] ${className}`}
+       style={{ ['--brand-blue']: BRAND.blue }} />
+);
+
+function OrgChartNajmFR() {
+  const { president, level1 } = orgData;
+
+  return (
+    <div className="relative mx-auto max-w-7xl px-4 py-10 md:py-16">
+      <header className="mb-8 text-center">
+        <h1 className="text-2xl font-bold md:text-3xl">Organigramme – Association Najm</h1>
+        {/* <p className="mt-2 text-sm text-zinc-600">Version française – titres uniquement</p> */}
+      </header>
+
+      {/* Niveau 0 : Président */}
+      <div className="relative flex items-center justify-center">
+        <PersonCard name={president.name} role={president.role} />
+        <VLine className="left-1/2 top-full h-6 -translate-x-1/2" />
+      </div>
+
+      {/* Niveau 1 */}
+      <div className="relative mt-6">
+        <HLine className="top-0" />
+        <div className="pointer-events-none absolute left-0 right-0 top-0 mx-auto grid grid-cols-1 gap-8 md:grid-cols-5">
+          {level1.map((_, i) => (
+            <div key={i} className="relative">
+              <VLine className="left-1/2 top-0 h-5 -translate-x-1/2" />
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 place-items-center gap-8 pt-5 md:grid-cols-5">
+          {level1.map((p, i) => (
+            <div key={i} className="relative">
+              <PersonCard name={p.name} role={p.role} />
+              {p.children?.length ? (
+                <VLine className="left-1/2 top-full h-6 -translate-x-1/2" />
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Niveau 2 */}
+      <div className="relative mt-8 grid grid-cols-1 gap-10 md:grid-cols-5">
+        {level1.map((p, i) => (
+          <div key={i} className="relative flex min-h-[100px] items-start justify-center">
+            {p.children?.length ? (
+              <div className="pt-5">
+                {p.children.map((c, idx) => (
+                  <div key={idx} className="relative">
+                    <PersonCard name={c.name} role={c.role} />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <span className="invisible">placeholder</span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[200px] opacity-60"
+        style={{ background: `linear-gradient(180deg, ${BRAND.blueLight}, transparent)` }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[200px] opacity-60"
+        style={{ background: `linear-gradient(0deg, ${BRAND.blueLight}, transparent)` }}
+      />
+    </div>
+  );
+}
 
 export default function AboutUs() {
   const containerRef = useRef(null);
@@ -38,53 +179,6 @@ export default function AboutUs() {
     { id: 'yousraHashoum', image: '/images/image26.png', nom: 'Yousra Hashoum', statut: 'Responsable du suivi Administratif', telephone: '0671 710 058', email: 'Accompagnatrice.eerchad@example.com' },
     { id: 'mohsenHaimoud', image: '/images/image27.png', nom: 'Mohsen Haimoud', statut: 'Conseiller en orientation', telephone: '0671 707 272', email: 'Conseiller.eerchad@example.com' },
   ];
-// Données pour l'organigramme au format hiérarchique
-  const orgChartData = {
-    id: 'hassanRezzak',
-    name: 'Hassan Rezzak',
-    role: 'رئيس الجمعية',
-    children: [
-      {
-        id: 'abdelwahabKaroumi',
-        name: 'Abdelwahab Karoumi',
-        role: 'Trésorier',
-        children: [
-          {
-            id: 'hajarElRajhi',
-            name: 'Hajar El Rajhi',
-            role: 'Vice-trésorière'
-          }
-        ]
-      },
-      {
-        id: 'saidHamdoun',
-        name: 'Said Hamdoun',
-        role: 'Secrétaire général',
-        children: [
-          {
-            id: 'chaimaaMeziane',
-            name: 'Chaimaa Meziane',
-            role: 'Vice-secrétaire générale'
-          }
-        ]
-      },
-      {
-        id: 'mohamedElGhazouani',
-        name: 'Mohamed El Ghazouani',
-        role: 'Vice-président informatique'
-      },
-      {
-        id: 'moulayYoussef',
-        name: 'Moulay Youssef El Haafdissi',
-        role: 'Vice-président économie sociale'
-      },
-      {
-        id: 'sanaeElFilali',
-        name: 'Sanae El Filali',
-        role: 'Vice-présidente innovation sociale'
-      }
-    ]
-  };
 
   const faq = [
     { q: "Comment puis-je rejoindre l'association ?", r: "Vous pouvez nous contacter via le formulaire de contact ou venir directement à notre siège à Moulay Rachid – Sidi Othmane." },
@@ -183,8 +277,8 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Organigramme avec OrgChart */}
-      <OrgChart data={orgChartData} />
+      {/* Organigramme */}
+      <OrgChartNajmFR />
 
       {/* Équipe - cartes compactes avec animations hover */}
       <section className="bg-gray-50 py-16 px-6">
