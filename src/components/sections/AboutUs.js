@@ -2,7 +2,39 @@
 
 import { useRef } from 'react';
 
-
+// Styles CSS pour les animations personnalisées
+const teamAnimationStyles = `
+  @keyframes fade-in-up {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes scale-x {
+    from { 
+      transform: scaleX(0); 
+    }
+    to { 
+      transform: scaleX(1); 
+    }
+  }
+  
+  .animate-fade-in-up {
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+  
+  .animate-scale-x {
+    transform: scaleX(0);
+    animation: scale-x 0.6s ease-out forwards;
+    animation-delay: 400ms;
+  }
+`;
 
 // Remarque: Les images sont servies depuis public/images
 
@@ -192,6 +224,7 @@ export default function AboutUs() {
 
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: teamAnimationStyles }} />
       {/* Objectifs */}
       <section className="bg-white py-20 px-6">
         <h2 className="text-4xl font-extrabold text-blue-900 mb-16 text-center leading-tight max-w-4xl mx-auto">
@@ -280,57 +313,68 @@ export default function AboutUs() {
       {/* Organigramme */}
       <OrgChartNajmFR />
 
-      {/* Équipe - cartes compactes avec animations hover */}
-      <section className="bg-gray-50 py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Découvrez notre équipe
-          </h2>
+      {/* Équipe - cartes élégantes avec animations sophistiquées */}
+      <section className="bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/20 py-20 px-6 relative overflow-hidden">
+        {/* Arrière-plan décoratif animé */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-200/40 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-48 h-48 bg-indigo-200/30 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-purple-200/20 rounded-full blur-lg animate-pulse" style={{ animationDelay: '2s' }}></div>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {membres.map((membre) => (
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 bg-clip-text text-transparent mb-4 animate-fade-in-up">
+              Découvrez notre équipe
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full animate-scale-x"></div>
+            <p className="text-gray-600 mt-4 text-lg animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+              Des professionnels dévoués au service de la jeunesse
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {membres.map((membre, index) => (
               <div
                 key={membre.id}
-                className="group relative bg-gradient-to-br from-slate-50 via-white to-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-600 overflow-hidden cursor-pointer transform hover:scale-[1.02] border border-slate-200/50"
+                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 overflow-hidden cursor-pointer transform hover:scale-105 hover:-translate-y-2 border border-gray-100/50 animate-fade-in-up"
+                style={{ 
+                  animationDelay: `${index * 100 + 300}ms`,
+                  background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)'
+                }}
               >
-                {/* État normal - Image seule agrandie */}
-                <div className="group-hover:opacity-0 transition-opacity duration-600 h-72 flex items-center justify-center p-3">
+                {/* Effet de brillance au hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                
+                {/* État normal - Image avec overlay élégant */}
+                <div className="relative h-80 overflow-hidden">
                   <img
                     src={membre.image}
                     alt={membre.nom}
-                    className="w-56 h-56 rounded-xl object-cover shadow-lg ring-2 ring-slate-200/50 transition-all duration-500"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 group-hover:blur-sm"
                   />
-                </div>
-
-                {/* État hover - Informations complètes avec style professionnel */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-600 bg-gradient-to-br from-slate-800 via-slate-700 to-gray-800 text-white flex flex-col justify-center p-5">
-                  <div className="text-center space-y-3">
-                    {/* Photo plus petite en haut */}
-                    <div className="flex justify-center mb-3">
-                      <img
-                        src={membre.image}
-                        alt={membre.nom}
-                        className="w-16 h-16 rounded-full object-cover shadow-md ring-2 ring-white/20 transition-all duration-500"
-                      />
-                    </div>
+                  
+                  {/* Overlay gradient au hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  
+                  {/* Informations qui apparaissent au hover */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-all duration-500">
+                    <h3 className="text-xl font-bold mb-2 drop-shadow-lg">{membre.nom}</h3>
+                    <p className="text-sm text-gray-200 mb-4 drop-shadow-md">{membre.statut}</p>
                     
-                    {/* Nom et poste */}
-                    <div className="mb-4">
-                      <h3 className="text-base font-bold text-white mb-1 leading-tight">{membre.nom}</h3>
-                      <p className="text-xs text-slate-300 font-medium leading-relaxed px-1">{membre.statut}</p>
-                    </div>
-                    
-                    {/* Informations de contact */}
-                    <div className="space-y-2 bg-white/5 rounded-lg p-3 backdrop-blur-sm border border-white/10">
-                      <div className="flex items-center justify-center text-xs text-slate-100">
-                        <svg className="w-3 h-3 mr-2 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    {/* Boutons de contact élégants */}
+                    <div className="flex gap-3">
+                      <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-3 py-2 text-xs hover:bg-white/30 transition-all duration-300">
+                        <svg className="w-4 h-4 mr-2 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                         </svg>
                         <span className="font-medium">{membre.telephone}</span>
                       </div>
-                      
-                      <div className="flex items-center justify-center text-xs text-slate-100">
-                        <svg className="w-3 h-3 mr-2 text-sky-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    </div>
+                    
+                    <div className="mt-2">
+                      <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-3 py-2 text-xs hover:bg-white/30 transition-all duration-300">
+                        <svg className="w-4 h-4 mr-2 text-sky-300" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                           <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                         </svg>
@@ -339,6 +383,10 @@ export default function AboutUs() {
                     </div>
                   </div>
                 </div>
+
+
+                {/* Effet de bordure animée */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:from-blue-400 group-hover:to-indigo-500 transition-all duration-500"></div>
               </div>
             ))}
           </div>
