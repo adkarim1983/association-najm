@@ -158,7 +158,7 @@ export default function AcademieNajmPage() {
           {/* Sections */}
           <main className="max-w-7xl mx-auto px-6 py-8 space-y-4">
             {sections.map((section, idx) => {
-              const imageMap = ["/images/num2.jpg", "/images/qsn.jpg", "/images/num1.jpg"];
+              const imageMap = ["/images/image2.jpg", "/images/qsn.jpg", "/images/image1.jpg"];
               return (
                 <section
                   key={idx}
@@ -176,7 +176,7 @@ export default function AcademieNajmPage() {
                     {idx === 0 && (
                       <div className="relative group rounded-xl overflow-hidden shadow-2xl border border-gray-700">
                         <img
-                          src="/images/num1.jpg"
+                          src="/images/image1.jpg"
                           alt="Transformation numérique - Image complémentaire"
                           className="w-full h-80 object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105"
                         />
