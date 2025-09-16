@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master   # change si ta branche par défaut est "master"
+  # Permet de lancer le mirroring manuellement depuis l'onglet Actions
+  workflow_dispatch:
 
 jobs:
   mirror:
@@ -11,11 +13,24 @@ jobs:
 
     steps:
       - name: Checkout source repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0   # très important pour avoir tout l’historique
+          # Empêche l'injection du GITHUB_TOKEN dans le helper git, pour éviter
+          # que l'action pousse avec github-actions[bot] par défaut
+          persist-credentials: false
+
+      - name: Ensure MIRROR_TOKEN secret is set
+        run: |
+          if [ -z "${{ secrets.MIRROR_TOKEN }}" ]; then
+            echo "MIRROR_TOKEN not set. Create a PAT with repo scope and add it as a repository secret." >&2
+            exit 1
+          fi
 
       - name: Push to mirror
         run: |
+          # Nettoie l'existant pour éviter l'erreur si le remote existe déjà
+          git remote remove mirror 2>/dev/null || true
           git remote add mirror https://x-access-token:${{ secrets.MIRROR_TOKEN }}@github.com/Ouss77/assos-najm.git
+          # Pousse toutes les refs (branches + tags). Utilise le PAT, pas le GITHUB_TOKEN
           git push --mirror mirror
