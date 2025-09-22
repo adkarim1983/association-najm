@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../../../components/layout/Navbar";
 import Footer from "../../../components/layout/Footer";
+import Image from "next/image";
 
 // Component for animated counter
 const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
@@ -57,6 +58,42 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
 };
 
 export default function DeveloppementCapacitesPage() {
+  const sectionTitle = "Développement des capacités des jeunes en action";
+  const actionCards = [
+    {
+      title: "Formation pratique et ateliers",
+      text:
+        "Mise en place d'ateliers immersifs et de sessions pratiques pour renforcer les compétences techniques et transversales des jeunes.",
+      image: "/image%20ent/IMG_1080.JPG",
+      extraImages: [
+        "/image%20ent/256777.jpg",
+        "/image%20ent/644.jpg",
+      ],
+    },
+    {
+      title: "Coaching, mentorat et suivi",
+      text:
+        "Accompagnement individualisé, mentorat et suivi continu pour assurer une progression réelle et durable des bénéficiaires.",
+      image: "/image%20ent/854.jpg",
+      extraImages: [
+        "/image%20ent/WhatsApp%20Image%202023-10-16%20at%2018.58.02%20%282%29.jpeg",
+        "/image%20ent/WhatsApp%20Image%202025-07-25%20%C3%A0%2010.58.01_c0e83b41.jpg",
+      ],
+    },
+    {
+      title: "Ateliers de mise à niveau et certifications",
+      text:
+        "Sessions intensives de mise à niveau, préparation aux certifications et valorisation des acquis pour booster l'employabilité.",
+      image: "/image%20ent/WhatsApp%20Image%202025-07-25%20%C3%A0%2010.58.22_f8db51e5.jpg",
+      extraImages: [
+        "/image%20ent/WhatsApp%20Image%202025-07-25%20%C3%A0%2010.58.01_dc0c6378.jpg",
+        "/image%20ent/IMG_1080.JPG",
+      ],
+    },
+  ];
+
+  const [lightboxSrc, setLightboxSrc] = useState(null);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Navbar />
@@ -299,6 +336,90 @@ export default function DeveloppementCapacitesPage() {
         </div>
       </div>
       
+      {/* Section: Développement des capacités en action */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 mb-16">
+        <div className="text-center mb-6">
+          <h2 className="text-[28px] font-extrabold text-[#1C398E]">{sectionTitle}</h2>
+          <span className="block w-24 h-1 bg-blue-700 mx-auto mt-3 rounded-full"></span>
+        </div>
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8">
+          <div className="space-y-8">
+            {actionCards.map((item, i) => (
+              <div key={i} className="rounded-xl ring-1 ring-gray-200 overflow-hidden">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch`}>
+                  {/* Texte + vignettes */}
+                  <div className={`p-6 md:p-8 bg-white flex flex-col justify-center ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                    <p className="text-gray-700 leading-relaxed text-justify">{item.text}</p>
+                    {item.extraImages && item.extraImages.length > 0 && (
+                      <div className="grid grid-cols-2 gap-3 mt-4">
+                        {item.extraImages.map((img, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            className="relative aspect-[4/3] rounded-lg overflow-hidden ring-1 ring-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            onClick={() => setLightboxSrc(img)}
+                            aria-label={`Agrandir l'image: ${item.title} (${idx + 1})`}
+                          >
+                            <Image
+                              src={img}
+                              alt={`${item.title} - visuel ${idx + 1}`}
+                              fill
+                              className="object-cover transition-transform duration-300 hover:scale-105"
+                              sizes="(min-width: 1024px) 240px, 45vw"
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  {/* Image principale */}
+                  <div className={`relative min-h-[240px] lg:min-h-[320px] ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(min-width: 1024px) 560px, 100vw"
+                      className="object-cover"
+                      priority={i === 0}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {lightboxSrc && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setLightboxSrc(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl h-[70vh] md:h-[80vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxSrc}
+              alt="Agrandissement de l'image - Développement des capacités"
+              fill
+              className="object-contain"
+              sizes="100vw"
+              priority
+            />
+            <button
+              type="button"
+              className="absolute top-3 right-3 rounded-full bg-white/90 text-gray-900 px-3 py-1 text-sm shadow hover:bg-white"
+              onClick={() => setLightboxSrc(null)}
+              aria-label="Fermer la visionneuse"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
       <Footer />
     </div>
   );
