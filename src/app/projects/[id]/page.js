@@ -23,13 +23,22 @@ export default function ProjectDetailPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   
-  const projectImages = [
-    { src: '/images/p1.jpg', alt: 'Projet en action 1' },
-    { src: '/images/p2.jpg', alt: 'Équipe du projet' },
-    { src: '/images/image1a.jpg', alt: 'Résultats du projet' },
-    { src: '/images/image2a.jpg', alt: 'Bénéficiaires du projet' },
-    { src: '/images/image3a.jpg', alt: 'Impact communautaire' }
-  ];
+  // Use images coming from the project (DB) if available; otherwise, provide a safe placeholder
+  const projectImages = project?.images?.length
+    ? project.images.map((img) => {
+        // Support both { url, alt } objects and plain string URLs
+        if (typeof img === 'string') {
+          return { src: img, alt: `Image - ${project?.name || 'Projet'}` };
+        }
+        return {
+          src: img?.url || 'https://via.placeholder.com/800x600?text=Pas+d%27image',
+          alt: img?.alt || `Image - ${project?.name || 'Projet'}`
+        };
+      })
+    : (project?.image
+        ? [{ src: project.image, alt: project?.name || 'Projet' }]
+        : [{ src: 'https://via.placeholder.com/800x600?text=Pas+d%27image', alt: "Pas d'image" }]
+      );
 
   useEffect(() => {
     if (params.id) {

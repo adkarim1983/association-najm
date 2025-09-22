@@ -198,18 +198,20 @@ export default function AboutUs() {
   ];
 
   const membres = [
-    { id: 'amineMoutassim', image: '/images/image16.png', nom: 'Amine Moutassim', statut: 'Directeur Opérationnel', telephone: '0671 710 091', email: 'fatima.bennani@example.com' },
-    { id: 'sanaaBouadel', image: '/images/image17.png', nom: 'Sanaa Bouadel', statut: 'Assistante administrative', telephone: '0671 711 080', email: 'contact@eerchad.ma' },
-    { id: 'khadijaKurdawi', image: '/images/image18.png', nom: 'Khadija Kurdawi', statut: 'Adjointe administrative', telephone: '0671 711 940', email: 'assistante.eerchad@gmail.com' },
-    { id: 'abdulRazzaqArbah', image: '/images/image19.png', nom: 'Abdul Razzaq Arbah', statut: 'Employé administratif', telephone: '0671 710 091', email: 'assistant.eerchad@gmail.com' },
-    { id: 'zahraBalasi', image: '/images/image20.png', nom: 'Zahra Balasi', statut: 'Coordinatrice du projet', telephone: '0671 710 091', email: 'Coordination.eerchad@gmail.com' },
-    { id: 'sihamGhazali', image: '/images/image21.png', nom: 'Siham Ghazali', statut: 'Coordinatrice du projet', telephone: '0671 710 098', email: 'coordinatrice.eerchad@example.com' },
-    { id: 'shaimaAttar', image: '/images/image22.png', nom: 'Shaima Attar', statut: 'Consultante en orientation et en conseil', telephone: '0671 710 052', email: 'Conseillère.eerchad@example.com' },
-    { id: 'ayyoubLaghlali', image: '/images/image23.png', nom: 'Ayyoub Laghlali', statut: 'Formateur et superviseur en soft skills', telephone: '0671 710 000', email: 'formateur.eerchad@example.com' },
-    { id: 'muhammadAminAbiAlSurur', image: '/images/image24.png', nom: 'Muhammad Amin Abi Al-Surur', statut: 'Responsable du suivi sur le terrain', telephone: '0671 464 664', email: 'accompagnateur.eerchad@example.com' },
-    { id: 'hanaDahman', image: '/images/image25.png', nom: 'Hana Dahman', statut: "Formatrice dans le domaine de l'entreprenariat", telephone: '0671 710 093', email: 'Formateuse.eerchad@example.com' },
-    { id: 'yousraHashoum', image: '/images/image26.png', nom: 'Yousra Hashoum', statut: 'Responsable du suivi Administratif', telephone: '0671 710 058', email: 'Accompagnatrice.eerchad@example.com' },
-    { id: 'mohsenHaimoud', image: '/images/image27.png', nom: 'Mohsen Haimoud', statut: 'Conseiller en orientation', telephone: '0671 707 272', email: 'Conseiller.eerchad@example.com' },
+    { id: 'Hassan Rizk', image: '/images/hassan.jpg', nom: 'Hassan RIZK', statut: 'Président de l’association', telephone: '0671 710 091', email: 'hassan.rizk@gmail.com' },
+    { id: 'amineMoutassim', image: '/images/amine 1.jpg', nom: 'Amine MOUTASSIM', statut: 'Directeur Exécutif', telephone: '0671 710 091', email: 'Coordination.eerchad@gmail.com' },
+    { id: 'sanaeBouadel', image: '/images/sanae.jpg', nom: 'Sanae BOUADEL', statut: 'Assistante Administrative', telephone: '0671 711 080', email: 'contact@eerchad.ma' },
+    { id: 'khadijaKurdawi', image: '/images/khadija.jpg', nom: 'Khadija Kurdawi', statut: 'Adjointe Administrative', telephone: '0671 711 940', email: 'assistante.eerchad@gmail.com' },
+    // { id: 'abdulRazzaqArbah', image: '/images/image19.png', nom: 'Abdul Razzaq Arbah', statut: 'Employé administratif', telephone: '0671 710 091', email: 'assistant.eerchad@gmail.com' },
+    { id: 'zahraBalasi', image: '/images/zahira.jpg', nom: 'Zehra BELAASSI', statut: 'Responsable RH/Coordinatrice du projet', telephone: '0671 710 091', email: 'Coordination.eerchad@gmail.com' },
+    { id: 'sihamGhazali', image: '/images/siham.jpg', nom: 'Siham Ghazali', statut: 'Coordinatrice de projets', telephone: '0671 710 098', email: 'coordinatrice.eerchad@gmail.com' },
+    { id: 'shaimaAttar', image: '/images/chaimae.jpg', nom: 'ATTAR CHAIMAA', statut: 'Consultante en orientation et en conseil', telephone: '0671 710 052', email: 'Conseillere.eerchad@gmail.com' },
+    { id: 'ayoubLaghlali', image: '/images/ayoub.jpg', nom: 'Ayoub Laghlali', statut: 'Formateur et superviseur en soft skills', telephone: '0671 710 000', email: 'formateur.eerchad@example.com' },
+    { id: 'mohammadAminAbisorour', image: '/images/amine.jpg', nom: 'Mohamed Amine Abisorour', statut: 'Responsable du suivi sur le terrain', telephone: '0671 464 664', email: 'accompagnateur.eerchad@example.com' },
+    { id: 'hanaaDahman', image: '/images/hanae.jpg', nom: 'DAHMAN Hanaa', statut: "Responsable Axe Entreprenariat / Coach Formatrice", telephone: '0671 710 093', email: 'Formateuse.eerchad@example.com' },
+    { id: 'yousraHashoum', image: '/images/yousra.jpg', nom: 'HACHOUM Youssra ', statut: 'Responsable de l’Accompagnement Administratif', telephone: '0671 710 058', email: 'Accompagnatrice.eerchad@example.com' },
+    { id: 'Walid Daraa', image: '/images/walid.jpg', nom: 'Walid DARAA', statut: 'Formateur développement web ', telephone: '0766 496 536', email: 'walid.draa@gmail.com' },
+    { id: 'AnassELGHAMRAOUI', image: '/images/anass.jpg', nom: 'Anass ELGHAMRAOUI', statut: 'Formateur Marketing Dogital ', telephone: '0666 753 643', email: 'elghamraoui@gmail.com' },
   ];
 
   const faq = [
