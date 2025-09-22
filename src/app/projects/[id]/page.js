@@ -8,6 +8,42 @@ import Navbar from '../../../components/layout/Navbar';
 import Footer from '../../../components/layout/Footer';
 import './animations.css';
 
+// Local images available under public/imagesprojets
+// Note: spaces are URL-encoded as %20 for reliable loading
+const LOCAL_PROJECT_IMAGE_PATHS = [
+  '/imagesprojets/Alpacom1.png',
+  '/imagesprojets/alphacom2.png',
+  '/imagesprojets/alphacom3.png',
+  '/imagesprojets/Doja%20EVENT1.jpeg',
+  '/imagesprojets/Doja%20EVENT2.jpeg',
+  '/imagesprojets/El%20Hana%20Wafae2.jpg',
+  '/imagesprojets/GO%20EVENT%20DIGILAB1.jpeg',
+  '/imagesprojets/GO%20EVENT%20DIGILAB2.jpeg',
+  '/imagesprojets/GO%20EVENT%20DIGILAB3.jpg',
+  '/imagesprojets/darmiya1.jpg',
+  '/imagesprojets/darmiya2.jpg',
+  '/imagesprojets/darmiya3.jpg',
+  '/imagesprojets/darmiya4.jpg',
+  '/imagesprojets/foratino1.jpg',
+  '/imagesprojets/foratino2.jpg',
+  '/imagesprojets/pretty1.jpg',
+  '/imagesprojets/pretty2.jpg',
+  '/imagesprojets/pretty3.jpg',
+  '/imagesprojets/pretty4.jpg',
+  '/imagesprojets/tahaprod1.jpg',
+  '/imagesprojets/tahaprod2.jpg',
+];
+
+const normalize = (s = '') => s.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g, '');
+const getBasename = (path) => path.split('/').pop() || '';
+
+function getLocalImagesForProject(projectName) {
+  if (!projectName) return [];
+  const key = normalize(projectName);
+  return LOCAL_PROJECT_IMAGE_PATHS.filter((p) => normalize(getBasename(p)).includes(key))
+    .map((src) => ({ src, alt: `Image - ${projectName}` }));
+}
+
 // Dynamic import for map component to avoid SSR issues
 const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
 const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
@@ -23,22 +59,34 @@ export default function ProjectDetailPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   
-  // Use images coming from the project (DB) if available; otherwise, provide a safe placeholder
-  const projectImages = project?.images?.length
+  // Build images from DB and merge with local images matched by project title
+  const dbImages = project?.images?.length
     ? project.images.map((img) => {
-        // Support both { url, alt } objects and plain string URLs
         if (typeof img === 'string') {
           return { src: img, alt: `Image - ${project?.name || 'Projet'}` };
         }
         return {
           src: img?.url || 'https://via.placeholder.com/800x600?text=Pas+d%27image',
-          alt: img?.alt || `Image - ${project?.name || 'Projet'}`
+          alt: img?.alt || `Image - ${project?.name || 'Projet'}`,
         };
       })
     : (project?.image
         ? [{ src: project.image, alt: project?.name || 'Projet' }]
-        : [{ src: 'https://via.placeholder.com/800x600?text=Pas+d%27image', alt: "Pas d'image" }]
-      );
+        : []);
+
+  const localMatched = getLocalImagesForProject(project?.name);
+
+  // Merge and dedupe by src; ensure at least one placeholder if none
+  const seen = new Set();
+  const merged = [...dbImages, ...localMatched].filter(({ src }) => {
+    if (!src || seen.has(src)) return false;
+    seen.add(src);
+    return true;
+  });
+
+  const projectImages = merged.length
+    ? merged
+    : [{ src: 'https://via.placeholder.com/800x600?text=Pas+d%27image', alt: "Pas d'image" }];
 
   useEffect(() => {
     if (params.id) {
