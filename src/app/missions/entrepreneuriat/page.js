@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CountUp from "react-countup";
 import Navbar from "../../../components/layout/Navbar";
 import Footer from "../../../components/layout/Footer";
+import Image from "next/image";
 
 export default function EntrepreneuriatPage() {
   // Content extracted from old translations (hardcoded here to avoid i18n setup)
@@ -34,22 +35,39 @@ export default function EntrepreneuriatPage() {
   ];
   const statsValues = ["261", "240", "161", "130%"];
 
-  // Simple gallery using images from public/images
-  const gallery = useMemo(
-    () => [
-      "/images/p1.jpg",
-      "/images/p2.jpg",
-      "/images/md1.jpg",
-      "/images/image1a.jpg",
-      "/images/image2a.jpg",
-      "/images/image3a.jpg",
-      "/images/qsn.jpg",
-      "/images/qsn2.jpg",
-      "/images/A.jpg",
-      "/images/B.jpg",
-    ],
-    []
-  );
+  // Cartes d'actions (images issues de public/photo axe ent)
+  const actionCards = [
+    {
+      title: "Sensibilisation et ateliers pratiques",
+      text:
+        "Organisation d'ateliers thématiques et de séances pratiques pour renforcer les compétences entrepreneuriales (idéation, étude de marché, business model).",
+      image: "/photo%20axe%20ent/HTT05930.JPG",
+      extraImages: [
+        "/photo%20axe%20ent/HTT05949.JPG",
+        "/photo%20axe%20ent/HTT05953.JPG",
+      ],
+    },
+    {
+      title: "Accompagnement à la création d'entreprise",
+      text:
+        "Coaching personnalisé pour structurer le projet, formaliser le business plan et préparer les démarches de création et de financement.",
+      image: "/photo%20axe%20ent/IMG_4274.JPG",
+      extraImages: [
+        "/photo%20axe%20ent/IMG_4275.JPG",
+        "/photo%20axe%20ent/IMG_4276.JPG",
+      ],
+    },
+    {
+      title: "Suivi post-création et networking",
+      text:
+        "Appui au démarrage, mise en relation avec l'écosystème et animation de rencontres pour favoriser les synergies et les opportunités.",
+      image: "/photo%20axe%20ent/IMG_8403.JPG",
+      extraImages: [
+        "/photo%20axe%20ent/IMG_8479.JPG",
+        "/photo%20axe%20ent/IMG_8521.JPG",
+      ],
+    },
+  ];
 
   // Modal state
   const [isOpen, setIsOpen] = useState(false);
@@ -133,24 +151,57 @@ export default function EntrepreneuriatPage() {
           </div>
         </div>
 
-        {/* Gallery */}
+        {/* Entrepreneuriat en action - Cartes */}
         <div className="text-center mb-6">
-          <h2 className="text-[28px] font-extrabold text-[#1C398E]">Galerie</h2>
+          <h2 className="text-[28px] font-extrabold text-[#1C398E]">Entrepreneuriat en action</h2>
           <span className="block w-24 h-1 bg-blue-700 mx-auto mt-3 rounded-full"></span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto mb-12">
-          {gallery.map((src, i) => (
-            <div key={i} className="bg-white text-gray-800 shadow-lg rounded-xl p-2 h-56 border border-gray-200 overflow-hidden">
-              <img
-                onClick={() => open(src)}
-                src={src}
-                alt={`image ${i + 1}`}
-                className="w-full h-[85%] object-cover rounded-lg cursor-zoom-in"
-                loading="lazy"
-              />
-              <div className="mt-1 text-center text-xs text-gray-600 truncate">Image {i + 1}</div>
-            </div>
-          ))}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8 max-w-7xl mx-auto mb-12">
+          <div className="space-y-8">
+            {actionCards.map((item, i) => (
+              <div key={i} className="rounded-xl ring-1 ring-gray-200 overflow-hidden">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch`}>
+                  {/* Texte + vignettes */}
+                  <div className={`p-6 md:p-8 bg-white flex flex-col justify-center ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                    <p className="text-gray-700 leading-relaxed text-justify">{item.text}</p>
+                    {item.extraImages && item.extraImages.length > 0 && (
+                      <div className="grid grid-cols-2 gap-3 mt-4">
+                        {item.extraImages.map((img, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            className="relative aspect-[4/3] rounded-lg overflow-hidden ring-1 ring-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            onClick={() => open(img)}
+                            aria-label={`Agrandir l'image: ${item.title} (${idx + 1})`}
+                          >
+                            <Image
+                              src={img}
+                              alt={`${item.title} - visuel ${idx + 1}`}
+                              fill
+                              className="object-cover transition-transform duration-300 hover:scale-105"
+                              sizes="(min-width: 1024px) 240px, 45vw"
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  {/* Image principale */}
+                  <div className={`relative min-h-[240px] lg:min-h-[320px] ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(min-width: 1024px) 560px, 100vw"
+                      className="object-cover"
+                      priority={i === 0}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Modal */}
