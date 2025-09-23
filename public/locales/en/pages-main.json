@@ -1,0 +1,179 @@
+{
+    "home": {
+      "hero": {
+        "title": "Association Najm",
+        "subtitle": "For a better future through education, culture and solidarity."
+      },
+      "presidentMessage": {
+        "title": "President’s Message",
+        "text1": "Mr. Hassan Rezk, President of Association Najm, welcomes you to the association’s official platform, dedicated to the economic and professional empowerment of youth.",
+        "text2": "Convinced that youth are the engine of change, the association focuses on training, mentoring and continuous support to strengthen their participation in economic and social life.",
+        "text3": "Guided by values of respect, transparency, equality and collaboration, it develops innovative programs and expands partnerships to become a national and regional reference, inspiring young people to become the leaders of tomorrow."
+      },
+      "aboutTeaser": {
+        "title": "Who We Are",
+        "text": "Founded in 2020, Association Najm is a non-profit organization committed to the future of Moroccan youth. It fights unemployment, promotes socio-economic inclusion and develops educational, cultural and social programs. With an experienced team and local and international partnerships, Najm offers young people opportunities for training, support and empowerment to help them become drivers of change."
+      },
+      "reports": {
+        "title": "Our Reports",
+        "items": [
+          { "title": "2024 Activity Report", "cta": "Learn more" },
+          { "title": "Culture and Youth", "cta": "Learn more" },
+          { "title": "Solidarity and Development", "cta": "Learn more" }
+        ]
+      },
+      "stats": {
+        "title": "Our Achievements in Numbers",
+        "projects": "Projects Completed",
+        "beneficiaries": "Beneficiaries",
+        "partners": "Partners"
+      },
+      "academyTeaser": {
+        "title": "Najm Academy for Digital Professions",
+        "desc": "Najm Academy trains youth in tomorrow’s digital skills. Our innovative programs prepare a new generation of digital professionals."
+      },
+      "entrepreneurshipResults": {
+        "title": "Key Results – Entrepreneurship 2024",
+        "projectsSupported": "Entrepreneurial projects supported",
+        "companiesCreated": "Companies created",
+        "note": "These results demonstrate our ongoing commitment to supporting entrepreneurship and innovation in our region."
+      },
+      "academyObjectives": {
+        "title": "Najm Academy Objectives",
+        "bullets": [
+          "Train for digital professions",
+          "Develop an entrepreneurial mindset",
+          "Create employment opportunities",
+          "Strengthen the digital ecosystem"
+        ]
+      },
+      "partners": {
+        "title": "Our Partners",
+        "desc": "We collaborate with renowned institutions to maximize our impact and create lasting synergies across our areas of intervention."
+      }
+    },
+    "projects": {
+      "title": "Our Projects",
+      "subtitle": "Discover our initiatives and achievements that create a positive impact"
+    },
+    "gallery": {
+      "sections": {
+        "inauguration": {
+          "title": "Inauguration of Najm Academy for Digital Professions",
+          "p1": "Association Najm officially launched three professional training programs for youth: web development, graphic design and digital marketing. This initiative aims to offer a real opportunity for professional integration by acquiring skills that are in high demand on the market.",
+          "p2": "These programs are designed to meet the requirements of today’s digital world, emphasizing practice, creativity and innovation."
+        },
+        "programContent": {
+          "title": "Program Content",
+          "tracks": [
+            { "name": "Web Development", "desc": "HTML, CSS, JavaScript, React, responsive website creation." },
+            { "name": "Graphic Design", "desc": "Photoshop, Illustrator, InDesign, logo and visual asset creation." },
+            { "name": "Digital Marketing", "desc": "SEO, social media, emailing, online advertising." }
+          ]
+        },
+        "courseFlow": {
+          "title": "Training Format",
+          "text": "Courses take place in a dynamic and participatory environment with weekly practical workshops, feedback sessions, inspiring talks and group challenges. The focus is on youth participation, collaborative work and the delivery of digital projects that address real-world needs."
+        },
+        "firstCohort": {
+          "title": "A Successful First Cohort",
+          "text": "Thanks to the engagement of trainers, partners and youth, this first cohort laid the foundation for a true dynamic of learning and transformation. The program is designed as a springboard toward a promising digital future for our youth."
+        },
+        "galleryHighlights": {
+          "title": "General Gallery of Highlights",
+          "items": [
+            "Sharing and exchange",
+            "Youth discovering digital skills",
+            "Intensive training",
+            "Group work",
+            "Teaching team",
+            "Final projects",
+            "Certificate presentation",
+            "Digital marketing workshop",
+            "Discussion on tech trends"
+          ]
+        }
+      }
+    },
+    "about": {
+      "title": "About Association Najm",
+      "objectives": {
+        "sectionTitle": "Association Objectives",
+        "p1": "Association Najm seeks to make the Irchad platform a leading reference in youth economic inclusion, aligned with the spirit of the National Initiative for Human Development.",
+        "p2": "The association aims to make this platform a convergence space for various youth programs, providing information and guidance, responding to young people’s aspirations and contributing to the realization of their ambitions.",
+        "p3": "It focuses on creating a work environment conducive to the economic inclusion of youth by concluding agreements and partnerships with national and international institutions and bodies from academia, the economy and civil society.",
+        "p4": "The association adopts good governance based on competence, establishing transparent and flexible decision-making mechanisms, including a comprehensive procedures manual for administrative and financial operations, with the goal of obtaining public-utility status and strengthening trust in its work."
+      },
+      "values": {
+        "sectionTitle": "Association Values and Principles",
+        "items": [
+          { "name": "Respect", "desc": "Build strong human relationships based on mutual esteem and acknowledge the value of each individual, especially young people." },
+          { "name": "Transparency", "desc": "Ensure clarity and credibility of actions through open communication with youth and partners." },
+          { "name": "Trust", "desc": "Foster lasting cooperation and provide supportive guidance to achieve goals with confidence." },
+          { "name": "Equality", "desc": "Guarantee equal opportunities and an inclusive environment that enables access to opportunities for all." },
+          { "name": "Dignity", "desc": "Place human dignity at the heart of action by respecting young people’s rights and valuing their participation." },
+          { "name": "Commitment", "desc": "Embed responsibility and involvement in achieving the association’s objectives." },
+          { "name": "Citizenship", "desc": "Consider youth a driving force for development and strengthen their sense of belonging." },
+          { "name": "Training", "desc": "Build skills through nation-serving projects that foster active citizenship." }
+        ]
+      },
+      "vision": {
+        "sectionTitle": "Association Strategic Vision",
+        "bullets": [
+          "Empower youth",
+          "Value talents",
+          "Improve employability",
+          "Support entrepreneurship",
+          "Encourage the social economy",
+          "Develop partnerships",
+          "Strengthen citizenship",
+          "Contribute to sustainable development"
+        ]
+      },
+      "orgChart": {
+        "sectionTitle": "Organizational Chart – Association Najm",
+        "roles": [
+          { "name": "Hassan Rezk", "role": "President of the association" },
+          { "name": "Abd al-Wahab Karoumi", "role": "Treasurer" },
+          { "name": "Said Hamdoun", "role": "Secretary General" },
+          { "name": "Mohamed El Ghazouani", "role": "Vice President in charge of IT & Digital Transformation" },
+          { "name": "Moulay Youssef El Hafeïdi", "role": "Vice President in charge of Business & Social Entrepreneurship" },
+          { "name": "Sanaa El Filali", "role": "Vice President in charge of Social Innovation & Partnerships" },
+          { "name": "Hajar El Raji", "role": "Deputy Treasurer" },
+          { "name": "Chaimaa Meziane", "role": "Deputy Secretary General" }
+        ]
+      },
+      "team": {
+        "sectionTitle": "Meet Our Team",
+        "tagline": "Dedicated professionals serving youth",
+        "members": [
+          { "name": "Hassan RIZK", "role": "President of the Association", "phone": "0671 710 091", "email": "hassan.rizk@gmail.com" },
+          { "name": "Amine MOUTASSIM", "role": "Executive Director", "phone": "0671 710 091", "email": "Coordination.eerchad@gmail.com" },
+          { "name": "Sanae BOUADEL", "role": "Administrative Assistant", "phone": "0671 711 080", "email": "contact@eerchad.ma" },
+          { "name": "Khadija Kurdawi", "role": "Administrative Associate", "phone": "0671 711 940", "email": "assistante.eerchad@gmail.com" },
+          { "name": "Zehra BELAASSI", "role": "HR Manager / Project Coordinator", "phone": "0671 710 091", "email": "Coordination.eerchad@gmail.com" },
+          { "name": "Siham Ghazali", "role": "Project Coordinator", "phone": "0671 710 098", "email": "coordinatrice.eerchad@gmail.com" },
+          { "name": "ATTAR CHAIMAA", "role": "Career Guidance & Advisory Consultant", "phone": "0671 710 052", "email": "Conseillere.eerchad@gmail.com" },
+          { "name": "Ayoub Laghlali", "role": "Soft Skills Trainer & Supervisor", "phone": "0671 710 000", "email": "formateur.eerchad@example.com" },
+          { "name": "Mohamed Amine Abisorour", "role": "Field Monitoring Manager", "phone": "0671 464 664", "email": "accompagnateur.eerchad@example.com" },
+          { "name": "DAHMAN Hanaa", "role": "Entrepreneurship Lead / Coach & Trainer", "phone": "0671 710 093", "email": "Formateuse.eerchad@example.com" },
+          { "name": "HACHOUM Youssra", "role": "Administrative Support Lead", "phone": "0671 710 058", "email": "Accompagnatrice.eerchad@example.com" },
+          { "name": "Walid DARAA", "role": "Web Development Trainer", "phone": "0766 496 536", "email": "walid.draa@gmail.com" },
+          { "name": "Anass ELGHAMRAOUI", "role": "Digital Marketing Trainer", "phone": "0666 753 643", "email": "elghamraoui@gmail.com" }
+        ]
+      },
+      "faq": {
+        "sectionTitle": "Frequently Asked Questions (FAQ)",
+        "items": [
+          { "q": "How can I join the association?", "a": "Contact us via the contact form or visit our headquarters in Moulay Rachid – Sidi Othmane." },
+          { "q": "Do you support young project leaders?", "a": "Yes. Our Irchad platforms provide personalized support to structure, finance and launch projects." },
+          { "q": "Are the trainings free of charge?", "a": "Yes. They are offered free thanks to the support of our institutional partners." },
+          { "q": "Can I get funding for my project?", "a": "Some projects may receive financial support after evaluation, notably within the INDH framework." },
+          { "q": "What types of projects do you support?", "a": "Projects with strong social or economic impact: cooperatives, self-entrepreneurship, community initiatives." },
+          { "q": "Who can benefit from your services?", "a": "Youth aged 18 to 45 residing in the Moulay Rachid – Sidi Othmane area with an idea or a project to develop." },
+          { "q": "How does the support process work?", "a": "After an initial meeting, we set up a support plan including training, coaching sessions and personalized follow-up." }
+        ]
+      }
+    }
+  }
+  

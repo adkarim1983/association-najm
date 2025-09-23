@@ -1,0 +1,106 @@
+{
+    "reports2024": {
+      "header": {
+        "title": "Partenariat avec l'Irchad et la Faculté",
+        "subtitle": "Un partenariat stratégique pour le développement et l'innovation dans l'enseignement supérieur"
+      },
+      "intro": {
+        "title": "Introduction au Partenariat",
+        "text": "L'Association Najm a établi un partenariat stratégique avec l'Irchad et la Faculté dans le cadre de ses activités de développement académique et professionnel. Cette collaboration vise à renforcer les capacités des étudiants et à promouvoir l'excellence dans l'enseignement supérieur."
+      },
+      "objectives": {
+        "title": "Objectifs du Partenariat",
+        "items": [
+          "Développer des programmes de formation innovants",
+          "Faciliter l'échange d'expertise et de connaissances",
+          "Promouvoir la recherche collaborative",
+          "Renforcer l'employabilité des diplômés",
+          "Créer des opportunités de stage et d'emploi"
+        ]
+      },
+      "perspectives": {
+        "title": "Perspectives d'Avenir",
+        "text": "Ce partenariat ouvre de nouvelles perspectives pour le développement de l'écosystème éducatif et professionnel. Il permettra de créer des synergies durables entre le monde académique et le secteur associatif, contribuant ainsi au développement socio-économique de la région."
+      },
+      "impact": {
+        "title": "Impact du Partenariat",
+        "stats": {
+          "students": { "value": "150+", "label": "Étudiants bénéficiaires" },
+          "programs": { "value": "25", "label": "Programmes développés" },
+          "satisfaction": { "value": "85%", "label": "Taux de satisfaction" }
+        }
+      }
+    },
+    "academy": {
+      "title": "Académie Najm pour les Métiers du Numérique",
+      "tagline": "Promotion sociale par la numérisation",
+      "sections": {
+        "transformation": {
+          "title": "Pour une transformation numérique inclusive au Maroc",
+          "p1": "L'Association Najm pour l'inclusion économique croit que la transformation numérique représente à la fois un défi et une opportunité prometteuse pour le Maroc. La faible accessibilité aux technologies modernes, le manque de formations adaptées et l'élargissement de la fracture numérique constituent parmi les principaux obstacles qui freinent l'intégration des jeunes dans l'économie numérique.",
+          "p2": "Pourtant, la numérisation offre de grandes possibilités pour stimuler l'entrepreneuriat, créer des opportunités d'emploi et dynamiser le tissu socio-économique, notamment au profit des jeunes non scolarisés, sans emploi et non bénéficiaires de formation, qui rencontrent de réelles difficultés d'insertion professionnelle.",
+          "p3": "Consciente de cette réalité, l'Association Najm s'engage à accompagner les jeunes dans l'acquisition des compétences numériques, à poursuivre la numérisation des entreprises et à encourager l'innovation technologique. En concentrant ses efforts sur ces axes fondamentaux, l'association aspire à contribuer à la construction d'un modèle de développement plus inclusif."
+        },
+        "purpose": {
+          "title": "Une académie au service de l'avenir numérique du Maroc",
+          "p": "À travers cette Académie, l'Association Najm offre aux jeunes des opportunités d'insertion économique dans un secteur d'avenir : les métiers du numérique, parfaitement alignés avec le chantier royal de la transition digitale."
+        },
+        "vision": {
+          "title": "Vision stratégique de l'association",
+          "p": "Depuis sa création, l'Association Najm poursuit son développement pour renforcer l'insertion professionnelle et l'entrepreneuriat des jeunes. Avec une gouvernance rigoureuse, une équipe structurée et des outils de suivi performants, elle diversifie ses actions et adapte ses programmes aux mutations économiques et numériques. Elle place la formation continue, les partenariats et l'accompagnement post-formation au cœur de sa stratégie durable."
+        },
+        "parallelSkills": {
+          "title": "Renforcement des Compétences Parallèles des Jeunes",
+          "items": [
+            { "name": "Développement des Compétences Personnelles", "desc": "Renforcement des compétences en communication, leadership et gestion du stress pour améliorer les opportunités d'emploi." },
+            { "name": "Techniques de Recherche d'Emploi", "desc": "Comment rédiger un CV, techniques de réussite des entretiens d'embauche, et comment développer son réseau professionnel." },
+            { "name": "Sensibilisation à l'Entrepreneuriat", "desc": "Concepts fondamentaux pour la création d'entreprises, la gestion de projets et l'innovation." },
+            { "name": "Sensibilisation à l'Importance de la Création de Coopératives", "desc": "Soutien à la création de coopératives soumises à la loi 112/12, et promotion du travail coopératif et solidaire." }
+          ]
+        },
+        "accompaniment": {
+          "title": "Accompagnement et coopératives numériques",
+          "bullets": [
+            "Des conseils en entrepreneuriat",
+            "Un accompagnement dans la rédaction de business plans",
+            "L'accès au financement",
+            "La création de coopératives numériques, favorisant les échanges de compétences, l'accès à de nouveaux marchés, et la croissance collective durable"
+          ]
+        },
+        "recognition": {
+          "title": "Reconnaissance et ambition nationale",
+          "p": "Dans le but de renforcer son impact, l'association œuvre à l'obtention du statut d'utilité publique pour élargir ses partenariats, ses financements et sa présence nationale. Fidèle à sa mission, l'Association Najm continue à s'adapter aux défis économiques et sociaux et s'engage pour un Maroc inclusif, numérique et durable."
+        }
+      }
+    },
+    "contact": {
+      "stayInTouch": "Restez en contact",
+      "title": "Contact",
+      "lead": "Nous sommes à votre écoute. Envoyez-nous un message et nous vous répondrons rapidement.",
+      "form": {
+        "fullName": "Nom complet",
+        "email": "Email",
+        "phone": "Téléphone",
+        "subject": "Sujet",
+        "message": "Message",
+        "submit": "Envoyer le message"
+      },
+      "followUs": "Suivez-nous",
+      "info": {
+        "title": "Infos de contact",
+        "addressLabel": "Adresse",
+        "address": "Groupe 3, en face de la Faculté des Lettres et des Sciences Humaines Ben M'sik, Centre social et économique, Rue Rahmouni Boualam, Casablanca.",
+        "phoneLabel": "Téléphone",
+        "phone": "08 08 55 86 90 - 0661 680 893",
+        "emailLabel": "Email",
+        "email": "contact@associationnajm.ma",
+        "hoursTitle": "Horaires",
+        "hours": [
+          "Lundi - Vendredi: 9h00 - 17h00",
+          "Samedi: 9h00 - 13h00",
+          "Dimanche: Fermé"
+        ]
+      }
+    }
+  }
+  

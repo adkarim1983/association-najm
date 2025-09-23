@@ -1,0 +1,200 @@
+{
+    "home": {
+      "hero": {
+        "title": "Association Najm",
+        "subtitle": "Pour un avenir meilleur à travers l'éducation, la culture et la solidarité."
+      },
+      "presidentMessage": {
+        "title": "Message du Président",
+        "text1": "Monsieur Hassan Rezk, Président de l’Association Najm, vous souhaite la bienvenue sur la plateforme officielle de l’association, dédiée à l’autonomisation économique et professionnelle des jeunes.",
+        "text2": "Convaincue que la jeunesse est le moteur du changement, l’association mise sur la formation, l’accompagnement et le soutien continu pour renforcer leur participation à la vie économique et sociale.",
+        "text3": "Guidée par des valeurs de respect, transparence, égalité et collaboration, elle développe des programmes innovants et élargit ses partenariats afin de devenir une référence nationale et régionale, inspirant les jeunes à devenir les leaders de demain."
+      },
+      "aboutTeaser": {
+        "title": "Qui sommes-nous ?",
+        "text": "Créée en 2020, l’Association Najm est une organisation à but non lucratif engagée pour l’avenir des jeunes marocains. Elle lutte contre le chômage, favorise l’insertion socio-économique et développe des programmes éducatifs, culturels et sociaux. Avec une équipe expérimentée et des partenariats locaux et internationaux, Najm offre aux jeunes des opportunités de formation, d’accompagnement et d’autonomisation pour en faire des acteurs du changement."
+      },
+      "reports": {
+        "title": "Nos Rapports",
+        "items": [
+          { "title": "Rapport d'Activités 2024", "cta": "En savoir plus" },
+          { "title": "Culture et Jeunesse", "cta": "En savoir plus" },
+          { "title": "Solidarité et Développement", "cta": "En savoir plus" }
+        ]
+      },
+      "stats": {
+        "title": "Nos Réalisations en Chiffres",
+        "projects": "Projets Réalisés",
+        "beneficiaries": "Bénéficiaires",
+        "partners": "Partenaires"
+      },
+      "academyTeaser": {
+        "title": "Académie Najm pour les Métiers du Numérique",
+        "desc": "L'Académie Najm pour les Métiers du Numérique forme les jeunes aux compétences digitales de demain. Nos programmes innovants préparent une nouvelle génération de professionnels du numérique."
+      },
+      "entrepreneurshipResults": {
+        "title": "Résultats Clés - Entrepreneuriat 2024",
+        "projectsSupported": "Projets entrepreneuriaux accompagnés",
+        "companiesCreated": "Entreprises créées",
+        "note": "Ces résultats témoignent de notre engagement continu à soutenir l'entrepreneuriat et l'innovation dans notre région."
+      },
+      "academyObjectives": {
+        "title": "Objectifs de l'Académie Najm",
+        "bullets": [
+          "Former aux métiers du numérique",
+          "Développer l'esprit entrepreneurial",
+          "Créer des opportunités d'emploi",
+          "Renforcer l'écosystème digital"
+        ]
+      },
+      "partners": {
+        "title": "Nos Partenaires",
+        "desc": "Nous collaborons avec des institutions de renom pour maximiser notre impact et créer des synergies durables dans nos domaines d'intervention."
+      }
+    },
+    "projects": {
+      "title": "Nos Projets",
+      "subtitle": "Découvrez nos initiatives et réalisations qui créent un impact positif"
+    },
+    "gallery": {
+      "sections": {
+        "inauguration": {
+          "title": "Inauguration de Najm Académie pour les Métiers Digitaux",
+          "p1": "L'Association Najm a officiellement lancé trois formations professionnelles destinées aux jeunes : le développement web, le design graphique et le marketing digital. Cette initiative vise à offrir une réelle opportunité d'insertion professionnelle par l'acquisition de compétences recherchées sur le marché.",
+          "p2": "Ces programmes sont conçus pour répondre aux exigences du monde numérique actuel en mettant l'accent sur la pratique, la créativité et l'innovation."
+        },
+        "programContent": {
+          "title": "Contenu des programmes",
+          "tracks": [
+            { "name": "Développement Web", "desc": "HTML, CSS, JavaScript, React, création de sites responsives." },
+            { "name": "Design Graphique", "desc": "Photoshop, Illustrator, InDesign, création de logos et supports visuels." },
+            { "name": "Marketing Digital", "desc": "SEO, réseaux sociaux, e-mailing, publicité en ligne." }
+          ]
+        },
+        "courseFlow": {
+          "title": "Déroulement des formations",
+          "text": "Les cours se déroulent dans un environnement dynamique et participatif, avec chaque semaine des ateliers pratiques, des sessions de feedback, des conférences inspirantes et des défis collectifs. L'accent est mis sur la participation des jeunes, le travail collaboratif et la réalisation de projets numériques qui répondent à des problématiques réelles."
+        },
+        "firstCohort": {
+          "title": "Une première promotion réussie",
+          "text": "Grâce à l'engagement des formateurs, des partenaires et des jeunes, cette première promotion a posé les jalons d'une véritable dynamique d'apprentissage et de transformation. Ce programme se veut un tremplin vers un avenir numérique prometteur pour nos jeunes."
+        },
+        "galleryHighlights": {
+          "title": "Galerie générale des moments forts",
+          "items": [
+            "Partage et échange",
+            "Jeunes découvrant le numérique",
+            "Formation intensive",
+            "Travail de groupe",
+            "Équipe pédagogique",
+            "Projets finaux",
+            "Remise des certificats",
+            "Atelier marketing digital",
+            "Discussion sur les tendances tech"
+          ]
+        }
+      }
+    },
+    "about": {
+      "title": "À propos de l’Association Najm",
+      "objectives": {
+        "sectionTitle": "Objectifs de l'Association Najm",
+        "p1": "L'Association Najm aspire à faire de la plateforme Irchad une référence de premier plan en matière d'inclusion économique des jeunes, tout en s'inscrivant dans l'esprit de l'Initiative Nationale pour le Développement Humain.",
+        "p2": "L'association vise à faire de cette plateforme un espace de convergence pour les différents programmes destinés à la jeunesse, en vue d'en faire un modèle offrant informations et orientation, répondant ainsi aux aspirations des jeunes et contribuant à la réalisation de leurs ambitions.",
+        "p3": "Elle se concentre sur la création d'un environnement de travail propice à l'inclusion économique des jeunes, en concluant des accords et des partenariats avec des institutions et organismes nationaux et internationaux issus des secteurs académique, économique et de la société civile.",
+        "p4": "L'association adopte une bonne gouvernance fondée sur la compétence, en mettant en place des mécanismes transparents et souples de prise de décision, incluant l'élaboration d'un manuel de procédures complet pour les opérations administratives et financières, dans le but d'obtenir le statut d'utilité publique et de renforcer la confiance dans son action."
+      },
+      "values": {
+        "sectionTitle": "Valeurs et Principes de l'Association",
+        "items": [
+          { "name": "Respect", "desc": "Établir des relations humaines solides fondées sur l’estime mutuelle et reconnaître la valeur de chaque individu, notamment les jeunes." },
+          { "name": "Transparence", "desc": "Garantir la clarté et la crédibilité des actions via une communication ouverte avec les jeunes et les partenaires." },
+          { "name": "Confiance", "desc": "Favoriser une coopération durable et accompagner avec bienveillance pour atteindre les objectifs avec assurance." },
+          { "name": "Égalité", "desc": "Assurer l’égalité des chances et un environnement inclusif permettant à tous d’accéder aux opportunités." },
+          { "name": "Dignité", "desc": "Mettre la dignité humaine au cœur de l’action en respectant les droits des jeunes et en valorisant leur participation." },
+          { "name": "Engagement", "desc": "Ancrer la responsabilité et l’implication dans la réussite des objectifs de l’association." },
+          { "name": "Citoyenneté", "desc": "Considérer les jeunes comme force motrice du développement et renforcer leur sentiment d’appartenance." },
+          { "name": "Formation", "desc": "Renforcer les compétences via des projets au service de la nation, favorisant une citoyenneté active." }
+        ]
+      },
+      "vision": {
+        "sectionTitle": "Vision stratégique de l'Association",
+        "bullets": [
+          "Autonomiser les jeunes",
+          "Valoriser les talents",
+          "Améliorer l'employabilité",
+          "Soutenir l'entreprenariat",
+          "Encourager l'économie sociale",
+          "Développer les partenariats",
+          "Renforcer la citoyenneté",
+          "Contribuer au développement durable"
+        ]
+      },
+      "orgChart": {
+        "sectionTitle": "Organigramme – Association Najm",
+        "roles": [
+          { "name": "Hassan Rezk", "role": "Président de l'association" },
+          { "name": "Abd al-Wahab Karoumi", "role": "Trésorier" },
+          { "name": "Said Hamdoun", "role": "Secrétaire général" },
+          { "name": "Mohamed El Ghazouani", "role": "Vice-président chargé des SI & transformation numérique" },
+          { "name": "Moulay Youssef El Hafeïdi", "role": "Vice-président chargé des entreprises & entrepreneuriat social" },
+          { "name": "Sanaa El Filali", "role": "Vice-présidente chargée de l'innovation sociale & des partenariats" },
+          { "name": "Hajar El Raji", "role": "Vice-trésorière" },
+          { "name": "Chaimaa Meziane", "role": "Vice-secrétaire générale" }
+        ]
+      },
+      "team": {
+        "sectionTitle": "Découvrez notre équipe",
+        "tagline": "Des professionnels dévoués au service de la jeunesse",
+        "members": [
+          { "name": "Hassan RIZK", "role": "Président de l’association", "phone": "0671 710 091", "email": "hassan.rizk@gmail.com" },
+          { "name": "Amine MOUTASSIM", "role": "Directeur Exécutif", "phone": "0671 710 091", "email": "Coordination.eerchad@gmail.com" },
+          { "name": "Sanae BOUADEL", "role": "Assistante Administrative", "phone": "0671 711 080", "email": "contact@eerchad.ma" },
+          { "name": "Khadija Kurdawi", "role": "Adjointe Administrative", "phone": "0671 711 940", "email": "assistante.eerchad@gmail.com" },
+          { "name": "Zehra BELAASSI", "role": "Responsable RH/Coordinatrice du projet", "phone": "0671 710 091", "email": "Coordination.eerchad@gmail.com" },
+          { "name": "Siham Ghazali", "role": "Coordinatrice de projets", "phone": "0671 710 098", "email": "coordinatrice.eerchad@gmail.com" },
+          { "name": "ATTAR CHAIMAA", "role": "Consultante en orientation et en conseil", "phone": "0671 710 052", "email": "Conseillere.eerchad@gmail.com" },
+          { "name": "Ayoub Laghlali", "role": "Formateur et superviseur en soft skills", "phone": "0671 710 000", "email": "formateur.eerchad@example.com" },
+          { "name": "Mohamed Amine Abisorour", "role": "Responsable du suivi sur le terrain", "phone": "0671 464 664", "email": "accompagnateur.eerchad@example.com" },
+          { "name": "DAHMAN Hanaa", "role": "Responsable Axe Entreprenariat / Coach Formatrice", "phone": "0671 710 093", "email": "Formateuse.eerchad@example.com" },
+          { "name": "HACHOUM Youssra", "role": "Responsable de l’Accompagnement Administratif", "phone": "0671 710 058", "email": "Accompagnatrice.eerchad@example.com" },
+          { "name": "Walid DARAA", "role": "Formateur développement web", "phone": "0766 496 536", "email": "walid.draa@gmail.com" },
+          { "name": "Anass ELGHAMRAOUI", "role": "Formateur Marketing Digital", "phone": "0666 753 643", "email": "elghamraoui@gmail.com" }
+        ]
+      },
+      "faq": {
+        "sectionTitle": "Foire aux questions (FAQ)",
+        "items": [
+          {
+            "q": "Comment puis-je rejoindre l'association ?",
+            "a": "Vous pouvez nous contacter via le formulaire de contact ou venir directement à notre siège à Moulay Rachid – Sidi Othmane."
+          },
+          {
+            "q": "Est-ce que vous accompagnez les jeunes porteurs de projets ?",
+            "a": "Oui, nos plateformes Irchad offrent un accompagnement personnalisé pour structurer, financer et lancer les projets des jeunes."
+          },
+          {
+            "q": "Les formations sont-elles gratuites ?",
+            "a": "Toutes nos formations proposées sont gratuites grâce au soutien de nos partenaires institutionnels."
+          },
+          {
+            "q": "Puis-je bénéficier d'un financement pour mon projet ?",
+            "a": "Oui, certains projets peuvent bénéficier de soutien financier après évaluation, notamment dans le cadre de l'INDH."
+          },
+          {
+            "q": "Quels types de projets soutenez-vous ?",
+            "a": "Projets à fort impact social ou économique : coopératives, auto-entreprenariat, initiatives communautaires."
+          },
+          {
+            "q": "Qui peut bénéficier de vos services ?",
+            "a": "Tout jeune âgé de 18 à 45 ans, résidant dans la région de Moulay Rachid – Sidi Othmane, ayant une idée ou un projet à développer."
+          },
+          {
+            "q": "Comment se déroule l'accompagnement ?",
+            "a": "Après une première rencontre, nous établissons un plan d'accompagnement qui inclut des formations, des sessions de coaching, et un suivi personnalisé."
+          }
+        ]
+      }
+    }
+  }
+  

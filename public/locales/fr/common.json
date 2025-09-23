@@ -1,0 +1,36 @@
+{
+    "navbar": {
+      "home": "Accueil",
+      "about": "À propos",
+      "missions": "Missions",
+      "platforms": "Gestion des Plateformes",
+      "socialEconomy": "Économie Sociale",
+      "entrepreneurship": "Entrepreneuriat",
+      "incubation": "Incubation",
+      "capacity": "Développement des Capacités",
+      "projects": "Projets",
+      "gallery": "Galerie",
+      "academy": "Académie Najm",
+      "contact": "Contact"
+    },
+    "footer": {
+      "orgLine": "L'Association Najm pour le développement culturel et éducatif œuvre à promouvoir l'engagement des jeunes à travers des actions citoyennes et éducatives.",
+      "addressTitle": "Adresse",
+      "addressLine1": "Groupe 3, en face de la Faculté des Lettres et des Sciences Humaines Ben M'sik, Centre social et économique, Rue Rahmouni Boualam, Casablanca.",
+      "addressLine2": "Rue Mohamed Bouziane, près du Bureau d'Hygiène, Sidi Othmane",
+      "contactTitle": "Contact",
+      "phoneMobile": "+212 661 680 893",
+      "phoneLandline": "Fixe : 08 08 55 86 90 / 08 08 69 34 45",
+      "email": "contact@eerchad.ma",
+      "rights": "© 2025 Association Najm. Tous droits réservés."
+    },
+    "buttons": {
+      "learnMore": "En savoir plus",
+      "seeAll": "Voir tout",
+      "contactUs": "Nous contacter",
+      "readMore": "Lire la suite",
+      "apply": "Postuler",
+      "sendMessage": "Envoyer le message"
+    }
+  }
+  

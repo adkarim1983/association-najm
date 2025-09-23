@@ -1,0 +1,36 @@
+{
+    "navbar": {
+      "home": "Home",
+      "about": "About",
+      "missions": "Missions",
+      "platforms": "Platform Management",
+      "socialEconomy": "Social Economy",
+      "entrepreneurship": "Entrepreneurship",
+      "incubation": "Incubation",
+      "capacity": "Capacity Development",
+      "projects": "Projects",
+      "gallery": "Gallery",
+      "academy": "Najm Academy",
+      "contact": "Contact"
+    },
+    "footer": {
+      "orgLine": "Association Najm for cultural and educational development promotes youth engagement through civic and educational initiatives.",
+      "addressTitle": "Address",
+      "addressLine1": "Group 3, opposite the Faculty of Letters and Human Sciences Ben M’sik, Social and Economic Center, Rue Rahmouni Boualam, Casablanca.",
+      "addressLine2": "Rue Mohamed Bouziane, near the Hygiene Office, Sidi Othmane",
+      "contactTitle": "Contact",
+      "phoneMobile": "+212 661 680 893",
+      "phoneLandline": "Landline: 08 08 55 86 90 / 08 08 69 34 45",
+      "email": "contact@eerchad.ma",
+      "rights": "© 2025 Association Najm. All rights reserved."
+    },
+    "buttons": {
+      "learnMore": "Learn more",
+      "seeAll": "See all",
+      "contactUs": "Contact us",
+      "readMore": "Read more",
+      "apply": "Apply",
+      "sendMessage": "Send message"
+    }
+  }
+  

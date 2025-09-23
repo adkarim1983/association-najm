@@ -1,0 +1,106 @@
+{
+    "reports2024": {
+      "header": {
+        "title": "Partnership with Irchad and the Faculty",
+        "subtitle": "A strategic partnership for development and innovation in higher education"
+      },
+      "intro": {
+        "title": "Partnership Overview",
+        "text": "Association Najm has established a strategic partnership with Irchad and the Faculty as part of its academic and professional development activities. This collaboration aims to strengthen students’ capacities and promote excellence in higher education."
+      },
+      "objectives": {
+        "title": "Partnership Objectives",
+        "items": [
+          "Develop innovative training programs",
+          "Facilitate the exchange of expertise and knowledge",
+          "Promote collaborative research",
+          "Strengthen graduates’ employability",
+          "Create internship and job opportunities"
+        ]
+      },
+      "perspectives": {
+        "title": "Looking Ahead",
+        "text": "This partnership opens new perspectives for the development of the educational and professional ecosystem. It will create lasting synergies between academia and the non-profit sector, thereby contributing to the region’s socio-economic development."
+      },
+      "impact": {
+        "title": "Partnership Impact",
+        "stats": {
+          "students": { "value": "150+", "label": "Student beneficiaries" },
+          "programs": { "value": "25", "label": "Programs developed" },
+          "satisfaction": { "value": "85%", "label": "Satisfaction rate" }
+        }
+      }
+    },
+    "academy": {
+      "title": "Najm Academy for Digital Professions",
+      "tagline": "Social advancement through digitization",
+      "sections": {
+        "transformation": {
+          "title": "For an Inclusive Digital Transformation in Morocco",
+          "p1": "Association Najm for Economic Inclusion believes that digital transformation represents both a challenge and a promising opportunity for Morocco. Limited access to modern technologies, the lack of suitable training and a widening digital divide are among the main barriers hindering youth integration into the digital economy.",
+          "p2": "Yet digitization offers great possibilities to stimulate entrepreneurship, create jobs and energize the socio-economic fabric—especially for out-of-school and unemployed youth who are not in training and face real obstacles to professional integration.",
+          "p3": "Aware of this reality, Association Najm is committed to supporting youth in acquiring digital skills, advancing the digitalization of businesses and encouraging technological innovation. By focusing efforts on these fundamental pillars, the association aims to help build a more inclusive development model."
+        },
+        "purpose": {
+          "title": "An Academy Serving Morocco’s Digital Future",
+          "p": "Through this Academy, Association Najm offers young people economic-integration opportunities in a high-potential sector: digital professions—fully aligned with the national drive for digital transition."
+        },
+        "vision": {
+          "title": "Association Strategic Vision",
+          "p": "Since its creation, Association Najm has pursued growth to strengthen youth employability and entrepreneurship. With rigorous governance, a structured team and robust monitoring tools, it diversifies its actions and adapts its programs to economic and digital changes, placing continuing education, partnerships and post-training support at the heart of its sustainable strategy."
+        },
+        "parallelSkills": {
+          "title": "Strengthening Youth’s Parallel Skills",
+          "items": [
+            { "name": "Personal Skills Development", "desc": "Improve communication, leadership and stress management to enhance job prospects." },
+            { "name": "Job Search Techniques", "desc": "How to write a CV, succeed in interviews and build a professional network." },
+            { "name": "Entrepreneurship Awareness", "desc": "Fundamentals of business creation, project management and innovation." },
+            { "name": "Cooperative Creation Awareness", "desc": "Support for setting up cooperatives under Law 112/12; promote cooperative and solidarity-based work." }
+          ]
+        },
+        "accompaniment": {
+          "title": "Support and Digital Cooperatives",
+          "bullets": [
+            "Entrepreneurship advisory services",
+            "Support in drafting business plans",
+            "Access to financing",
+            "Creation of digital cooperatives fostering skill exchange, access to new markets and sustainable collective growth"
+          ]
+        },
+        "recognition": {
+          "title": "Recognition and National Ambition",
+          "p": "To strengthen its impact, the association is working to obtain public-utility status to expand its partnerships, financing and national footprint. True to its mission, Association Najm continues to adapt to economic and social challenges and is committed to an inclusive, digital and sustainable Morocco."
+        }
+      }
+    },
+    "contact": {
+      "stayInTouch": "Stay in touch",
+      "title": "Contact",
+      "lead": "We’re here to help. Send us a message and we’ll get back to you quickly.",
+      "form": {
+        "fullName": "Full name",
+        "email": "Email",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Message",
+        "submit": "Send message"
+      },
+      "followUs": "Follow us",
+      "info": {
+        "title": "Contact information",
+        "addressLabel": "Address",
+        "address": "Group 3, opposite the Faculty of Letters and Human Sciences Ben M’sik, Social and Economic Center, Rue Rahmouni Boualam, Casablanca.",
+        "phoneLabel": "Phone",
+        "phone": "08 08 55 86 90 - 0661 680 893",
+        "emailLabel": "Email",
+        "email": "contact@associationnajm.ma",
+        "hoursTitle": "Hours",
+        "hours": [
+          "Monday – Friday: 9:00 – 17:00",
+          "Saturday: 9:00 – 13:00",
+          "Sunday: Closed"
+        ]
+      }
+    }
+  }
+  
