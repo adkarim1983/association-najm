@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +12,26 @@ export default function Navbar() {
   const [missionsMenuOpen, setMissionsMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
   const { user, isAuthenticated, logout } = useAuth();
+  const { lang, setLanguage } = useLanguage();
+  const [navLabels, setNavLabels] = useState(null);
+
+  // Load navbar translations from public/locales/{lang}/common.json
+  useEffect(() => {
+    let active = true;
+    const load = async () => {
+      try {
+        const res = await fetch(`/locales/${lang}/common.json`, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to load locale');
+        const data = await res.json();
+        if (active) setNavLabels(data?.navbar || null);
+      } catch (e) {
+        console.warn('Navbar i18n load error:', e);
+        if (active) setNavLabels(null);
+      }
+    };
+    load();
+    return () => { active = false; };
+  }, [lang]);
 
   // Function to close mobile menu
   const closeMobileMenu = () => {
@@ -74,6 +95,34 @@ export default function Navbar() {
     }
   };
 
+  const LangSwitcher = () => {
+    const langs = [
+      { code: 'fr', label: 'FR' },
+      { code: 'en', label: 'EN' },
+      { code: 'ar', label: 'AR' },
+    ];
+    return (
+      <div className="hidden lg:flex items-center">
+        <div className="rounded-full border border-gray-200 overflow-hidden shadow-sm">
+          {langs.map((l, idx) => (
+            <button
+              key={l.code}
+              onClick={() => setLanguage(l.code)}
+              className={`px-3 py-1.5 text-sm font-semibold transition-colors ${
+                lang === l.code
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-gray-700 hover:bg-gray-50'
+              } ${idx !== langs.length - 1 ? 'border-r border-gray-200' : ''}`}
+              aria-current={lang === l.code ? 'true' : 'false'}
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="mx-auto px-4 py-2 flex items-center justify-between max-w-7xl">
@@ -92,16 +141,16 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-8">
           <Link href="/home" className="text-gray-700 hover:text-blue-600 font-medium">
-            Accueil
+            {navLabels?.home ?? 'Accueil'}
           </Link>
           <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium">
-            À propos
+            {navLabels?.about ?? 'À propos'}
           </Link>
           
           {/* Missions Dropdown */}
           <div className="relative group">
             <button className="text-gray-700 hover:text-blue-600 font-medium flex items-center">
-              Missions
+              {navLabels?.missions ?? 'Missions'}
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
@@ -109,36 +158,39 @@ export default function Navbar() {
             <div className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               <div className="py-2">
                 <Link href="/missions/gestion-plateformes" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Gestion des Plateformes
+                  {navLabels?.platforms ?? 'Gestion des Plateformes'}
                 </Link>
                 <Link href="/missions/economie-sociale" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Économie Sociale
+                  {navLabels?.socialEconomy ?? 'Économie Sociale'}
                 </Link>
                 <Link href="/missions/entrepreneuriat" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Entrepreneuriat
+                  {navLabels?.entrepreneurship ?? 'Entrepreneuriat'}
                 </Link>
                 <Link href="/missions/incubation" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Incubation
+                  {navLabels?.incubation ?? 'Incubation'}
                 </Link>
                 <Link href="/missions/developpement-capacites" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Développement des Capacités
+                  {navLabels?.capacity ?? 'Développement des Capacités'}
                 </Link>
               </div>
             </div>
           </div>
 
           <Link href="/projects" className="text-gray-700 hover:text-blue-600 font-medium">
-            Projets
+            {navLabels?.projects ?? 'Projets'}
           </Link>
           <Link href="/galerie" className="text-gray-700 hover:text-blue-600 font-medium">
-            Galerie
+            {navLabels?.gallery ?? 'Galerie'}
           </Link>
           <Link href="/academie-najm" className="text-gray-700 hover:text-blue-600 font-medium">
-            Académie Najm
+            {navLabels?.academy ?? 'Académie Najm'}
           </Link>
           <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
-            Contact
+            {navLabels?.contact ?? 'Contact'}
           </Link>
+
+          {/* Language Switcher */}
+          <LangSwitcher />
 
           {/* Auth Links */}
           {isAuthenticated ? (
@@ -176,11 +228,28 @@ export default function Navbar() {
       {isMenuOpen && (
         <div ref={mobileMenuRef} className="lg:hidden bg-white border-t shadow-lg">
           <nav className="px-4 py-4 space-y-4">
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center justify-center">
+              <div className="inline-flex rounded-full border border-gray-200 overflow-hidden shadow-sm">
+                {['fr','en','ar'].map((code, idx) => (
+                  <button
+                    key={code}
+                    onClick={() => { setLanguage(code); closeMobileMenu(); }}
+                    className={`px-3 py-1.5 text-sm font-semibold transition-colors ${
+                      lang === code ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'
+                    } ${idx !== 2 ? 'border-r border-gray-200' : ''}`}
+                  >
+                    {code.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <Link href="/home" className="block text-gray-700 hover:text-blue-600 font-medium" onClick={closeMobileMenu}>
-              Accueil
+              {navLabels?.home ?? 'Accueil'}
             </Link>
             <Link href="/about" className="block text-gray-700 hover:text-blue-600 font-medium" onClick={closeMobileMenu}>
-              À propos
+              {navLabels?.about ?? 'À propos'}
             </Link>
             
             {/* Mobile Missions Menu */}
@@ -189,7 +258,7 @@ export default function Navbar() {
                 className="flex items-center justify-between w-full text-gray-700 hover:text-blue-600 font-medium"
                 onClick={() => setMissionsMenuOpen(!missionsMenuOpen)}
               >
-                Missions
+                {navLabels?.missions ?? 'Missions'}
                 <svg className={`w-4 h-4 transition-transform ${missionsMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -197,35 +266,35 @@ export default function Navbar() {
               {missionsMenuOpen && (
                 <div className="mt-2 ml-4 space-y-2">
                   <Link href="/missions/gestion-plateformes" className="block text-sm text-gray-600 hover:text-blue-600" onClick={closeMobileMenu}>
-                    Gestion des Plateformes
+                    {navLabels?.platforms ?? 'Gestion des Plateformes'}
                   </Link>
                   <Link href="/missions/economie-sociale" className="block text-sm text-gray-600 hover:text-blue-600" onClick={closeMobileMenu}>
-                    Économie Sociale
+                    {navLabels?.socialEconomy ?? 'Économie Sociale'}
                   </Link>
                   <Link href="/missions/entrepreneuriat" className="block text-sm text-gray-600 hover:text-blue-600" onClick={closeMobileMenu}>
-                    Entrepreneuriat
+                    {navLabels?.entrepreneurship ?? 'Entrepreneuriat'}
                   </Link>
                   <Link href="/missions/incubation" className="block text-sm text-gray-600 hover:text-blue-600" onClick={closeMobileMenu}>
-                    Incubation
+                    {navLabels?.incubation ?? 'Incubation'}
                   </Link>
                   <Link href="/missions/developpement-capacites" className="block text-sm text-gray-600 hover:text-blue-600" onClick={closeMobileMenu}>
-                    Développement des Capacités
+                    {navLabels?.capacity ?? 'Développement des Capacités'}
                   </Link>
                 </div>
               )}
             </div>
 
             <Link href="/projects" className="block text-gray-700 hover:text-blue-600 font-medium" onClick={closeMobileMenu}>
-              Projets
+              {navLabels?.projects ?? 'Projets'}
             </Link>
             <Link href="/galerie" className="block text-gray-700 hover:text-blue-600 font-medium" onClick={closeMobileMenu}>
-              Galerie
+              {navLabels?.gallery ?? 'Galerie'}
             </Link>
             <Link href="/academie-najm" className="block text-gray-700 hover:text-blue-600 font-medium" onClick={closeMobileMenu}>
-              Académie Najm
+              {navLabels?.academy ?? 'Académie Najm'}
             </Link>
             <Link href="/contact" className="block text-gray-700 hover:text-blue-600 font-medium" onClick={closeMobileMenu}>
-              Contact
+              {navLabels?.contact ?? 'Contact'}
             </Link>
 
             {/* Mobile Auth Links */}

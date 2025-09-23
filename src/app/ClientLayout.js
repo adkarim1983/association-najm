@@ -1,13 +1,16 @@
 'use client';
 
 import { AuthProvider } from '../contexts/AuthContext';
+import { LanguageProvider } from '../contexts/LanguageContext';
 
 export default function ClientLayout({ children }) {
   return (
     <AuthProvider>
-      <div className="min-h-screen">
-        {children}
-      </div>
+      <LanguageProvider>
+        <div className="min-h-screen">
+          {children}
+        </div>
+      </LanguageProvider>
     </AuthProvider>
   );
 }
