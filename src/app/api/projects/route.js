@@ -34,7 +34,7 @@ const projectSchema = Joi.object({
       Joi.string().pattern(/^\/uploads\//)
     ).required(),
     filename: Joi.string().required(),
-    size: Joi.number().optional(),
+    size: Joi.number().required(), // Size is required
     uploadedAt: Joi.date().optional(),
     uploadedBy: Joi.string().optional(),
     alt: Joi.string().optional(),

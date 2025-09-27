@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../hooks/useAuth';
-import NewProjectModal from '../../components/dashboard/NewProjectModal';
-import EditProjectModal from '../../components/dashboard/EditProjectModal';
+import NewProjectModalSteps from '../../components/dashboard/NewProjectModalSteps';
+import EditProjectModalSteps from '../../components/dashboard/EditProjectModalSteps';
 
 export default function DashboardPage() {
   const { user, logout } = useAuth();
@@ -372,14 +372,14 @@ export default function DashboardPage() {
       </main>
 
       {/* New Project Modal */}
-      <NewProjectModal
-        isOpen={showNewProjectModal}
-        onClose={() => setShowNewProjectModal(false)}
-        onProjectCreated={handleProjectCreated}
-      />
+        <NewProjectModalSteps 
+          isOpen={showNewProjectModal} 
+          onClose={() => setShowNewProjectModal(false)}
+          onProjectCreated={handleProjectCreated}
+        />
 
       {/* Edit Project Modal */}
-      <EditProjectModal
+      <EditProjectModalSteps
         isOpen={showEditModal}
         onClose={() => {
           setShowEditModal(false);

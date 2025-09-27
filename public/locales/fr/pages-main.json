@@ -73,8 +73,8 @@
     },
     "projects": {
       "header": {
-        "title": "Nos Projets",
-        "subtitle": "Découvrez nos initiatives et réalisations qui créent un impact positif"
+      "title": "Nos Projets",
+      "subtitle": "Découvrez nos initiatives et réalisations qui créent un impact positif"
       },
       "viewModes": {
         "grid": "Vue Grille",

@@ -534,7 +534,7 @@ export default function AboutUs() {
                 color: '#1E3A8A'
               }}>
                 {t('about.team.sectionTitle')}
-              </h2>
+            </h2>
               
               {/* Effet de lueur sous le titre */}
               <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 rounded-full transition-all duration-1000 ${
@@ -599,9 +599,9 @@ export default function AboutUs() {
                   
                   {/* Image avec effets avancés */}
                   <div className="relative h-80 overflow-hidden rounded-t-3xl">
-                    <img
-                      src={membre.image}
-                      alt={membre.nom}
+                  <img
+                    src={membre.image}
+                    alt={membre.nom}
                       className={`w-full h-full object-cover transition-all duration-700 ${
                         hoveredCard === index 
                           ? 'scale-110 brightness-110 contrast-110' 
@@ -620,29 +620,29 @@ export default function AboutUs() {
                     <div className={`absolute bottom-0 left-0 right-0 p-6 text-white transition-all duration-500 ${
                       hoveredCard === index ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                     }`}>
-                      <h3 className="text-xl font-bold mb-2 drop-shadow-lg">{membre.nom}</h3>
+                    <h3 className="text-xl font-bold mb-2 drop-shadow-lg">{membre.nom}</h3>
                       <p className="text-sm text-blue-100 mb-4 drop-shadow-md">{membre.statut}</p>
                       
                       {/* Boutons de contact ultra-élégants */}
                       <div className="space-y-2">
                         <div className="flex items-center bg-white/20 backdrop-blur-lg rounded-2xl px-4 py-2 text-sm hover:bg-white/30 transition-all duration-300 hover:scale-105">
                           <svg className="w-4 h-4 mr-3 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-                          </svg>
+                          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                        </svg>
                           <span className="font-medium" dir="ltr">{membre.telephone}</span>
-                        </div>
-                        
+                    </div>
+                    
                         <div className="flex items-center bg-white/20 backdrop-blur-lg rounded-2xl px-4 py-2 text-sm hover:bg-white/30 transition-all duration-300 hover:scale-105">
                           <svg className="w-4 h-4 mr-3 text-sky-300" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                          </svg>
-                          <span className="font-medium truncate">{membre.email}</span>
-                        </div>
+                          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                        <span className="font-medium truncate">{membre.email}</span>
                       </div>
                     </div>
                   </div>
-                  
+                </div>
+
                 </div>
                 
                 {/* Ombre projetée sophistiquée */}

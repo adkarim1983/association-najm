@@ -28,36 +28,39 @@ export default function Footer() {
             height={64}
             className="h-24 w-auto mb-4"
           />
-          <p className="text-base text-justify">
+          <p className={`${lang === 'ar' ? 'text-sm' : 'text-base'} text-justify`}>
             {footer.orgLine || "L'Association Najm pour le développement culturel et éducatif œuvre à promouvoir l'engagement des jeunes à travers des actions citoyennes et éducatives."}
           </p>
         </div>
 
         {/* Adresse */}
         <div>
-          <h3 className="text-lg sm:text-xl font-semibold mb-3 text-center md:text-left leading-tight">
+          <h3 className={`${lang === 'ar' ? 'text-base sm:text-lg text-right' : 'text-lg sm:text-xl text-center md:text-left'} font-semibold mb-3 leading-tight`}>
             <FontAwesomeIcon icon={faLocationDot} className="text-red-500 mr-2" />
             {footer.addressTitle || "Adresse"}
           </h3>
-          <p className="text-base" dir="ltr">{footer.addressLine1 || "Groupe 3, en face de la Faculté des Lettres et des Sciences Humaines Ben M'sik, Centre social et économique, Rue Rahmouni Boualam, Casablanca."}</p>
+          <p className={`${lang === 'ar' ? 'text-sm' : 'text-base'}`} dir="ltr">{footer.addressLine1 || "Groupe 3, en face de la Faculté des Lettres et des Sciences Humaines Ben M'sik, Centre social et économique, Rue Rahmouni Boualam, Casablanca."}</p>
         </div>
 
         {/* Contact */}
         <div>
-          <h3 className="text-lg sm:text-xl font-semibold mb-3 text-center md:text-left leading-tight">{footer.contactTitle || "Contact"}</h3>
-          <p className="text-base text-white">
+          <h3 className={`${lang === 'ar' ? 'text-base sm:text-lg text-right' : 'text-lg sm:text-xl text-center md:text-left'} font-semibold mb-3 leading-tight`}>
+            <FontAwesomeIcon icon={faPhoneVolume} className="text-green-500 mr-2" />
+            {footer.contactTitle || "Contact"}
+          </h3>
+          <p className={`${lang === 'ar' ? 'text-sm' : 'text-base'} text-white`}>
             <FontAwesomeIcon icon={faPhoneVolume} className="text-green-500 mr-2" />
             <span dir="ltr">{footer.phoneMobile || "+212 661 680 893"}</span>
           </p>
-          <p className="text-base">
+          <p className={`${lang === 'ar' ? 'text-sm' : 'text-base'}`}>
             <FontAwesomeIcon icon={faPhoneVolume} className="text-green-500 mr-2" />
             <span dir="ltr">{footer.phoneLandline || "Fixe : 08 08 55 86 90 / 08 08 69 34 45"}</span>
           </p>
-          <p className="text-base text-white">
+          <p className={`${lang === 'ar' ? 'text-sm' : 'text-base'} text-white`}>
             <FontAwesomeIcon icon={faEnvelope} className="text-blue-500 mr-2" />
             <span dir="ltr">{footer.email || "contact@eerchad.ma"}</span>
           </p>
-          <p className="text-base mt-2">
+          <p className={`${lang === 'ar' ? 'text-sm' : 'text-base'} mt-2`}>
             <FontAwesomeIcon icon={faLocationDot} className="text-red-500 mr-2" />
             {footer.addressLine2 || "Rue Mohamed Bouziane, près du Bureau d'Hygiène, Sidi Othmane"}
           </p>
@@ -79,7 +82,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-8 border-t border-white/30 pt-4 text-center text-base">
+      <div className={`mt-8 border-t border-white/30 pt-4 text-center ${lang === 'ar' ? 'text-sm' : 'text-base'}`}>
         {footer.rights ? footer.rights.replace('{year}', currentYear) : `© ${currentYear} Association Najm. Tous droits réservés.`}
       </div>
     </footer>
