@@ -6,6 +6,14 @@ const projectSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  name_en: {
+    type: String,
+    trim: true
+  },
+  name_ar: {
+    type: String,
+    trim: true
+  },
   category: {
     type: String,
     required: true,
@@ -59,7 +67,23 @@ const projectSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  description_en: {
+    type: String,
+    trim: true
+  },
+  description_ar: {
+    type: String,
+    trim: true
+  },
   founder_info: {
+    type: String,
+    trim: true
+  },
+  founder_info_en: {
+    type: String,
+    trim: true
+  },
+  founder_info_ar: {
     type: String,
     trim: true
   },
@@ -67,7 +91,23 @@ const projectSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  presentation_en: {
+    type: String,
+    trim: true
+  },
+  presentation_ar: {
+    type: String,
+    trim: true
+  },
   support: {
+    type: String,
+    trim: true
+  },
+  support_en: {
+    type: String,
+    trim: true
+  },
+  support_ar: {
     type: String,
     trim: true
   },
@@ -75,7 +115,23 @@ const projectSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  products_en: {
+    type: String,
+    trim: true
+  },
+  products_ar: {
+    type: String,
+    trim: true
+  },
   partners: {
+    type: String,
+    trim: true
+  },
+  partners_en: {
+    type: String,
+    trim: true
+  },
+  partners_ar: {
     type: String,
     trim: true
   },
@@ -146,7 +202,29 @@ const projectSchema = new mongoose.Schema({
 });
 
 // Indexes for better performance
-projectSchema.index({ name: 'text', description: 'text' });
+projectSchema.index({ 
+  name: 'text', 
+  description: 'text',
+  name_en: 'text',
+  name_ar: 'text',
+  description_en: 'text',
+  description_ar: 'text',
+  founder_info: 'text',
+  founder_info_en: 'text',
+  founder_info_ar: 'text',
+  presentation: 'text',
+  presentation_en: 'text',
+  presentation_ar: 'text',
+  support: 'text',
+  support_en: 'text',
+  support_ar: 'text',
+  products: 'text',
+  products_en: 'text',
+  products_ar: 'text',
+  partners: 'text',
+  partners_en: 'text',
+  partners_ar: 'text'
+});
 projectSchema.index({ category: 1 });
 projectSchema.index({ location: 1 });
 projectSchema.index({ status: 1 });

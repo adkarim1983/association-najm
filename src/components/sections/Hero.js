@@ -1,30 +1,35 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "../../hooks/useTranslation";
 // Using public images
 const imageB = "/images/B.jpg";
 const imageC = "/images/C.jpg";
 const imageD = "/images/D.jpg";
 
 export default function Hero() {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+  
+  // Get slides data from translations
+  const slidesData = t('home.hero.slides', { returnObjects: true }) || [];
   
   const images = [
     {
       src: imageB,
-      title: "Association Najm",
-      description: "Pour un avenir meilleur à travers l'éducation, la culture et la solidarité.",
+      title: slidesData[0]?.title || "Association Najm",
+      description: slidesData[0]?.subtitle || "Pour un avenir meilleur à travers l'éducation, la culture et la solidarité.",
     },
     {
       src: imageC,
-      title: "Éducation et Engagement",
-      description: "Rejoignez-nous pour construire un monde plus juste et plus humain.",
+      title: slidesData[1]?.title || "Éducation et Engagement",
+      description: slidesData[1]?.subtitle || "Rejoignez-nous pour construire un monde plus juste et plus humain.",
     },
     {
       src: imageD,
-      title: "Solidarité Active",
-      description: "Unissons nos forces pour un impact positif dans notre société.",
+      title: slidesData[2]?.title || "Solidarité Active",
+      description: slidesData[2]?.subtitle || "Unissons nos forces pour un impact positif dans notre société.",
     },
   ];
 

@@ -4,8 +4,15 @@ import Image from 'next/image';
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneVolume, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export default function Footer() {
+  const { t, lang } = useTranslation('common');
+  
+  // Get translated data
+  const footer = t('footer', { returnObjects: true }) || {};
+  const currentYear = new Date().getFullYear();
+  
   return (
     <footer
       className="text-white py-10 px-6 transition duration-500 ease-in-out shadow-[inset_0_10px_15px_-10px_rgba(0,0,0,0.3)] hover:shadow-[0_0_20px_#666666]"
@@ -16,13 +23,13 @@ export default function Footer() {
         <div>
           <Image
             src="/images/logo2.png"
-            alt="Logo Najm"
+            alt={footer.logo_alt || "Logo Najm"}
             width={160}
             height={64}
             className="h-24 w-auto mb-4"
           />
           <p className="text-base text-justify">
-            L'Association Najm pour le développement culturel et éducatif œuvre à promouvoir l'engagement des jeunes à travers des actions citoyennes et éducatives.
+            {footer.orgLine || "L'Association Najm pour le développement culturel et éducatif œuvre à promouvoir l'engagement des jeunes à travers des actions citoyennes et éducatives."}
           </p>
         </div>
 
@@ -30,31 +37,29 @@ export default function Footer() {
         <div>
           <h3 className="text-lg sm:text-xl font-semibold mb-3 text-center md:text-left leading-tight">
             <FontAwesomeIcon icon={faLocationDot} className="text-red-500 mr-2" />
-            Adresse
+            {footer.addressTitle || "Adresse"}
           </h3>
-          <p className="text-base" dir="ltr">Groupe 3, en face de la Faculté des Lettres et des Sciences Humaines Ben M'sik,
-Centre social et économique, Rue Rahmouni Boualam,
-Casablanca.</p>
+          <p className="text-base" dir="ltr">{footer.addressLine1 || "Groupe 3, en face de la Faculté des Lettres et des Sciences Humaines Ben M'sik, Centre social et économique, Rue Rahmouni Boualam, Casablanca."}</p>
         </div>
 
         {/* Contact */}
         <div>
-          <h3 className="text-lg sm:text-xl font-semibold mb-3 text-center md:text-left leading-tight">Contact</h3>
+          <h3 className="text-lg sm:text-xl font-semibold mb-3 text-center md:text-left leading-tight">{footer.contactTitle || "Contact"}</h3>
           <p className="text-base text-white">
             <FontAwesomeIcon icon={faPhoneVolume} className="text-green-500 mr-2" />
-            <span dir="ltr">+212 661 680 893</span>
+            <span dir="ltr">{footer.phoneMobile || "+212 661 680 893"}</span>
           </p>
           <p className="text-base">
             <FontAwesomeIcon icon={faPhoneVolume} className="text-green-500 mr-2" />
-            <span dir="ltr">Fixe : 08 08 55 86 90 / 08 08 69 34 45</span>
+            <span dir="ltr">{footer.phoneLandline || "Fixe : 08 08 55 86 90 / 08 08 69 34 45"}</span>
           </p>
           <p className="text-base text-white">
             <FontAwesomeIcon icon={faEnvelope} className="text-blue-500 mr-2" />
-            <span dir="ltr">contact@eerchad.ma</span>
+            <span dir="ltr">{footer.email || "contact@eerchad.ma"}</span>
           </p>
           <p className="text-base mt-2">
             <FontAwesomeIcon icon={faLocationDot} className="text-red-500 mr-2" />
-            Rue Mohamed Bouziane, près du Bureau d'Hygiène, Sidi Othmane
+            {footer.addressLine2 || "Rue Mohamed Bouziane, près du Bureau d'Hygiène, Sidi Othmane"}
           </p>
 
           <div className="flex mt-4 space-x-4">
@@ -75,7 +80,7 @@ Casablanca.</p>
       </div>
 
       <div className="mt-8 border-t border-white/30 pt-4 text-center text-base">
-        © {new Date().getFullYear()} Association Najm. Tous droits réservés.
+        {footer.rights ? footer.rights.replace('{year}', currentYear) : `© ${currentYear} Association Najm. Tous droits réservés.`}
       </div>
     </footer>
   );

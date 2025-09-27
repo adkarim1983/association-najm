@@ -42,3 +42,317 @@ body {
 .group:hover .group-hover\:rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+/* Arabic Typography - Tajawal Regular 400 at 21px */
+html[lang="ar"] body {
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Ensure Arabic text maintains good readability */
+html[lang="ar"] {
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fine-tune specific text elements for Arabic */
+html[lang="ar"] h1, 
+html[lang="ar"] h2, 
+html[lang="ar"] h3, 
+html[lang="ar"] h4, 
+html[lang="ar"] h5, 
+html[lang="ar"] h6 {
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+html[lang="ar"] .text-sm {
+  font-size: 18px;
+}
+
+html[lang="ar"] .text-base {
+  font-size: 21px;
+}
+
+html[lang="ar"] .text-lg {
+  font-size: 24px;
+}
+
+html[lang="ar"] .text-xl {
+  font-size: 28px;
+}
+
+html[lang="ar"] .text-2xl {
+  font-size: 32px;
+}
+
+html[lang="ar"] .text-3xl {
+  font-size: 36px;
+}
+
+html[lang="ar"] .text-4xl {
+  font-size: 42px;
+}
+
+html[lang="ar"] .text-5xl {
+  font-size: 48px;
+}
+
+/* Utility class for Arabic font when needed explicitly */
+.font-arabic {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Improve Arabic text spacing and kerning */
+html[lang="ar"] p,
+html[lang="ar"] div,
+html[lang="ar"] span {
+  letter-spacing: 0.02em;
+}
+
+/* Better line height for Arabic paragraphs */
+html[lang="ar"] p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* Language Switcher Professional Animations */
+.lang-dropdown {
+  animation: slideDown 0.3s ease-out;
+  transform-origin: top;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lang-option:hover {
+  transform: translateX(4px);
+}
+
+/* Flag hover effects */
+.flag-container {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flag-container:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth gradient animation for active language */
+.active-lang-bg {
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* Arabic Navigation Spacing */
+html[lang="ar"] nav a,
+html[lang="ar"] nav button,
+html[lang="ar"] nav div {
+  letter-spacing: 0.02em;
+  word-spacing: 0.05em;
+}
+
+/* Improved Arabic navbar spacing */
+html[lang="ar"] .navbar-link {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+/* Mission dropdown hover effects */
+.missions-dropdown a {
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.missions-dropdown a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.missions-dropdown a:hover::before {
+  width: 100%;
+}
+
+/* Organigramme Animations */
+@keyframes orgChart-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orgChart-scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes orgChart-lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes orgChart-lineGrowVertical {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes orgChart-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(147, 51, 234, 0.3);
+  }
+}
+
+.orgChart-animate-in {
+  animation: orgChart-fadeInUp 0.8s ease-out forwards;
+}
+
+.orgChart-scale-in {
+  animation: orgChart-scaleIn 0.6s ease-out forwards;
+}
+
+.orgChart-glow {
+  animation: orgChart-glow 3s ease-in-out infinite;
+}
+
+/* Team Cards Ultra-Elegant Animations */
+@keyframes gradient-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes team-card-float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotateX(2deg) rotateY(1deg);
+  }
+}
+
+@keyframes team-card-glow {
+  0%, 100% {
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.5), 0 0 40px rgba(147, 51, 234, 0.3);
+  }
+}
+
+@keyframes team-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes team-background-shift {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1) rotate(1deg);
+    opacity: 0.5;
+  }
+}
+
+.team-card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.team-card-3d:hover {
+  animation: team-card-float 3s ease-in-out infinite;
+}
+
+.team-card-glow {
+  animation: team-card-glow 4s ease-in-out infinite;
+}
+
+.team-background-animated {
+  animation: team-background-shift 8s ease-in-out infinite;
+}
+
+/* Professional hover effects for team cards */
+.team-card-hover {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card-hover:hover {
+  transform: perspective(1000px) rotateX(10deg) rotateY(10deg) translateZ(20px);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+/* Image zoom effect */
+.team-image-zoom {
+  overflow: hidden;
+}
+
+.team-image-zoom img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-image-zoom:hover img {
+  transform: scale(1.15) rotate(2deg);
+}

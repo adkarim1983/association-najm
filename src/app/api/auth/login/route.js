@@ -101,7 +101,7 @@ export async function POST(request) {
     const refreshToken = await generateRefreshToken({
       id: user._id,
       tokenType: 'refresh'
-    });
+    }); 
     
     // Add refresh token to user
     await user.addRefreshToken(refreshToken);

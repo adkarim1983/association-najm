@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Navbar from '../../../components/layout/Navbar';
 import Footer from '../../../components/layout/Footer';
+import { useTranslation } from '../../../hooks/useTranslation';
 import './animations.css';
 
 // Local images available under public/imagesprojets
@@ -52,29 +53,63 @@ const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ss
 
 export default function ProjectDetailPage() {
   const params = useParams();
+  const { t, lang } = useTranslation();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  // Get translated data
+  const projectDetailData = t('projectDetail', { returnObjects: true }) || {};
+  const sections = projectDetailData.sections || {};
+  const statusLabels = projectDetailData.status || {};
+  const contactLabels = projectDetailData.contact || {};
+  const mapLabels = projectDetailData.map || {};
+  const galleryLabels = projectDetailData.gallery || {};
+  
+  // Get project card translations for categories and locations
+  const projectsData = t('projects', { returnObjects: true }) || {};
+  const cardData = projectsData.card || {};
+  const categories = cardData.categories || {};
+  const locations = cardData.locations || {};
+
+  // Function to get translated project content
+  const getTranslatedContent = (baseKey) => {
+    if (!project) return '';
+    const langSuffix = lang === 'fr' ? '' : `_${lang}`;
+    return project[`${baseKey}${langSuffix}`] || project[baseKey] || '';
+  };
+
+  const projectName = getTranslatedContent('name');
+  const projectDescription = getTranslatedContent('description');
+
+  // Helper functions for translated categories and locations
+  const getCategoryText = (category) => {
+    return categories[category] || category;
+  };
+
+  const getLocationText = (location) => {
+    return locations[location] || location;
+  };
   
   // Build images from DB and merge with local images matched by project title
   const dbImages = project?.images?.length
     ? project.images.map((img) => {
         if (typeof img === 'string') {
-          return { src: img, alt: `Image - ${project?.name || 'Projet'}` };
+          return { src: img, alt: `Image - ${projectName || 'Projet'}` };
         }
         return {
           src: img?.url || 'https://via.placeholder.com/800x600?text=Pas+d%27image',
-          alt: img?.alt || `Image - ${project?.name || 'Projet'}`,
+          alt: img?.alt || `Image - ${projectName || 'Projet'}`,
         };
       })
     : (project?.image
-        ? [{ src: project.image, alt: project?.name || 'Projet' }]
+        ? [{ src: project.image, alt: projectName || 'Projet' }]
         : []);
 
-  const localMatched = getLocalImagesForProject(project?.name);
+  const localMatched = getLocalImagesForProject(projectName);
 
   // Merge and dedupe by src; ensure at least one placeholder if none
   const seen = new Set();
@@ -86,7 +121,7 @@ export default function ProjectDetailPage() {
 
   const projectImages = merged.length
     ? merged
-    : [{ src: 'https://via.placeholder.com/800x600?text=Pas+d%27image', alt: "Pas d'image" }];
+    : [{ src: 'https://via.placeholder.com/800x600?text=Pas+d%27image', alt: projectDetailData.noImage || "Pas d'image" }];
 
   useEffect(() => {
     if (params.id) {
@@ -141,13 +176,13 @@ export default function ProjectDetailPage() {
         const data = await response.json();
         setProject(data.project);
       } else if (response.status === 404) {
-        setError('Projet non trouvé');
+        setError(projectDetailData.error || 'Projet non trouvé');
       } else {
-        setError('Erreur lors du chargement du projet');
+        setError(projectDetailData.error || 'Erreur lors du chargement du projet');
       }
     } catch (error) {
       console.error('Error fetching project:', error);
-      setError('Erreur lors du chargement du projet');
+      setError(projectDetailData.error || 'Erreur lors du chargement du projet');
     } finally {
       setLoading(false);
     }
@@ -167,7 +202,7 @@ export default function ProjectDetailPage() {
             onClick={() => setIsExpanded(true)}
             className="text-blue-600 font-medium mt-2 hover:underline"
           >
-            Lire plus
+            {projectDetailData.readMore || "Lire plus"}
           </button>
         )}
         {isExpanded && (
@@ -175,7 +210,7 @@ export default function ProjectDetailPage() {
             onClick={() => setIsExpanded(false)}
             className="text-blue-600 font-medium mt-2 hover:underline"
           >
-            Lire moins
+            {projectDetailData.readLess || "Lire moins"}
           </button>
         )}
       </div>
@@ -187,7 +222,7 @@ export default function ProjectDetailPage() {
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-xl text-slate-600">Chargement du projet...</p>
+          <p className="mt-4 text-xl text-slate-600">{projectDetailData.loading || "Chargement du projet..."}</p>
         </div>
       </div>
     );
@@ -197,9 +232,9 @@ export default function ProjectDetailPage() {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">{error || "Projet non trouvé"}</h2>
+          <h2 className="text-2xl font-bold text-red-600 mb-4">{error || projectDetailData.error || "Projet non trouvé"}</h2>
           <Link href="/projects" className="text-blue-600 hover:underline">
-            Retour à la liste des projets
+            {projectDetailData.backToProjects || "Retour à la liste des projets"}
           </Link>
         </div>
       </div>
@@ -218,7 +253,7 @@ export default function ProjectDetailPage() {
               <div className="flex-shrink-0">
                 <img
                   src={project.image || project.images?.[0]?.url || 'https://via.placeholder.com/400x300?text=Pas+d\'image'}
-                  alt={project.name}
+                  alt={projectName}
                   className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover shadow-xl ring-4 ring-blue-200"
                 />
               </div>
@@ -226,21 +261,21 @@ export default function ProjectDetailPage() {
               {/* Titre et informations */}
               <div className="flex-1 text-center md:text-left">
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-600 mb-3 tracking-wider animate-title-glow">
-                  {project.name}
+                  {projectName}
                 </h1>
                 <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                    {project.category}
+                    {getCategoryText(project.category)}
                   </span>
                   <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
-                    📍 {project.location}
+                    📍 {getLocationText(project.location)}
                   </span>
                   <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                    {project.status === 'active' ? 'En cours' : project.status === 'completed' ? 'Terminé' : 'Planifié'}
+                    {statusLabels[project.status] || project.status}
                   </span>
                 </div>
                 <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-2xl">
-                  {project.description?.substring(0, 150)}...
+                  {projectDescription?.substring(0, 150)}...
                 </p>
               </div>
             </div>
@@ -252,7 +287,7 @@ export default function ProjectDetailPage() {
           {/* Colonne principale - Informations détaillées selon la nouvelle structure */}
           <div className="space-y-8">
             {/* Section 1: Informations sur la porteuse du projet */}
-            {project.founder_info && (
+            {(project.founder_info || getTranslatedContent('founder_info')) && (
               <div className="animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center mb-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl shadow-lg mr-4" style={{backgroundColor: '#683D99'}}>
@@ -261,15 +296,15 @@ export default function ProjectDetailPage() {
                     </svg>
                   </div>
                   <h2 className="text-3xl font-bold text-gray-800 animate-title-glow">
-                    Informations sur la porteuse du projet
+                    {sections.founderInfo || "Informations sur la porteuse du projet"}
                   </h2>
                 </div>
-                <TruncatedText text={project.founder_info} />
+                <TruncatedText text={getTranslatedContent('founder_info')} />
               </div>
             )}
 
             {/* Section 2: Présentation du projet */}
-            {project.presentation && (
+            {(project.presentation || getTranslatedContent('presentation')) && (
               <div className="animate-fade-in-up" style={{animationDelay: '0.7s'}}>
                 <div className="flex items-center mb-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl shadow-lg mr-4" style={{backgroundColor: '#1B7DC2'}}>
@@ -278,15 +313,15 @@ export default function ProjectDetailPage() {
                     </svg>
                   </div>
                   <h2 className="text-3xl font-bold text-gray-800 animate-title-glow">
-                    Présentation du projet
+                    {sections.presentation || "Présentation du projet"}
                   </h2>
                 </div>
-                <TruncatedText text={project.presentation} />
+                <TruncatedText text={getTranslatedContent('presentation')} />
               </div>
             )}
 
             {/* Section 3: Partie prenante (soutien institutionnel) */}
-            {project.support && (
+            {(project.support || getTranslatedContent('support')) && (
               <div className="animate-fade-in-up" style={{animationDelay: '0.8s'}}>
                 <div className="flex items-center mb-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl shadow-lg mr-4" style={{backgroundColor: '#5EB654'}}>
@@ -295,15 +330,15 @@ export default function ProjectDetailPage() {
                     </svg>
                   </div>
                   <h2 className="text-3xl font-bold text-gray-800 animate-title-glow">
-                    Partie prenante (soutien institutionnel)
+                    {sections.support || "Partie prenante (soutien institutionnel)"}
                   </h2>
                 </div>
-                <TruncatedText text={project.support} />
+                <TruncatedText text={getTranslatedContent('support')} />
               </div>
             )}
 
             {/* Section 4: Produits et services proposés */}
-            {project.products && (
+            {(project.products || getTranslatedContent('products')) && (
               <div className="animate-fade-in-up" style={{animationDelay: '0.9s'}}>
                 <div className="flex items-center mb-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl shadow-lg mr-4" style={{backgroundColor: '#FAC516'}}>
@@ -312,15 +347,15 @@ export default function ProjectDetailPage() {
                     </svg>
                   </div>
                   <h2 className="text-3xl font-bold text-gray-800 animate-title-glow">
-                    Produits et services proposés
+                    {sections.products || "Produits et services proposés"}
                   </h2>
                 </div>
-                <TruncatedText text={project.products} />
+                <TruncatedText text={getTranslatedContent('products')} />
               </div>
             )}
 
             {/* Section 5: Partenaires */}
-            {project.partners && (
+            {(project.partners || getTranslatedContent('partners')) && (
               <div className="animate-fade-in-up" style={{animationDelay: '1.0s'}}>
                 <div className="flex items-center mb-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl shadow-lg mr-4" style={{backgroundColor: '#1B7DC2'}}>
@@ -329,16 +364,16 @@ export default function ProjectDetailPage() {
                     </svg>
                   </div>
                   <h2 className="text-3xl font-bold text-gray-800 animate-title-glow">
-                    Partenaires
+                    {sections.partners || "Partenaires"}
                   </h2>
                 </div>
-                <TruncatedText text={project.partners} />
+                <TruncatedText text={getTranslatedContent('partners')} />
               </div>
             )}
 
 
             {/* Fallback: Description générale si les sections structurées ne sont pas disponibles */}
-            {!project.founder_info && !project.presentation && !project.support && !project.products && !project.partners && (
+            {!getTranslatedContent('founder_info') && !getTranslatedContent('presentation') && !getTranslatedContent('support') && !getTranslatedContent('products') && !getTranslatedContent('partners') && (
               <div className="animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center mb-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl shadow-lg mr-4" style={{backgroundColor: '#683D99'}}>
@@ -347,10 +382,10 @@ export default function ProjectDetailPage() {
                     </svg>
                   </div>
                   <h2 className="text-3xl font-bold text-gray-800 animate-title-glow">
-                    Description du projet
+                    {sections.description || "Description du projet"}
                   </h2>
                 </div>
-                <TruncatedText text={project.description || "Description non disponible."} />
+                <TruncatedText text={projectDescription || projectDetailData.noDescription || "Description non disponible."} />
               </div>
             )}
 
@@ -363,7 +398,7 @@ export default function ProjectDetailPage() {
                   </svg>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-800 animate-title-glow">
-                  Galerie du projet
+                  {sections.gallery || "Galerie du projet"}
                 </h2>
               </div>
               
@@ -388,7 +423,7 @@ export default function ProjectDetailPage() {
                           {projectImages[activeImageIndex].alt}
                         </h4>
                         <p className="text-white/90 text-sm">
-                          Image {activeImageIndex + 1} sur {projectImages.length}
+                          {galleryLabels.imageOf?.replace('{current}', activeImageIndex + 1)?.replace('{total}', projectImages.length) || `Image ${activeImageIndex + 1} sur ${projectImages.length}`}
                         </p>
                       </div>
                     </div>

@@ -7,6 +7,7 @@ import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 import ProjectCard from '../../components/projects/ProjectCard';
 import ProjectFilters from '../../components/projects/ProjectFilters';
+import { useTranslation } from '../../hooks/useTranslation';
 
 // Dynamic import for map component to avoid SSR issues
 const ProjectMap = dynamic(() => import('../../components/projects/ProjectMap'), {
@@ -19,6 +20,7 @@ const ProjectMap = dynamic(() => import('../../components/projects/ProjectMap'),
 });
 
 export default function ProjectsPage() {
+  const { t } = useTranslation();
   const router = useRouter();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -118,6 +120,13 @@ export default function ProjectsPage() {
     router.push(`/projects/${project._id}`);
   };
 
+  // Get translated data
+  const projectsData = t('projects', { returnObjects: true }) || {};
+  const header = projectsData.header || {};
+  const viewModes = projectsData.viewModes || {};
+  const messages = projectsData.messages || {};
+  const paginationLabels = projectsData.pagination || {};
+
   if (!mounted) {
     return (
       <div className="min-h-screen">
@@ -126,10 +135,10 @@ export default function ProjectsPage() {
           <div className="bg-blue-900 text-white py-16 px-6">
             <div className="max-w-7xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Nos Projets
+                {header.title || "Nos Projets"}
               </h1>
               <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                Découvrez nos initiatives et réalisations qui créent un impact positif
+                {header.subtitle || "Découvrez nos initiatives et réalisations qui créent un impact positif"}
               </p>
             </div>
           </div>
@@ -153,10 +162,10 @@ export default function ProjectsPage() {
         <div className="bg-blue-900 text-white py-16 px-6">
           <div className="max-w-7xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Nos Projets
+              {header.title || "Nos Projets"}
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Découvrez nos initiatives et réalisations qui créent un impact positif
+              {header.subtitle || "Découvrez nos initiatives et réalisations qui créent un impact positif"}
             </p>
           </div>
         </div>
@@ -185,7 +194,7 @@ export default function ProjectsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                     </svg>
                   </div>
-                  <span className="font-bold">Vue Grille</span>
+                  <span className="font-bold">{viewModes.grid || "Vue Grille"}</span>
                   {viewMode === 'grid' && (
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
                   )}
@@ -208,7 +217,7 @@ export default function ProjectsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                     </svg>
                   </div>
-                  <span className="font-bold">Vue Carte</span>
+                  <span className="font-bold">{viewModes.map || "Vue Carte"}</span>
                   {viewMode === 'map' && (
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
                   )}
@@ -231,7 +240,7 @@ export default function ProjectsPage() {
                     ) : (
                       <div className="col-span-full text-center py-12">
                         <p className="text-gray-600 text-lg">
-                          Aucun projet trouvé avec les critères sélectionnés.
+                          {messages.noResults || "Aucun projet trouvé avec les critères sélectionnés."}
                         </p>
                       </div>
                     )}
@@ -242,7 +251,7 @@ export default function ProjectsPage() {
                       <>
                         <div className="mb-4 text-center">
                           <p className="text-gray-600">
-                            📍 {projects.length} projet(s) avec adresses géolocalisées
+                            📍 {projects.length} {messages.mapInfo || "projet(s) avec adresses géolocalisées"}
                           </p>
                         </div>
                         <ProjectMap 
@@ -253,7 +262,7 @@ export default function ProjectsPage() {
                     ) : (
                       <div className="text-center py-12">
                         <p className="text-gray-600 text-lg">
-                          Aucun projet trouvé avec les critères sélectionnés.
+                          {messages.noResults || "Aucun projet trouvé avec les critères sélectionnés."}
                         </p>
                       </div>
                     )}
@@ -265,9 +274,9 @@ export default function ProjectsPage() {
                   <div className="flex flex-col items-center mt-12 space-y-4">
                     {/* Pagination Info */}
                     <div className="text-sm text-gray-600">
-                      Affichage de {((pagination.currentPage - 1) * 20) + 1} à{' '}
-                      {Math.min(pagination.currentPage * 20, pagination.totalItems)} sur{' '}
-                      {pagination.totalItems} projets
+                      {paginationLabels.showing || "Affichage de"} {((pagination.currentPage - 1) * 20) + 1} {paginationLabels.to || "à"}{' '}
+                      {Math.min(pagination.currentPage * 20, pagination.totalItems)} {paginationLabels.of || "sur"}{' '}
+                      {pagination.totalItems} {paginationLabels.items || "projets"}
                     </div>
                     
                     {/* Pagination Buttons */}
@@ -281,7 +290,7 @@ export default function ProjectsPage() {
                             : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                         }`}
                       >
-                        ← Précédent
+                        {paginationLabels.previous || "← Précédent"}
                       </button>
                       
                       <div className="flex items-center space-x-1">
@@ -323,7 +332,7 @@ export default function ProjectsPage() {
                             : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                         }`}
                       >
-                        Suivant →
+                        {paginationLabels.next || "Suivant →"}
                       </button>
                     </div>
                   </div>

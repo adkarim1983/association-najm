@@ -1,9 +1,14 @@
-import { Inter } from 'next/font/google';
+import { Inter, Tajawal } from 'next/font/google';
 import './globals.css';
 import ClientLayout from './ClientLayout';
 import { cookies } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'] });
+const tajawal = Tajawal({ 
+  weight: ['400', '500', '700'],
+  subsets: ['arabic'],
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Association Najm',
@@ -17,9 +22,12 @@ export default function RootLayout({ children }) {
   if (!['fr', 'en', 'ar'].includes(lang)) lang = 'fr';
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
 
+  // Choisir la police selon la langue
+  const fontClassName = lang === 'ar' ? tajawal.className : inter.className;
+
   return (
     <html lang={lang} dir={dir} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={fontClassName}>
         <ClientLayout>
           {children}
         </ClientLayout>

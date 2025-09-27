@@ -14,6 +14,7 @@
       "contact": "Contact"
     },
     "footer": {
+      "logo_alt": "Logo Najm",
       "orgLine": "L'Association Najm pour le développement culturel et éducatif œuvre à promouvoir l'engagement des jeunes à travers des actions citoyennes et éducatives.",
       "addressTitle": "Adresse",
       "addressLine1": "Groupe 3, en face de la Faculté des Lettres et des Sciences Humaines Ben M'sik, Centre social et économique, Rue Rahmouni Boualam, Casablanca.",
@@ -22,7 +23,7 @@
       "phoneMobile": "+212 661 680 893",
       "phoneLandline": "Fixe : 08 08 55 86 90 / 08 08 69 34 45",
       "email": "contact@eerchad.ma",
-      "rights": "© 2025 Association Najm. Tous droits réservés."
+      "rights": "© {year} Association Najm. Tous droits réservés."
     },
     "buttons": {
       "learnMore": "En savoir plus",
@@ -31,6 +32,8 @@
       "readMore": "Lire la suite",
       "apply": "Postuler",
       "sendMessage": "Envoyer le message"
+    },
+    "loading": {
+      "redirecting": "Redirection vers l'accueil..."
     }
   }
-  

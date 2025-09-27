@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export default function ProjectFilters({ onFilterChange }) {
+  const { t } = useTranslation();
   const [filters, setFilters] = useState({
     category: '',
     status: '',
@@ -12,32 +14,39 @@ export default function ProjectFilters({ onFilterChange }) {
 
   const [activeFiltersCount, setActiveFiltersCount] = useState(0);
 
+  // Get translated data
+  const filtersData = t('projects.filters', { returnObjects: true }) || {};
+  const categoryData = filtersData.category || {};
+  const statusData = filtersData.status || {};
+  const locationData = filtersData.location || {};
+  const searchData = filtersData.search || {};
+
   const categories = [
-    { value: '', label: 'Toutes les catégories', icon: '📋' },
-    { value: 'restauration', label: 'Restauration', icon: '🍽️' },
-    { value: 'marketing_digital', label: 'Marketing Digital', icon: '📱' },
-    { value: 'evenementiel', label: 'Événementiel', icon: '🎉' },
-    { value: 'design', label: 'Design', icon: '🎨' },
-    { value: 'audio_visuel', label: 'Audio Visuel', icon: '🎬' }
+    { value: '', label: categoryData.all || 'Toutes les catégories', icon: '📋' },
+    { value: 'restauration', label: categoryData.restauration || 'Restauration', icon: '🍽️' },
+    { value: 'marketing_digital', label: categoryData.marketing_digital || 'Marketing Digital', icon: '📱' },
+    { value: 'evenementiel', label: categoryData.evenementiel || 'Événementiel', icon: '🎉' },
+    { value: 'design', label: categoryData.design || 'Design', icon: '🎨' },
+    { value: 'audio_visuel', label: categoryData.audio_visuel || 'Audio Visuel', icon: '🎬' }
   ];
 
   const statuses = [
-    { value: '', label: 'Tous les statuts', icon: '📊' },
-    { value: 'planned', label: 'Planifié', icon: '📅' },
-    { value: 'active', label: 'En cours', icon: '⚡' },
-    { value: 'completed', label: 'Terminé', icon: '✅' }
+    { value: '', label: statusData.all || 'Tous les statuts', icon: '📊' },
+    { value: 'planned', label: statusData.planned || 'Planifié', icon: '📅' },
+    { value: 'active', label: statusData.active || 'En cours', icon: '⚡' },
+    { value: 'completed', label: statusData.completed || 'Terminé', icon: '✅' }
   ];
 
   const locations = [
-    { value: '', label: 'Toutes les localisations', icon: '🌍' },
-    { value: 'Annexe administrative de Sidi Othmane', label: 'Sidi Othmane Admin', icon: '🏢' },
-    { value: 'Zone industrielle Sidi Othmane', label: 'Sidi Othmane Industriel', icon: '🏭' },
-    { value: 'Annexe administrative du quartier Moulay Rachid', label: 'Moulay Rachid Admin', icon: '🏢' },
-    { value: 'Zone industrielle Moulay Rachid', label: 'Moulay Rachid Industriel', icon: '🏭' },
-    { value: 'Annexe administrative du quartier Sadri', label: 'Sadri Admin', icon: '🏢' },
-    { value: 'Annexe administrative du quartier Mabrouka', label: 'Mabrouka Admin', icon: '🏢' },
-    { value: 'Hay El Rajae', label: 'Hay El Rajae', icon: '🏘️' },
-    { value: 'Annexe administrative El Harouiyine', label: 'El Harouiyine Admin', icon: '🏢' }
+    { value: '', label: locationData.all || 'Toutes les localisations', icon: '🌍' },
+    { value: 'Annexe administrative de Sidi Othmane', label: locationData.sidiOthmaneAdmin || 'Sidi Othmane Admin', icon: '🏢' },
+    { value: 'Zone industrielle Sidi Othmane', label: locationData.sidiOthmaneIndustrial || 'Sidi Othmane Industriel', icon: '🏭' },
+    { value: 'Annexe administrative du quartier Moulay Rachid', label: locationData.moulayRachidAdmin || 'Moulay Rachid Admin', icon: '🏢' },
+    { value: 'Zone industrielle Moulay Rachid', label: locationData.moulayRachidIndustrial || 'Moulay Rachid Industriel', icon: '🏭' },
+    { value: 'Annexe administrative du quartier Sadri', label: locationData.sadriAdmin || 'Sadri Admin', icon: '🏢' },
+    { value: 'Annexe administrative du quartier Mabrouka', label: locationData.mabroukaAdmin || 'Mabrouka Admin', icon: '🏢' },
+    { value: 'Hay El Rajae', label: locationData.hayElRajae || 'Hay El Rajae', icon: '🏘️' },
+    { value: 'Annexe administrative El Harouiyine', label: locationData.elHarouiyineAdmin || 'El Harouiyine Admin', icon: '🏢' }
   ];
 
   const handleFilterChange = (key, value) => {
@@ -70,10 +79,10 @@ export default function ProjectFilters({ onFilterChange }) {
           </div>
           <div>
             <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-              Filtres de Recherche
+              {filtersData.title || "Filtres de Recherche"}
             </h2>
             <p className="text-gray-600 text-sm">
-              {activeFiltersCount > 0 ? `${activeFiltersCount} filtre(s) actif(s)` : 'Aucun filtre appliqué'}
+              {activeFiltersCount > 0 ? `${activeFiltersCount} ${filtersData.filtersActive || "filtre(s) actif(s)"}` : filtersData.noFiltersActive || 'Aucun filtre appliqué'}
             </p>
           </div>
         </div>
@@ -86,7 +95,7 @@ export default function ProjectFilters({ onFilterChange }) {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
-            <span className="font-medium">Effacer tout</span>
+            <span className="font-medium">{filtersData.clearAll || "Effacer tout"}</span>
           </button>
         )}
       </div>
@@ -98,14 +107,14 @@ export default function ProjectFilters({ onFilterChange }) {
         <div className="xl:col-span-2">
           <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 mb-3">
             <span className="text-lg">🔍</span>
-            <span>Recherche globale</span>
+            <span>{searchData.label || "Recherche globale"}</span>
           </label>
           <div className="relative">
             <input
               type="text"
               value={filters.search}
               onChange={(e) => handleFilterChange('search', e.target.value)}
-              placeholder="Rechercher par titre, description, localisation..."
+              placeholder={searchData.placeholder || "Rechercher par titre, description, localisation..."}
               className="w-full pl-12 pr-4 py-4 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl text-gray-700 placeholder-gray-400"
             />
             <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
@@ -130,7 +139,7 @@ export default function ProjectFilters({ onFilterChange }) {
         <div>
           <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 mb-3">
             <span className="text-lg">🏷️</span>
-            <span>Catégorie</span>
+            <span>{categoryData.label || "Catégorie"}</span>
           </label>
           <div className="relative">
             <select
@@ -156,7 +165,7 @@ export default function ProjectFilters({ onFilterChange }) {
         <div>
           <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 mb-3">
             <span className="text-lg">📍</span>
-            <span>Localisation</span>
+            <span>{locationData.label || "Localisation"}</span>
           </label>
           <div className="relative">
             <select
@@ -184,7 +193,7 @@ export default function ProjectFilters({ onFilterChange }) {
       {activeFiltersCount > 0 && (
         <div className="mt-6 pt-6 border-t border-gray-200">
           <div className="flex items-center space-x-2 mb-3">
-            <span className="text-sm font-semibold text-gray-700">Filtres actifs:</span>
+            <span className="text-sm font-semibold text-gray-700">{filtersData.activeFiltersLabel || "Filtres actifs:"}</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {filters.search && (

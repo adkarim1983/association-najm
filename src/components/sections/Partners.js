@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from "react";
+import { useTranslation } from "../../hooks/useTranslation";
 const image4 = "/images/image4.jpg";
 const image6 = "/images/image6.png";
 const image7 = "/images/image7.png";
@@ -25,6 +26,7 @@ const partners = [
 ];
 
 export default function Partners() {
+  const { t } = useTranslation();
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -101,10 +103,10 @@ export default function Partners() {
     >
       <div className="container mx-auto px-2 sm:px-3 md:px-4">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-5 text-blue-900 leading-tight">
-          Nos Partenaires
+          {t('home.partners.title')}
         </h2>
         <p className="text-justify max-w-3xl mx-auto text-gray-700 text-lg">
-          Nous collaborons avec des institutions de renom pour maximiser notre impact et créer des synergies durables dans nos domaines d'intervention.
+          {t('home.partners.desc')}
         </p>
         <br />
         <br />

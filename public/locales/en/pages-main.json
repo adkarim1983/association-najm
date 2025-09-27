@@ -1,8 +1,20 @@
 {
     "home": {
       "hero": {
-        "title": "Association Najm",
+        "slides": [
+          {
+            "title": "Najm Association",
         "subtitle": "For a better future through education, culture and solidarity."
+          },
+          {
+            "title": "Education and Engagement",
+            "subtitle": "Join us to build a more just and humane world."
+          },
+          {
+            "title": "Active Solidarity",
+            "subtitle": "Let's unite our forces for a positive impact in our society."
+          }
+        ]
       },
       "presidentMessage": {
         "title": "President’s Message",
@@ -30,7 +42,13 @@
       },
       "academyTeaser": {
         "title": "Najm Academy for Digital Professions",
-        "desc": "Najm Academy trains youth in tomorrow’s digital skills. Our innovative programs prepare a new generation of digital professionals."
+        "desc": "Najm Academy trains youth in tomorrow's digital skills. Our innovative programs prepare a new generation of digital professionals.",
+        "stats": {
+          "trainings": "Training programs",
+          "trainees": "Young people trained",
+          "insertionRate": "Insertion rate",
+          "partners": "Partner companies"
+        }
       },
       "entrepreneurshipResults": {
         "title": "Key Results – Entrepreneurship 2024",
@@ -40,6 +58,7 @@
       },
       "academyObjectives": {
         "title": "Najm Academy Objectives",
+        "description": "Our objectives aim to create a learning and innovation ecosystem to prepare young people for the challenges of the digital world.",
         "bullets": [
           "Train for digital professions",
           "Develop an entrepreneurial mindset",
@@ -53,8 +72,105 @@
       }
     },
     "projects": {
+      "header": {
       "title": "Our Projects",
       "subtitle": "Discover our initiatives and achievements that create a positive impact"
+      },
+      "viewModes": {
+        "grid": "Grid View",
+        "map": "Map View"
+      },
+      "messages": {
+        "loading": "Loading...",
+        "noResults": "No projects found with the selected criteria.",
+        "mapInfo": "project(s) with geolocated addresses"
+      },
+      "pagination": {
+        "showing": "Showing",
+        "to": "to",
+        "of": "of",
+        "items": "projects",
+        "previous": "← Previous",
+        "next": "Next →"
+      },
+      "card": {
+        "noImageText": "No image",
+        "dateUnavailable": "Date unavailable",
+        "categoryLabel": "Category:",
+        "locationLabel": "Location:",
+        "addressLabel": "Address:",
+        "viewMore": "View more",
+        "viewsLabel": "Views",
+        "likesLabel": "Likes",
+        "statuses": {
+          "active": "Active",
+          "completed": "Completed",
+          "planned": "Planned",
+          "default": "Active"
+        },
+        "categories": {
+          "economic": "Economic Development",
+          "education": "Education and Training",
+          "environment": "Environment",
+          "social": "Social Action",
+          "health": "Health",
+          "technology": "Technology",
+          "restauration": "Catering",
+          "marketing_digital": "Digital Marketing",
+          "evenementiel": "Event Management",
+          "design": "Design",
+          "audio_visuel": "Audio Visual"
+        },
+        "locations": {
+          "Annexe administrative de Sidi Othmane": "Sidi Othmane Admin",
+          "Zone industrielle Sidi Othmane": "Sidi Othmane Industrial",
+          "Annexe administrative du quartier Moulay Rachid": "Moulay Rachid Admin",
+          "Zone industrielle Moulay Rachid": "Moulay Rachid Industrial",
+          "Annexe administrative du quartier Sadri": "Sadri Admin",
+          "Annexe administrative du quartier Mabrouka": "Mabrouka Admin",
+          "Hay El Rajae": "Hay El Rajae",
+          "Annexe administrative El Harouiyine": "El Harouiyine Admin"
+        }
+      },
+      "filters": {
+        "title": "Search Filters",
+        "noFiltersActive": "No filters applied",
+        "filtersActive": "active filter(s)",
+        "clearAll": "Clear all",
+        "activeFiltersLabel": "Active filters:",
+        "search": {
+          "label": "Global search",
+          "placeholder": "Search by title, description, location..."
+        },
+        "category": {
+          "label": "Category",
+          "all": "All categories",
+          "restauration": "Catering",
+          "marketing_digital": "Digital Marketing",
+          "evenementiel": "Event Management",
+          "design": "Design",
+          "audio_visuel": "Audio Visual"
+        },
+        "status": {
+          "label": "Status",
+          "all": "All statuses",
+          "planned": "Planned",
+          "active": "Active",
+          "completed": "Completed"
+        },
+        "location": {
+          "label": "Location",
+          "all": "All locations",
+          "sidiOthmaneAdmin": "Sidi Othmane Admin",
+          "sidiOthmaneIndustrial": "Sidi Othmane Industrial",
+          "moulayRachidAdmin": "Moulay Rachid Admin",
+          "moulayRachidIndustrial": "Moulay Rachid Industrial",
+          "sadriAdmin": "Sadri Admin",
+          "mabroukaAdmin": "Mabrouka Admin",
+          "hayElRajae": "Hay El Rajae",
+          "elHarouiyineAdmin": "El Harouiyine Admin"
+        }
+      }
     },
     "gallery": {
       "sections": {
@@ -174,6 +290,793 @@
           { "q": "How does the support process work?", "a": "After an initial meeting, we set up a support plan including training, coaching sessions and personalized follow-up." }
         ]
       }
+    },
+    "missions": {
+      "platformManagement": {
+        "title": "Management and Administration of Guidance Platforms",
+        "intro": "Association Najm has been managing youth guidance and employment platforms in the Moulay Rachid neighborhoods since 2020, spaces dedicated to supporting and economically integrating young people within the framework of Program 3 of the third phase of the National Initiative for Human Development (INDH).<br/><br/>The guidance platform, thanks to its management model developed by Association Najm, has become a reference in youth economic integration, with total commitment to the spirit of INDH. It stands out as a dynamic space that brings together various institutions, organizations and programs dedicated to youth.<br/><br/>Association Najm relies on an efficient and transparent governance methodology, based on clear and smooth decision-making mechanisms. The association has developed a procedures guide covering all management operations, and aims to obtain quality certification for its administrative processes and recognition as a public utility association.",
+        "spaces": [
+          {
+            "title": "Reception Area",
+            "description": "This is the first point of contact with young people, whose mission is to verify their eligibility and present them with the different programs and services offered by the platform."
+          },
+          {
+            "title": "Listening Area",
+            "description": "Dedicated to listening to young people and analyzing their needs, this space aims to identify their ambitions and assess their skills through individual diagnosis, enabling better understanding of their professional and personal expectations."
+          },
+          {
+            "title": "Guidance Area",
+            "description": "After skills assessment, young people are directed to the program best suited to their future ambitions, either to an internal service provider on the platform, or to another external partner institution corresponding to their needs."
+          }
+        ],
+        "stats": {
+          "title": "Key Statistics (as of April 30, 2025)",
+          "labels": [
+            "Young people welcomed on the platform",
+            "Young people directed to social and solidarity economy",
+            "Young people directed to entrepreneurship",
+            "Young people directed to employability enhancement",
+            "Young people directed to external programs/partners",
+            "Total young beneficiaries of platform services"
+          ]
+        }
+      },
+      "socialEconomy": {
+        "title": "Social and Solidarity Economy Support Axis",
+        "intro": "Since 2021, Association Najm has been responsible for implementing the \"Social and Solidarity Economy Support\" axis at the Moulay Rachid prefecture level. This axis aims to support and strengthen the capacities of social and solidarity economy actors, with particular emphasis on cooperatives subject to law 112.12, as well as on various economic actors active in this field.<br/><br/>Thanks to this initiative, Association Najm provides comprehensive support to cooperatives and social entrepreneurs by offering them administrative and management training, strengthening technical and artisanal skills, and financing opportunities. The goal is to strengthen their development opportunities, increase their competitiveness and promote their economic integration for sustainable and inclusive development.",
+        "services": [
+          {
+            "title": "Key Role of the Association",
+            "description": "Association Najm plays a central role in supporting project leaders and economic actors in the social and solidarity economy. It regularly organizes project proposal calls, receives and studies applications from candidate organizations, and accompanies entrepreneurs throughout the preparation and development stages of financial aid requests."
+          },
+          {
+            "title": "Business Plan Support",
+            "description": "As part of its commitment to supporting economic development, Association Najm accompanies project leaders in developing their Business Plans. It provides them with tools and advice to structure their ideas, improve their economic model and prepare effective presentations before the Provincial Committee for Economic Development (CPDE), which evaluates the feasibility and relevance of projects."
+          },
+          {
+            "title": "Post-Validation Follow-up and Financing",
+            "description": "After project validation by the CPDE, Association Najm continues to provide support by accompanying project leaders in the administrative procedures necessary to obtain financial aid. It ensures compliance with conditions required by subsidized organizations and helps them prepare and submit necessary documents within deadlines, thus ensuring smooth and rapid reception of funds."
+          },
+          {
+            "title": "Post-Financing Follow-up",
+            "description": "Association Najm's role is not limited to granting financing, but extends to meticulous follow-up after financing, where it continues to support project leaders during the implementation phase. This support includes advice on management, marketing and business development, helping to ensure the sustainability and growth of enterprises. The goal is to accompany these projects towards long-term success and strengthen their economic and social impact within the community."
+          }
+        ],
+        "fieldWork": {
+          "title": "In the field with cooperatives",
+          "description": "As part of our ESS mission, we regularly conduct proximity visits, practical workshops and training sessions to support cooperatives in their administrative, commercial and technical procedures. These actions strengthen their professionalization and sustainable economic integration."
+        },
+        "stats": {
+          "title": "Social and Solidarity Economy in Numbers",
+          "labels": [
+            "Project proposal calls organized",
+            "Projects submitted after project calls",
+            "Projects meeting initial criteria",
+            "Projects accepted by CPDH",
+            "Projects financed and ongoing"
+          ]
+        },
+        "actions": {
+          "title": "Social and solidarity economy in action",
+          "items": [
+            {
+              "title": "Cooperative support",
+              "description": "Proximity support to cooperatives to structure activity, formalize procedures and improve daily management (administrative, financial, commercial)."
+            },
+            {
+              "title": "Training and capacity building",
+              "description": "Thematic workshops (quality, marketing, sales, e-commerce, hygiene, safety, product design) to professionalize practices and build team skills."
+            },
+            {
+              "title": "Marketing and promotion",
+              "description": "Support for marketing (packaging, storytelling, product photos) and participation in events to increase visibility and outlets for cooperatives."
+            }
+          ]
+        },
+        "renewal": "Based on these equally positive results, the Provincial Human Development Committee renewed its confidence in Association Najm by signing a new agreement for the implementation of the \"Social and Solidarity Economy Support\" axis in the Moulay Rachid districts for 2025."
+      },
+      "entrepreneurship": {
+        "title": "Strengthening Youth Entrepreneurship",
+        "intro": "Thanks to the competence of its members and the constant commitment of its organizational structure, Association Najm contributed to the call for expressions of interest launched by the Moulay Rachid prefecture in November 2023, concerning the implementation of the youth entrepreneurship support axis.<br/><br/>The excellence of the application file presented by the Association enabled it to gain the confidence of the selection committee and the Governor, this confidence was materialized by the assignment of this strategic mission to Association Najm. The Association thus signed two partnership agreements for 2024, in the territory of the Moulay Rachid prefecture.<br/><br/>These two agreements aim to train 200 young people in the pre-business creation phase and to support 115 entrepreneurs in the post-creation phase during 2024.",
+        "methodology": {
+          "title": "Methodology and Pedagogical Approach",
+          "items": [
+            {
+              "title": "Work Methodology",
+              "description": "The association has adopted a work methodology based on organizing pre-defined training cycles (each quarter), interspersed with a set of continuous monitoring and evaluation mechanisms. These cycles conclude with periodic meetings of the Provincial Human Development Committee (CPDH), to allow INDH governance structures to monitor the level of achievement and attainment of set objectives."
+            },
+            {
+              "title": "Pedagogical Approach",
+              "description": "Association Najm adopts a modern pedagogical approach focused on andragogy, specially designed to meet adult learning needs. This approach is reinforced by applied and interactive training based on real case treatment, according to the principle of \"Learning by doing\". This journey is supervised by a permanent pedagogical team, which ensures precise support and training quality, through continuous communication with experts and professionals, which strengthens learning effectiveness and guarantees concrete results."
+            }
+          ]
+        },
+        "stats": {
+          "title": "Key Results (Year 2024)",
+          "labels": [
+            "Youth trained in pre-creation phase (131% of target)",
+            "Projects accepted by CPDH",
+            "Projects implemented (67% of accepted projects)",
+            "Exceeding business dynamization objectives"
+          ]
+        },
+        "actions": {
+          "title": "Entrepreneurship in action",
+          "items": [
+            {
+              "title": "Awareness and practical workshops",
+              "description": "Organization of thematic workshops and practical sessions to strengthen entrepreneurial skills (ideation, market research, business model)."
+            },
+            {
+              "title": "Business creation support",
+              "description": "Personalized coaching to structure the project, formalize the business plan and prepare creation and financing procedures."
+            },
+            {
+              "title": "Post-creation follow-up and networking",
+              "description": "Startup support, connecting with the ecosystem and facilitating meetings to promote synergies and opportunities."
+            }
+          ]
+        }
+      },
+      "incubation": {
+        "title": "Incubation",
+        "subtitle": "Incubation Program for Young Entrepreneurs",
+        "intro": "Association Najm develops an innovative incubation program designed to support young entrepreneurs in transforming their ideas into viable and sustainable businesses. Our incubator provides an environment conducive to innovation and entrepreneurial development.",
+        "sections": {
+          "workspace": {
+            "title": "Workspaces",
+            "description": "Provision of collaborative workspaces equipped with the latest technologies to foster creativity and productivity.",
+            "features": [
+              "Shared and private offices",
+              "Equipped meeting rooms",
+              "Innovation laboratories",
+              "Networking spaces"
+            ]
+          },
+          "mentoring": {
+            "title": "Personalized mentoring",
+            "description": "Support by experienced mentors from the entrepreneurial world and various business sectors.",
+            "features": [
+              "Specialized sector mentors",
+              "Individual coaching sessions",
+              "Development workshops",
+              "Entrepreneur network"
+            ]
+          },
+          "training": {
+            "title": "Training programs",
+            "phases": [
+              {
+                "name": "Ideation",
+                "description": "Development and validation of ideas"
+              },
+              {
+                "name": "Prototyping",
+                "description": "Creation of prototypes and testing"
+              },
+              {
+                "name": "Launch",
+                "description": "Market entry and growth"
+              }
+            ]
+          },
+          "funding": {
+            "title": "Access to funding",
+            "description": "Facilitating access to various funding sources to support the development of incubated startups.",
+            "sources": {
+              "title": "Funding sources",
+              "items": [
+                "Seed funding",
+                "Private investors",
+                "Public grants",
+                "Crowdfunding"
+              ]
+            },
+            "support": {
+              "title": "Financial support",
+              "items": [
+                "Business plan preparation",
+                "Pitch training",
+                "Investor connections",
+                "Financial monitoring"
+              ]
+            }
+          }
+        },
+        "stats": {
+          "labels": [
+            "Incubated startups",
+            "Success rate",
+            "Expert mentors",
+            "Incubation months"
+          ]
+        }
+      },
+      "capacityBuilding": {
+        "title": "Youth Capacity Building",
+        "subtitle": "Comprehensive training and support programs to strengthen youth skills and promote their professional integration",
+        "intro": "Association Najm implements comprehensive youth capacity building programs, aimed at strengthening their technical, personal and professional skills to promote their integration into the job market and their personal development.",
+        "sections": {
+          "approach": {
+            "title": "Our Development Approach"
+          },
+          "technical": {
+            "title": "Technical training",
+            "description": "Training programs in the most in-demand technical and digital fields in the market.",
+            "skills": [
+              "Web and mobile development",
+              "Graphic design and multimedia",
+              "Digital marketing",
+              "Accounting and management",
+              "Foreign languages"
+            ]
+          },
+          "transversal": {
+            "title": "Transversal skills",
+            "description": "Development of essential soft skills for professional and personal success.",
+            "skills": [
+              "Communication and public speaking",
+              "Leadership and teamwork",
+              "Time and priority management",
+              "Problem solving",
+              "Critical thinking and creativity"
+            ]
+          },
+          "academy": {
+            "title": "Najm Academy for Digital Professions",
+            "description": "Flagship program \"Social promotion through digitalization\" offering specialized training in digital professions.",
+            "programs": [
+              {
+                "name": "Web Dev",
+                "description": "Complete web development"
+              },
+              {
+                "name": "Design", 
+                "description": "Professional graphic design"
+              },
+              {
+                "name": "Marketing",
+                "description": "Advanced digital marketing"
+              }
+            ]
+          },
+          "employment": {
+            "title": "Professional integration support",
+            "preparation": {
+              "title": "Job preparation",
+              "items": [
+                "CV and cover letter writing",
+                "Job interview preparation",
+                "Interview simulation",
+                "Job search techniques"
+              ]
+            },
+            "networking": {
+              "title": "Networking",
+              "items": [
+                "Partner company network",
+                "Recruitment forums",
+                "Internships and opportunities",
+                "Post-integration follow-up"
+              ]
+            }
+          },
+          "objectives": {
+            "title": "Program objectives",
+            "goals": [
+              "Reduce the digital divide",
+              "Improve youth employability",
+              "Promote social inclusion",
+              "Develop entrepreneurial spirit",
+              "Build self-confidence",
+              "Promote local innovation"
+            ]
+          }
+        },
+        "stats": {
+          "labels": [
+            "Youth trained",
+            "Insertion rate",
+            "Available programs",
+            "Partner companies"
+          ]
+        },
+        "actions": {
+          "title": "Youth capacity building in action",
+          "items": [
+            {
+              "title": "Practical training and workshops",
+              "description": "Implementation of immersive workshops and practical sessions to strengthen the technical and transversal skills of young people."
+            },
+            {
+              "title": "Coaching, mentoring and follow-up",
+              "description": "Individualized support, mentoring and continuous follow-up to ensure real and lasting progress for beneficiaries."
+            },
+            {
+              "title": "Upgrade workshops and certifications",
+              "description": "Intensive upgrade sessions, certification preparation and skills validation to boost employability."
+            }
+          ]
+        }
+      }
+    },
+    "gallery": {
+      "title": "Inauguration of Najm Academy for Digital Professions",
+      "sections": {
+        "section1": {
+          "p1": "Association Najm has officially launched three professional training programs for young people: web development, graphic design and digital marketing. This initiative aims to offer a real opportunity for professional integration through the acquisition of skills sought after in the market.",
+          "p2": "These programs are designed to meet the requirements of today's digital world with an emphasis on practice, creativity and innovation."
+        },
+        "section2": {
+          "p1": "These trainings are supervised by experienced professionals who adopt a project-based pedagogical approach. Each participant benefits from individualized support, practical work and concrete projects, individual or collective.",
+          "p2": "The objective is to enable each young person to develop their technical skills and creativity, as well as to strengthen their self-confidence in a dynamic and stimulating environment."
+        },
+        "programs": {
+          "title": "Program content",
+          "web": "Web Development: HTML, CSS, JavaScript, React, creating responsive websites.",
+          "design": "Graphic Design: Photoshop, Illustrator, InDesign, creating logos and visual materials.",
+          "marketing": "Digital Marketing: SEO, social networks, emailing, online advertising."
+        },
+        "training": {
+          "title": "Training process",
+          "p1": "Classes take place in a dynamic and participatory environment, with practical workshops, feedback sessions, inspiring conferences and collective challenges every week.",
+          "p2": "The emphasis is on youth participation, collaborative work and the realization of digital projects that respond to real issues."
+        },
+        "success": {
+          "title": "A successful first cohort",
+          "description": "Thanks to the commitment of trainers, partners and young people, this first cohort has laid the foundations for a real dynamic of learning and transformation. This program aims to be a springboard towards a promising digital future for our young people."
+        }
+      },
+      "highlights": {
+        "title": "General gallery of highlights"
+      },
+      "images": {
+        "inauguration": "Inauguration",
+        "presentation": "Training presentation",
+        "training_content": "Training content",
+        "course_progress": "Course progress",
+        "end_of_training": "End of training",
+        "share_exchange": "Sharing and exchange",
+        "youth_discovering_digital": "Youth discovering digital",
+        "intensive_training": "Intensive training",
+        "group_work": "Group work",
+        "pedagogical_team": "Pedagogical team",
+        "final_projects": "Final projects",
+        "certificates": "Certificate ceremony",
+        "digital_marketing_workshop": "Digital marketing workshop",
+        "tech_trends_discussion": "Tech trends discussion"
+      }
+    },
+    "academy": {
+      "header": {
+        "title": "Najm Academy for Digital Professions",
+        "subtitle": "Social advancement through digitization"
+      },
+      "sections": [
+        {
+          "title": "For an Inclusive Digital Transformation in Morocco",
+          "text": "Association Najm for Economic Inclusion believes that digital transformation represents both a challenge and a promising opportunity for Morocco. Limited access to modern technologies, the lack of suitable training and a widening digital divide are among the main barriers hindering youth integration into the digital economy. Yet digitization offers great possibilities to stimulate entrepreneurship, create job opportunities and energize the socio-economic fabric—especially for out-of-school and unemployed youth who are not in training and face real obstacles to professional integration. Aware of this reality, Association Najm is committed to supporting youth in acquiring digital skills, advancing the digitalization of businesses and encouraging technological innovation. By focusing efforts on these fundamental pillars, the association aims to help build a more inclusive development model.",
+          "alt": "Moroccan youth using digital tools",
+          "buttonText": "Discover our programs"
+        },
+        {
+          "title": "An Academy Serving Morocco's Digital Future",
+          "text": "Through this Academy, Association Najm offers young people economic-integration opportunities in a high-potential sector: digital professions—fully aligned with the national drive for digital transition.",
+          "alt": "Najm Academy for digital future"
+        },
+        {
+          "title": "Strategic vision of the association",
+          "text": "Since its creation, Association Najm continues its development to strengthen professional integration and youth entrepreneurship.\\n\\nWith rigorous governance, a structured team and efficient monitoring tools, it diversifies its actions and adapts its programs to economic and digital changes. It places continuing education, partnerships and post-training support at the heart of its sustainable strategy.",
+          "alt": "Strategic vision of Association Najm"
+        }
+      ],
+      "skillReinforcement": {
+        "title": "Strengthening Young People's Parallel Skills",
+        "text": "Association Najm has developed a series of parallel training programs aimed at strengthening young people's professional integration opportunities. These trainings are theoretical and practical workshops designed to equip young people with concrete skills for their professional insertion in the job market.",
+        "cards": [
+          {
+            "title": "Personal Skills Development",
+            "text": "Strengthening communication, leadership and stress management skills to improve employment opportunities."
+          },
+          {
+            "title": "Job Search Techniques",
+            "text": "How to write a CV, techniques for successful job interviews, and how to develop your professional network."
+          },
+          {
+            "title": "Entrepreneurship Awareness",
+            "text": "Fundamental concepts for business creation, project management and innovation."
+          },
+          {
+            "title": "Awareness of the Importance of Creating Cooperatives",
+            "text": "Support for creating cooperatives subject to law 112/12, and promotion of cooperative and solidarity work."
+          }
+        ]
+      },
+      "support": {
+        "title": "Support and digital cooperatives",
+        "text": "Association Najm works with companies and actors in the digital sector to connect young people to employment opportunities through workshops, internships, and specific training.",
+        "programIncludes": "The program also includes:",
+        "imageText": "Support",
+        "list": [
+          "Entrepreneurship advice",
+          "Support in writing business plans",
+          "Access to financing",
+          "The creation of digital cooperatives, promoting skills exchange, access to new markets, and sustainable collective growth"
+        ]
+      },
+      "recognition": {
+        "title": "Recognition and national ambition",
+        "text": "In order to strengthen its impact, the association works to obtain public utility status to expand its partnerships, financing and national presence.",
+        "quote": "Faithful to its mission, Association Najm continues to adapt to economic and social challenges and is committed to an inclusive, digital and sustainable Morocco."
+      },
+      "backToTop": "Back to top"
+    },
+    "programs": {
+      "header": {
+        "badge": "Digital Training",
+        "title": "Our Digital Training Programs",
+        "subtitle": "For an inclusive digital transformation in Morocco"
+      },
+      "cards": [
+        {
+          "title": "Web Development",
+          "description": "Modern technologies and frameworks to create innovative web applications",
+          "icon": "💻",
+          "skills": ["HTML/CSS", "JavaScript", "React", "Node.js", "MongoDB", "Git", "Bootstrap", "REST API"]
+        },
+        {
+          "title": "Digital Marketing",
+          "description": "Digital communication strategies and social media management",
+          "icon": "📢",
+          "skills": ["SEO", "Social Media", "Google Analytics", "Facebook Ads", "Google Ads", "Email Marketing", "Content Marketing", "Canva"]
+        },
+        {
+          "title": "Visual Design",
+          "description": "Creativity and visual innovation for modern and impactful designs",
+          "icon": "🎨",
+          "skills": ["Photoshop", "Illustrator", "Figma", "UI/UX Design", "InDesign", "After Effects", "Branding", "Typography"]
+        }
+      ],
+      "introduction": {
+        "title": "✨ General Introduction",
+        "paragraphs": [
+          "Association Najm today inaugurates an ambitious digital training program, the result of its continued commitment to the economic and social empowerment of youth.",
+          "Aware of the growing importance of digital technology in all sectors of activity, the association has designed a training path structured around three complementary areas: Web Development, Digital Marketing, and Visual Design and Creation.",
+          "These trainings aim not only to transmit technical and practical skills, but also to stimulate creativity, entrepreneurial spirit and innovation among young people. Through this project, Association Najm wishes to open new professional perspectives, encourage competitiveness and actively contribute to digital inclusion."
+        ]
+      },
+      "webDevelopment": {
+        "title": "💻 Web Development Training",
+        "paragraphs": [
+          "The Web Development training constitutes a central pillar of the program. It aims to give participants the tools and knowledge necessary to design and develop modern, dynamic and secure websites.",
+          "Learners will be introduced to programming languages (HTML, CSS, JavaScript) as well as the most used frameworks and libraries in the industry. They will also discover the principles of responsive design, best practices in accessibility and integration of collaborative tools.",
+          "This training will offer young people the opportunity to prepare for various digital professions: front-end developer, web integrator, or creator of digital solutions for local businesses. By encouraging innovation and practice, it paves the way for entrepreneurship and the creation of technology start-ups."
+        ]
+      },
+      "digitalMarketing": {
+        "title": "📢 Digital Marketing Training",
+        "paragraphs": [
+          "In a world where online visibility has become essential, Digital Marketing training offers young people to master modern communication and promotion strategies.",
+          "On the program: social media management, creation of engaging content, natural referencing (SEO), online advertising campaigns (Google Ads, Facebook Ads), email marketing, and performance analysis via specialized tools.",
+          "This training will allow participants to develop a deep understanding of consumer behavior and learn to design effective campaigns.",
+          "It is aimed at those who wish to become community managers, digital marketing managers, communication consultants or launch their own entrepreneurial project. By giving the keys to modern commerce, this training prepares youth to play an active role in local and national economic development."
+        ]
+      },
+      "visualDesign": {
+        "title": "🎨 Visual Design and Creation Training",
+        "paragraphs": [
+          "The Visual Design and Creation training is dedicated to artistic expression and visual innovation. It aims to develop the skills necessary to create modern, attractive visuals adapted to the digital world.",
+          "Learners will be introduced to the basics of graphic design, typography, colors, as well as the use of professional tools such as Photoshop, Illustrator or Figma.",
+          "Particular attention will be paid to UI/UX design, essential for designing intuitive and pleasant user interfaces, as well as creating various visual media: logos, posters, advertising banners and content for social networks.",
+          "This training offers young people the opportunity to become graphic designers, web designers or independent visual content creators, while strengthening their sense of creativity and their ability to meet market needs."
+        ]
+      },
+      "conclusion": {
+        "title": "🌟 Conclusion",
+        "text": "Through these three trainings, Association Najm confirms its role as a catalyst for talent and skills in the digital field. The objective is clear: to offer young people the means to build a solid professional future, to actively participate in digital transformation and to become agents of change in their community."
+      },
+      "images": {
+        "webDev": "Web development training",
+        "marketing": "Digital marketing",
+        "design": "Design and visual creation",
+        "students": "Students in training",
+        "workshop": "Practical workshop",
+        "marketingImage1": "Digital marketing - Image 1",
+        "marketingImage2": "Digital marketing - Image 2",
+        "marketingImage3": "Digital marketing - Image 3",
+        "designImage1": "Design and visual creation - Image 1",
+        "designImage2": "Design and visual creation - Image 2",
+        "designImage3": "Design and visual creation - Image 3"
+      },
+      "backToTop": "Back to top"
+    },
+    "contact": {
+      "header": {
+        "badge": "Stay in touch",
+        "title": "Contact",
+        "description": "We are listening to you. Send us a message and we will respond quickly."
+      },
+      "form": {
+        "title": "Contact form",
+        "fields": {
+          "name": {
+            "label": "Full name",
+            "placeholder": "Your name"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "Your email"
+          },
+          "phone": {
+            "label": "Phone",
+            "placeholder": "Your number (optional)"
+          },
+          "subject": {
+            "label": "Subject",
+            "placeholder": "Subject of your message"
+          },
+          "message": {
+            "label": "Message",
+            "placeholder": "Your message"
+          }
+        },
+        "submit": {
+          "text": "Send message",
+          "loading": "Sending..."
+        },
+        "validation": {
+          "required": "Please fill in all required fields.",
+          "success": "Message sent successfully.",
+          "error": "Error sending message."
+        },
+        "social": {
+          "title": "Follow us"
+        }
+      },
+      "info": {
+        "title": "Contact info",
+        "items": [
+          {
+            "icon": "📍",
+            "title": "Address",
+            "text": "Group 3, in front of the Faculty of Letters and Human Sciences Ben M'sik, Social and Economic Center, Rue Rahmouni Boualam, Casablanca."
+          },
+          {
+            "icon": "📞",
+            "title": "Phone",
+            "text": "08 08 55 86 90 - 0661 680 893"
+          },
+          {
+            "icon": "✉️",
+            "title": "Email",
+            "text": "contact@associationnajm.ma"
+          }
+        ]
+      },
+      "hours": {
+        "title": "Hours",
+        "schedule": [
+          {
+            "days": "Monday - Friday:",
+            "hours": "9:00 AM - 5:00 PM"
+          },
+          {
+            "days": "Saturday:",
+            "hours": "9:00 AM - 1:00 PM"
+          },
+          {
+            "days": "Sunday:",
+            "hours": "Closed"
+          }
+        ]
+      }
+    },
+    "reports": {
+      "activities2024": {
+        "header": {
+          "title": "Partnership with Irchad and the Faculty",
+          "subtitle": "A strategic partnership for development and innovation in higher education",
+          "imageAlt": "Partnership signing"
+        },
+        "introduction": {
+          "title": "Partnership Introduction",
+          "text": "Association Najm has established a strategic partnership with Irchad and the Faculty as part of its academic and professional development activities. This collaboration aims to strengthen student capabilities and promote excellence in higher education."
+        },
+        "objectives": {
+          "title": "Partnership Objectives",
+          "items": [
+            "Develop innovative training programs",
+            "Facilitate exchange of expertise and knowledge",
+            "Promote collaborative research",
+            "Strengthen graduate employability",
+            "Create internship and employment opportunities"
+          ]
+        },
+        "future": {
+          "title": "Future Perspectives",
+          "text": "This partnership opens new perspectives for the development of the educational and professional ecosystem. It will create lasting synergies between the academic world and the associative sector, thus contributing to the socio-economic development of the region."
+        },
+        "impact": {
+          "title": "Partnership Impact",
+          "stats": [
+            {
+              "number": "150+",
+              "label": "Beneficiary students"
+            },
+            {
+              "number": "25",
+              "label": "Programs developed"
+            },
+            {
+              "number": "85%",
+              "label": "Satisfaction rate"
+            }
+          ]
+        }
+      },
+      "cultureAndYouth": {
+        "header": {
+          "title": "Culture and Youth",
+          "subtitle": "Initiatives and programs dedicated to cultural development and youth empowerment"
+        },
+        "festival": {
+          "title": "Youth Cultural Festival",
+          "imageAlt": "Cultural event 1",
+          "paragraphs": [
+            "Association Najm organized the first Youth Cultural Festival, a major event that brought together more than 500 young participants from different regions. This event was designed to celebrate cultural diversity and promote the artistic talents of young people.",
+            "The festival offered a rich program including traditional dance performances, contemporary music concerts, visual arts exhibitions and creative writing workshops. This event allowed young people to express themselves freely and share their creations with a wide audience.",
+            "The impact of this event was felt well beyond its duration, creating lasting bonds between participants and inspiring new cultural projects in their respective communities."
+          ]
+        },
+        "workshops": {
+          "title": "Personal Development Workshops",
+          "imageAlt": "Youth workshop",
+          "paragraphs": [
+            "As part of its \"Youth and Leadership\" program, the Association has set up a series of personal development workshops for young people aged 16 to 25. These workshops cover essential themes such as self-confidence, effective communication and stress management.",
+            "Led by personal development experts and certified coaches, these workshops use innovative teaching methods combining theory and practice. Participants benefit from personalized support and concrete tools to develop their potential and achieve their projects."
+          ]
+        },
+        "citizenship": {
+          "title": "\"Culture and Citizenship\" Program",
+          "imageAlt": "Cultural program",
+          "activities": [
+            "Organization of citizen debates on contemporary societal issues, allowing young people to express their opinions and develop their critical thinking",
+            "Setting up an artistic creation contest on the theme \"My vision of the future\", encouraging creative expression and forward-thinking reflection",
+            "Creation of a network of young cultural ambassadors responsible for promoting the association's initiatives in their schools and universities"
+          ],
+          "impact": "This innovative program has raised awareness among more than 300 young people about the values of active citizenship and social responsibility, while enhancing their creativity and community engagement."
+        },
+        "stats": {
+          "title": "Impact of our Culture and Youth Actions",
+          "items": [
+            {
+              "number": "800+",
+              "label": "Young participants"
+            },
+            {
+              "number": "25",
+              "label": "Events organized"
+            },
+            {
+              "number": "12",
+              "label": "Cultural partners"
+            },
+            {
+              "number": "90%",
+              "label": "Participant satisfaction"
+            }
+          ]
+        },
+        "testimonials": {
+          "title": "Testimonials",
+          "items": [
+            {
+              "text": "Thanks to Association Najm's workshops, I discovered my passion for theater and developed my self-confidence. Today, I lead my own theater troupe.",
+              "author": "- Sarah, 22 years old"
+            },
+            {
+              "text": "The cultural festival was a turning point in my life. I met young people sharing the same values and together we created several social projects.",
+              "author": "- Ahmed, 24 years old"
+            }
+          ]
+        }
+      },
+      "solidarityDevelopment": {
+        "header": {
+          "title": "Irchad and Faculty Partnership - Solidarity and Development",
+          "imageAlt": "Irchad and Faculty Partnership"
+        },
+        "introduction": {
+          "text": "As part of its commitment to solidarity and social development, Association Najm has established a strategic partnership with Irchad and the Faculty. This collaboration aims to strengthen the links between higher education and community development initiatives, thus creating a bridge between academic theory and social practice in the field."
+        },
+        "strategicAxes": {
+          "title": "Strategic Partnership Areas",
+          "items": [
+            {
+              "title": "Training and Awareness",
+              "description": "Organization of training programs for students and professionals on issues of social solidarity and sustainable development. These trainings include practical workshops, seminars and conferences with field experts."
+            },
+            {
+              "title": "Community Projects",
+              "description": "Implementation of concrete projects serving local communities, directly involving students in field actions. These projects allow practical application of theoretical knowledge and strengthen civic engagement."
+            },
+            {
+              "title": "Applied Research",
+              "description": "Development of applied research programs on local social issues, with active participation of students and teacher-researchers. This research contributes to developing innovative solutions adapted to field needs."
+            },
+            {
+              "title": "Solidarity Network",
+              "description": "Building a solid network between different social development actors, facilitating experience exchange and resource sharing. This network promotes the creation of lasting synergies between partner institutions."
+            }
+          ]
+        },
+        "impact": {
+          "title": "Impact and Perspectives",
+          "text": "This partnership represents an innovative model of collaboration between the academic and associative sectors. It significantly contributes to strengthening the capacities of future graduates while meeting the real needs of communities. Perspectives for extending this collaboration include expanding the partner network and developing new social intervention programs."
+        },
+        "stats": {
+          "title": "Results and Impact",
+          "items": [
+            {
+              "number": "200+",
+              "label": "Direct beneficiaries"
+            },
+            {
+              "number": "15",
+              "label": "Projects completed"
+            },
+            {
+              "number": "8",
+              "label": "Partners involved"
+            },
+            {
+              "number": "95%",
+              "label": "Success rate"
+            }
+          ]
+        }
+      }
+    },
+    "projectDetail": {
+      "loading": "Loading project...",
+      "error": "Project not found",
+      "backToProjects": "Back to projects list",
+      "readMore": "Read more",
+      "readLess": "Read less",
+      "noDescription": "Description not available.",
+      "noImage": "No image",
+      "sections": {
+        "founderInfo": "Project founder information",
+        "presentation": "Project presentation",
+        "support": "Stakeholder (institutional support)",
+        "products": "Products and services offered",
+        "partners": "Partners",
+        "description": "Project description",
+        "gallery": "Project gallery"
+      },
+      "status": {
+        "active": "Active",
+        "completed": "Completed",
+        "planned": "Planned"
+      },
+      "contact": {
+        "title": "Contact",
+        "phone": "Phone",
+        "email": "Email",
+        "website": "Website",
+        "hours": "Hours",
+        "address": "Address"
+      },
+      "map": {
+        "title": "Location",
+        "viewOnMap": "View on map"
+      },
+      "gallery": {
+        "imageOf": "Image {current} of {total}",
+        "expandImage": "Expand image",
+        "previousImage": "Previous image",
+        "nextImage": "Next image",
+        "closeModal": "Close"
+      }
     }
   }
-  

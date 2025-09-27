@@ -13,7 +13,7 @@ const authService = {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ identifier, password }),
+      body: JSON.stringify({ identifier, password }), 
     });
 
     const data = await response.json();
@@ -156,6 +156,7 @@ export function AuthProvider({ children }) {
 
     try {
       const response = await authService.login(identifier, password);
+      console.log('the response of the user is ', response);
       setUser(response.user);
       setIsLoading(false);
       return response;

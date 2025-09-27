@@ -1,8 +1,12 @@
+'use client';
+
 import React from "react";
+import { useTranslation } from "../../hooks/useTranslation";
 const qsn2 = "/images/imgs/qsn2.jpg";
 const qsn = "/images/imgs/qsn.jpg";
 
 export default function Presentation() {
+  const { t } = useTranslation();
   return (
     <section className="relative bg-white m-[25px] rounded-xl overflow-hidden shadow-xl py-12 px-2 sm:px-4 md:px-6">
       <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
@@ -19,11 +23,11 @@ export default function Presentation() {
         {/* Texte centré verticalement */}
         <div className="flex items-center justify-center text-center h-full px-2 sm:px-3 md:px-4">
           <div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-900 mb-4 text-center leading-tight">
-              Qui sommes-nous ?
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-900 mb-4 text-center leading-tight">
+              {t('home.aboutTeaser.title')}
             </h2>
             <p className="text-gray-700 leading-relaxed text-justify">
-            Créée en 2020, l’Association Najm est une organisation à but non lucratif engagée pour l’avenir des jeunes marocains. Elle lutte contre le chômage, favorise l’insertion socio-économique et développe des programmes éducatifs, culturels et sociaux. Avec une équipe expérimentée et des partenariats locaux et internationaux, Najm offre aux jeunes des opportunités de formation, d’accompagnement et d’autonomisation pour en faire des acteurs du changement.
+              {t('home.aboutTeaser.text')}
             </p>
           </div>
         </div>

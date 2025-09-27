@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "../../hooks/useTranslation";
 const presidentImg = "/images/image2.jpg";
 
 export default function PresidentMessage() {
+  const { t } = useTranslation();
   const scrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [showFullMessage, setShowFullMessage] = useState(false);
@@ -53,36 +55,32 @@ export default function PresidentMessage() {
         onClick={handleToggleMessage}
       >
         <h2 className="text-base md:text-lg font-bold text-blue-800 whitespace-nowrap mx-2 sm:mx-4 md:mx-10 text-center md:text-left">
-          Message du Président
+          {t('home.presidentMessage.title')}
         </h2>
 
         {!showFullMessage ? (
           <div ref={scrollRef} className="flex-1 overflow-hidden">
             <div className="inline-block whitespace-nowrap text-gray-700 text-[18px] min-w-max">
-            Monsieur Hassan Rezk, Président de l’Association Najm, vous souhaite la bienvenue sur la plateforme officielle de l’association, dédiée à l’autonomisation économique et professionnelle des jeunes. Convaincue que la jeunesse est le moteur du changement, l’association mise sur la formation, l’accompagnement et le soutien continu pour renforcer leur participation à la vie économique et sociale.
-
-Guidée par des valeurs de respect, transparence, égalité et collaboration, elle développe des programmes innovants et élargit ses partenariats afin de devenir une référence nationale et régionale, inspirant les jeunes à devenir les leaders de demain.
+              {t('home.presidentMessage.text1')} {t('home.presidentMessage.text2')} {t('home.presidentMessage.text3')}
             </div>
           </div>
         ) : (
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-white p-3 sm:p-4 md:p-6 rounded-lg shadow-md w-full mt-2">
             <img
-              src={presidentImg}
               alt="Président"
               className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg flex-shrink-0"
             />
             <div className="flex-1">
               <p className="text-gray-700 text-xs sm:text-sm md:text-base text-justify leading-relaxed">
-              Monsieur Hassan Rezk, Président de l’Association Najm, vous souhaite la bienvenue sur la plateforme officielle de l’association, dédiée à l’autonomisation économique et professionnelle des jeunes. Convaincue que la jeunesse est le moteur du changement, l’association mise sur la formation, l’accompagnement et le soutien continu pour renforcer leur participation à la vie économique et sociale.
-
-Guidée par des valeurs de respect, transparence, égalité et collaboration, elle développe des programmes innovants et élargit ses partenariats afin de devenir une référence nationale et régionale, inspirant les jeunes à devenir les leaders de demain.
+                {t('home.presidentMessage.text1')} {t('home.presidentMessage.text2')} {t('home.presidentMessage.text3')}
               </p>
               <div className="mt-3 sm:hidden">
                 <button 
                   onClick={handleToggleMessage}
                   className="text-blue-600 text-sm font-medium hover:text-blue-800 transition-colors"
+                  aria-label={t('common.close') || 'Fermer'}
                 >
-                  Fermer
+                  {t('common.close') || 'Fermer'}
                 </button>
               </div>
             </div>

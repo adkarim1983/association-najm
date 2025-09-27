@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from '../../hooks/useTranslation';
 
 // Composant pour animer les chiffres
 function AnimatedNumber({ targetNumber, duration = 2000, suffix = "" }) {
@@ -63,11 +64,13 @@ function AnimatedNumber({ targetNumber, duration = 2000, suffix = "" }) {
 }
 
 export default function NajmStatsSection() {
+  const { t } = useTranslation();
+  
   const stats = [
     {
       number: 25,
       suffix: '+',
-      label: 'Projets Réalisés',
+      label: t('home.stats.projects'),
       icon: (
         <svg className="w-10 h-10 text-[#1C398E] mb-4 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
@@ -78,7 +81,7 @@ export default function NajmStatsSection() {
     {
       number: 500,
       suffix: '+',
-      label: 'Bénéficiaires',
+      label: t('home.stats.beneficiaries'),
       icon: (
         <svg className="w-10 h-10 text-[#1C398E] mb-4 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2" />
@@ -90,7 +93,7 @@ export default function NajmStatsSection() {
     {
       number: 100,
       suffix: '+',
-      label: 'Partenaires',
+      label: t('home.stats.partners'),
       icon: (
         <svg className="w-10 h-10 text-[#1C398E] mb-4 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="M3 7h18M3 12h18M3 17h18" />
@@ -104,7 +107,7 @@ export default function NajmStatsSection() {
     <section className="bg-blue-50 py-16 px-6 mx-6 rounded-lg">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-[#1C398E] mb-10 leading-tight">
-          Nos Réalisations en Chiffres
+          {t('home.stats.title')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {stats.map((item, index) => (
@@ -125,20 +128,20 @@ export default function NajmStatsSection() {
     <section className="py-4 px-6 bg-gray-50 mt-4 text-gray-800 shadow-inner-xl">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-[30px] font-extrabold text-[#1C398E] mb-8 text-center leading-tight">
-          Académie Najm pour les Métiers du Numérique
+          {t('home.academyTeaser.title')}
           <span className="block w-32 h-1 bg-[#1C398E] mx-auto mt-4 rounded-full"></span>
         </h2>
 
         <p className="text-[18px] sm:text-lg opacity-85 mb-8 max-w-4xl mx-auto leading-relaxed text-gray-700 text-justify">
-          L'Académie Najm pour les Métiers du Numérique forme les jeunes aux compétences digitales de demain. Nos programmes innovants préparent une nouvelle génération de professionnels du numérique.
+          {t('home.academyTeaser.desc')}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {[
-            { value: 25, suffix: '', label: 'Formations dispensées' },
-            { value: 150, suffix: '+', label: 'Jeunes formés' },
-            { value: 80, suffix: '%', label: 'Taux d\'insertion' },
-            { value: 12, suffix: '', label: 'Partenaires entreprises' }
+            { value: 25, suffix: '', label: t('home.academyTeaser.stats.trainings') || 'Formations dispensées' },
+            { value: 150, suffix: '+', label: t('home.academyTeaser.stats.trainees') || 'Jeunes formés' },
+            { value: 80, suffix: '%', label: t('home.academyTeaser.stats.insertionRate') || 'Taux d\'insertion' },
+            { value: 12, suffix: '', label: t('home.academyTeaser.stats.partners') || 'Partenaires entreprises' }
           ].map((stat, index) => (
             <div key={index} className="bg-[#1C398E] text-white rounded-xl p-8 shadow-lg flex flex-col items-center">
               <p className="text-6xl font-extrabold mb-2">
@@ -155,13 +158,13 @@ export default function NajmStatsSection() {
     <section className="py-4 px-6 bg-gray-50 mt-4 text-gray-800 shadow-inner-xl">
       <div className="max-w-7xl mx-auto text-center">
         <h3 className="text-[30px] font-bold mb-8 text-[#1C398E] text-center leading-tight">
-          Résultats Clés - Entrepreneuriat 2024
+          {t('home.entrepreneurshipResults.title')}
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
           {[
-            { value: 15, suffix: '', label: 'Projets entrepreneuriaux accompagnés' },
-            { value: 8, suffix: '', label: 'Entreprises créées' }
+            { value: 15, suffix: '', label: t('home.entrepreneurshipResults.projectsSupported') },
+            { value: 8, suffix: '', label: t('home.entrepreneurshipResults.companiesCreated') }
           ].map((stat, index) => (
             <div key={index} className="bg-[#1C398E] text-white rounded-xl p-8 shadow-lg flex flex-col items-center">
               <p className="text-6xl font-extrabold mb-2">
@@ -172,7 +175,7 @@ export default function NajmStatsSection() {
           ))}
         </div>
         <p className="text-[18px] opacity-85 mt-8 max-w-4xl mx-auto leading-relaxed text-gray-700 text-justify">
-          Ces résultats témoignent de notre engagement continu à soutenir l'entrepreneuriat et l'innovation dans notre région.
+          {t('home.entrepreneurshipResults.note')}
         </p>
       </div>
     </section>
@@ -181,21 +184,15 @@ export default function NajmStatsSection() {
     <section className="bg-gray-50 py-4 mt-4 px-6 sm:px-8 lg:px-10 text-gray-800 shadow-inner-xl">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-[30px] font-extrabold text-[#1C398E] mb-8 text-center leading-tight">
-          Objectifs de l'Académie Najm
+          {t('home.academyObjectives.title')}
           <span className="block w-32 h-1 bg-[#1C398E] mx-auto mt-4 rounded-full"></span>
         </h2>
-
         <p className="text-base sm:text-lg opacity-85 mb-8 max-w-4xl mx-auto leading-relaxed text-gray-700 text-justify">
-          Nos objectifs visent à créer un écosystème d'apprentissage et d'innovation pour préparer les jeunes aux défis du monde numérique.
+          {t('home.academyObjectives.description')}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {[
-            'Former aux métiers du numérique',
-            'Développer l\'esprit entrepreneurial',
-            'Créer des opportunités d\'emploi',
-            'Renforcer l\'écosystème digital'
-          ].map((objective, index) => (
+          {t('home.academyObjectives.bullets', { returnObjects: true }).map((objective, index) => (
             <div key={index} className="flex flex-col items-center bg-white text-gray-800 shadow-lg rounded-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl border border-gray-200 relative overflow-hidden group">
               <div className="relative z-10">
                 <div className="text-6xl font-extrabold text-[#1C398E] mb-6 drop-shadow-sm">
