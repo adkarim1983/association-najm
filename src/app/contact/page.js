@@ -56,27 +56,27 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen">
+  <div className="min-h-screen bg-gradient-to-tr from-[#1C398E] via-[#6C63FF] to-[#FBBF24] bg-fixed flex flex-col">
       <Navbar />
-      <main className="pt-16">
-        <section id="contact" className="py-10 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-          {/* Décors */}
-          <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#1C398E]/5 rounded-full opacity-70 -mr-20 -mt-20 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#1C398E]/5 rounded-full opacity-70 -ml-20 -mb-20 blur-3xl"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(28,57,142,0.05)_1px,transparent_0)] bg-[length:40px_40px]"></div>
+      <main className="flex-1 flex flex-col justify-center">
+        <section id="contact" className="py-16 md:py-24 relative overflow-hidden">
+          {/* Décors élégants */}
+          <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#1C398E]/10 rounded-full opacity-70 -mr-20 -mt-20 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#FBBF24]/10 rounded-full opacity-70 -ml-20 -mb-20 blur-3xl"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(28,57,142,0.07)_1px,transparent_0)] bg-[length:40px_40px]"></div>
 
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="text-center max-w-3xl mx-auto">
-              <span className="text-[#1C398E] font-medium uppercase tracking-wider text-sm">{header.badge}</span>
-              <h2 className="text-[30px] font-bold text-[#1C398E] mt-3 mb-4">{header.title}</h2>
-              <div className="w-20 h-1 bg-[#1C398E] mx-auto rounded-full mb-6"></div>
-              <p className="text-gray-600 text-lg leading-relaxed">{header.description}</p>
+          <div className="container mx-auto px-2 md:px-8 relative z-10">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-[#1C398E] font-semibold uppercase tracking-wider text-base bg-gradient-to-r from-[#1C398E]/10 via-[#6C63FF]/10 to-[#FBBF24]/10 px-6 py-2 rounded-full inline-block mb-4 shadow">{header.badge}</span>
+              <h2 className="text-[32px] md:text-[44px] font-black text-center bg-gradient-to-r from-[#181F4B] via-[#3B2F7F] to-[#B88A0A] bg-clip-text text-transparent mt-2 mb-4 drop-shadow-2xl tracking-tight">{header.title}</h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] mx-auto rounded-full mb-6"></div>
+              <p className="text-gray-900 text-lg leading-relaxed bg-white/70 rounded-2xl px-6 py-4 inline-block shadow-lg backdrop-blur-xl border border-white/40">{header.description}</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12 mt-12">
+            <div className="grid md:grid-cols-2 gap-12 items-start">
               {/* Formulaire */}
-              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                <h3 className="text-[30px] font-bold text-[#1C398E] mb-8">{form_data.title}</h3>
+              <div className="bg-white/80 p-8 md:p-12 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 border-2 border-[#1C398E]/10 backdrop-blur-2xl">
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] bg-clip-text text-transparent mb-8 drop-shadow-xl text-center">{form_data.title}</h3>
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   {error && (
                     <div className="p-3 rounded-xl bg-red-50 text-red-700 border border-red-100 text-sm">{error}</div>
@@ -86,12 +86,12 @@ export default function ContactPage() {
                   )}
 
                   <div className="relative">
-                    <label htmlFor="name" className="block text-gray-700 font-medium mb-2 text-sm uppercase tracking-wide">{form_data.fields?.name?.label}</label>
+                    <label htmlFor="name" className="block text-[#1C398E] font-semibold mb-2 text-sm uppercase tracking-wide">{form_data.fields?.name?.label}</label>
                     <input
                       type="text"
                       id="name"
                       name="name"
-                      className="w-full px-4 py-3.5 bg-gray-50 border-2 border-gray-100 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400"
+                      className="w-full px-4 py-3.5 bg-white/70 border-2 border-[#6C63FF]/20 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400 shadow-lg text-base"
                       placeholder={form_data.fields?.name?.placeholder}
                       required
                       value={form.name}
@@ -100,12 +100,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="relative">
-                    <label htmlFor="email" className="block text-gray-700 font-medium mb-2 text-sm uppercase tracking-wide">{form_data.fields?.email?.label}</label>
+                    <label htmlFor="email" className="block text-[#1C398E] font-semibold mb-2 text-sm uppercase tracking-wide">{form_data.fields?.email?.label}</label>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      className="w-full px-4 py-3.5 bg-gray-50 border-2 border-gray-100 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400"
+                      className="w-full px-4 py-3.5 bg-white/70 border-2 border-[#6C63FF]/20 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400 shadow-lg text-base"
                       placeholder={form_data.fields?.email?.placeholder}
                       required
                       value={form.email}
@@ -114,12 +114,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="relative">
-                    <label htmlFor="phone" className="block text-gray-700 font-medium mb-2 text-sm uppercase tracking-wide">{form_data.fields?.phone?.label}</label>
+                    <label htmlFor="phone" className="block text-[#1C398E] font-semibold mb-2 text-sm uppercase tracking-wide">{form_data.fields?.phone?.label}</label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
-                      className="w-full px-4 py-3.5 bg-gray-50 border-2 border-gray-100 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400"
+                      className="w-full px-4 py-3.5 bg-white/70 border-2 border-[#6C63FF]/20 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400 shadow-lg text-base"
                       placeholder={form_data.fields?.phone?.placeholder}
                       value={form.phone}
                       onChange={handleChange}
@@ -127,12 +127,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="relative">
-                    <label htmlFor="subject" className="block text-gray-700 font-medium mb-2 text-sm uppercase tracking-wide">{form_data.fields?.subject?.label}</label>
+                    <label htmlFor="subject" className="block text-[#1C398E] font-semibold mb-2 text-sm uppercase tracking-wide">{form_data.fields?.subject?.label}</label>
                     <input
                       type="text"
                       id="subject"
                       name="subject"
-                      className="w-full px-4 py-3.5 bg-gray-50 border-2 border-gray-100 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400"
+                      className="w-full px-4 py-3.5 bg-white/70 border-2 border-[#6C63FF]/20 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400 shadow-lg text-base"
                       placeholder={form_data.fields?.subject?.placeholder}
                       required
                       value={form.subject}
@@ -141,12 +141,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="relative">
-                    <label htmlFor="message" className="block text-gray-700 font-medium mb-2 text-sm uppercase tracking-wide">{form_data.fields?.message?.label}</label>
+                    <label htmlFor="message" className="block text-[#1C398E] font-semibold mb-2 text-sm uppercase tracking-wide">{form_data.fields?.message?.label}</label>
                     <textarea
                       id="message"
                       name="message"
                       rows={5}
-                      className="w-full px-4 py-3.5 bg-gray-50 border-2 border-gray-100 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400 resize-none"
+                      className="w-full px-4 py-3.5 bg-white/70 border-2 border-[#6C63FF]/20 rounded-xl focus:outline-none focus:border-[#1C398E] focus:bg-white transition-all duration-300 placeholder-gray-400 resize-none shadow-lg text-base"
                       placeholder={form_data.fields?.message?.placeholder}
                       required
                       value={form.message}
@@ -156,7 +156,7 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full bg-[#1C398E] hover:bg-[#152a68] text-white py-4 rounded-xl font-semibold transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg mb-8 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] hover:from-[#152a68] hover:to-[#FBBF24] text-white py-4 rounded-xl font-semibold transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-2xl mb-8 disabled:opacity-60 disabled:cursor-not-allowed shadow-xl"
                     disabled={loading}
                   >
                     {loading ? form_data.submit?.loading : form_data.submit?.text}
@@ -164,8 +164,8 @@ export default function ContactPage() {
                 </form>
 
                 {/* Réseaux sociaux */}
-                <div className="border-t border-gray-100 pt-8">
-                  <h4 className="text-xl font-bold text-[#1C398E] mb-6 text-center">{form_data.social?.title}</h4>
+                <div className="border-t border-[#6C63FF]/20 pt-8 mt-8">
+                  <h4 className="text-xl font-bold bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] bg-clip-text text-transparent mb-6 text-center drop-shadow">{form_data.social?.title}</h4>
                   <div className="flex justify-center space-x-4">
                     <a 
                       href="https://www.facebook.com/" 
@@ -206,17 +206,17 @@ export default function ContactPage() {
               {/* Bloc droit */}
               <div className="space-y-8">
                 {/* Informations de contact */}
-                <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                  <h3 className="text-[30px] font-bold text-[#1C398E] mb-8">{info.title}</h3>
+                <div className="bg-white/80 p-8 md:p-12 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 border-2 border-[#1C398E]/10 backdrop-blur-2xl">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] bg-clip-text text-transparent mb-8 drop-shadow-xl text-center">{info.title}</h3>
                   <div className="space-y-8">
                     {info.items?.map((item, index) => (
                       <div key={index} className="flex items-start p-4 rounded-2xl">
-                        <div className="flex-shrink-0 bg-[#1C398E]/10 p-4 rounded-2xl mr-5">
+                        <div className="flex-shrink-0 bg-gradient-to-br from-[#1C398E]/10 via-[#6C63FF]/10 to-[#FBBF24]/10 p-4 rounded-2xl mr-5">
                           <span className="w-7 h-7 text-[#1C398E]">{item.icon}</span>
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-[#1C398E] mb-1">{item.title}</h4>
-                          <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                          <p className="text-gray-800 leading-relaxed">{item.text}</p>
                         </div>
                       </div>
                     ))}
@@ -224,13 +224,13 @@ export default function ContactPage() {
                 </div>
 
                 {/* Heures d'ouverture */}
-                <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                  <h3 className="text-[30px] font-bold text-[#1C398E] mb-8">{hours.title}</h3>
+                <div className="bg-white/80 p-8 md:p-12 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 border-2 border-[#FBBF24]/10 backdrop-blur-2xl">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] bg-clip-text text-transparent mb-8 drop-shadow-xl text-center">{hours.title}</h3>
                   <ul className="space-y-6">
                     {hours.schedule?.map((schedule, index) => (
                       <li key={index} className={`flex justify-between items-center ${index < hours.schedule.length - 1 ? 'pb-6 border-b border-gray-100' : ''}`}>
-                        <span className="text-gray-600 font-medium">{schedule.days}</span>
-                        <span className="text-[#1C398E] font-bold bg-[#1C398E]/5 px-4 py-2 rounded-xl">{schedule.hours}</span>
+                        <span className="text-gray-800 font-medium">{schedule.days}</span>
+                        <span className="text-[#1C398E] font-bold bg-gradient-to-r from-[#1C398E]/10 via-[#6C63FF]/10 to-[#FBBF24]/10 px-4 py-2 rounded-xl">{schedule.hours}</span>
                       </li>
                     ))}
                   </ul>

@@ -77,7 +77,7 @@ export default function GaleriePage() {
   const goToSlide = (i) => setCurrentSlide(i);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-tr from-[#1C398E] via-[#6C63FF] to-[#FBBF24] bg-fixed">
       <style jsx>{`
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(20px); }
@@ -96,109 +96,109 @@ export default function GaleriePage() {
       `}</style>
       <Navbar />
       <main className="pt-16">
-        <div className="px-8 py-12 bg-white min-h-screen font-sans text-gray-800 animate-fade-in">
+        <div className="px-2 md:px-8 py-12 min-h-screen font-sans text-gray-800 animate-fade-in">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-[40px] font-extrabold text-center text-[#1C398E] mb-16 relative pb-4 leading-tight">
+  <h1 className="text-[44px] md:text-[54px] font-black text-center bg-gradient-to-r from-[#181F4B] via-[#3B2F7F] to-[#B88A0A] bg-clip-text text-transparent mb-16 relative pb-4 leading-tight drop-shadow-xl tracking-tight animate-fade-in">
           {title}
-          <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-1 bg-[#1C398E] rounded-full"></span>
+          <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-32 h-1 bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] rounded-full"></span>
         </h1>
 
         {/* First section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-up border-b pb-12 border-gray-200">
-          <div className="text-gray-700 text-lg leading-relaxed text-justify">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-up border-b pb-12 border-white/30 bg-white/40 rounded-3xl shadow-2xl backdrop-blur-lg">
+          <div className="text-gray-800 text-lg leading-relaxed text-justify px-4 md:px-8">
             <p className="mb-6">{section1.p1}</p>
             <p>{section1.p2}</p>
           </div>
-          <div className="relative overflow-hidden rounded-2xl shadow-xl group">
-            <img src={image.image2a} alt="Inauguration" className="rounded-2xl w-full h-auto transform transition-transform duration-500 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <p className="text-white text-lg font-semibold">{images.inauguration}</p>
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl group border-4 border-[#1C398E]/10">
+            <img src={image.image2a} alt="Inauguration" className="rounded-3xl w-full h-auto transform transition-transform duration-500 group-hover:scale-110 group-hover:brightness-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1C398E]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <p className="text-white text-lg font-semibold drop-shadow-lg">{images.inauguration}</p>
             </div>
           </div>
         </div>
 
         {/* Second section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-up border-b pb-12 border-gray-200">
-          <div className="relative overflow-hidden rounded-2xl shadow-xl group order-2 md:order-1">
-            <img src={image.image4a} alt="Présentation" className="rounded-2xl w-full h-auto transform transition-transform duration-500 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <p className="text-white text-lg font-semibold">{images.presentation}</p>
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-up border-b pb-12 border-white/30 bg-white/40 rounded-3xl shadow-2xl backdrop-blur-lg">
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl group order-2 md:order-1 border-4 border-[#6C63FF]/10">
+            <img src={image.image4a} alt="Présentation" className="rounded-3xl w-full h-auto transform transition-transform duration-500 group-hover:scale-110 group-hover:brightness-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#6C63FF]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <p className="text-white text-lg font-semibold drop-shadow-lg">{images.presentation}</p>
             </div>
           </div>
-          <div className="text-gray-700 text-lg leading-relaxed text-justify order-1 md:order-2">
+          <div className="text-gray-800 text-lg leading-relaxed text-justify order-1 md:order-2 px-4 md:px-8">
             <p className="mb-6">{section2.p1}</p>
             <p>{section2.p2}</p>
           </div>
         </div>
 
         {/* Third section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-up border-b pb-12 border-gray-200">
-          <div className="text-gray-700 text-lg leading-relaxed text-justify">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-gray-900 text-center md:text-left leading-tight">{programs.title}</h2>
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-up border-b pb-12 border-white/30 bg-white/40 rounded-3xl shadow-2xl backdrop-blur-lg">
+          <div className="text-gray-800 text-lg leading-relaxed text-justify px-4 md:px-8">
+  <h2 className="text-xl md:text-2xl font-bold mb-4 text-[#181F4B] text-center md:text-left leading-tight drop-shadow">{programs.title}</h2>
             <ul className="list-disc list-inside space-y-3 text-justify">
               <li>{programs.web}</li>
               <li>{programs.design}</li>
               <li>{programs.marketing}</li>
             </ul>
           </div>
-          <div className="relative overflow-hidden rounded-2xl shadow-xl group">
-            <img src={image.md1} alt="Contenu des formations" className="rounded-2xl w-full h-auto transform transition-transform duration-500 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <p className="text-white text-lg font-semibold">{images.training_content}</p>
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl group border-4 border-[#FBBF24]/10">
+            <img src={image.md1} alt="Contenu des formations" className="rounded-3xl w-full h-auto transform transition-transform duration-500 group-hover:scale-110 group-hover:brightness-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FBBF24]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <p className="text-white text-lg font-semibold drop-shadow-lg">{images.training_content}</p>
             </div>
           </div>
         </div>
 
         {/* Fourth section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-up border-b pb-12 border-gray-200">
-          <div className="relative overflow-hidden rounded-2xl shadow-xl group order-2 md:order-1">
-            <img src={image.p1} alt="Déroulement des cours" className="rounded-2xl w-full h-auto transform transition-transform duration-500 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <p className="text-white text-lg font-semibold">{images.course_progress}</p>
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-up border-b pb-12 border-white/30 bg-white/40 rounded-3xl shadow-2xl backdrop-blur-lg">
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl group order-2 md:order-1 border-4 border-[#6C63FF]/10">
+            <img src={image.p1} alt="Déroulement des cours" className="rounded-3xl w-full h-auto transform transition-transform duration-500 group-hover:scale-110 group-hover:brightness-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#6C63FF]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <p className="text-white text-lg font-semibold drop-shadow-lg">{images.course_progress}</p>
             </div>
           </div>
-          <div className="text-gray-700 text-lg leading-relaxed text-justify order-1 md:order-2">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-gray-900 text-center md:text-left leading-tight">{training.title}</h2>
+          <div className="text-gray-800 text-lg leading-relaxed text-justify order-1 md:order-2 px-4 md:px-8">
+  <h2 className="text-xl md:text-2xl font-bold mb-4 text-[#181F4B] text-center md:text-left leading-tight drop-shadow">{training.title}</h2>
             <p className="mb-6">{training.p1}</p>
             <p>{training.p2}</p>
           </div>
         </div>
 
         {/* Fifth section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20 animate-fade-up">
-          <div className="text-gray-700 text-lg leading-relaxed text-justify">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-gray-900 text-center md:text-left leading-tight">{success.title}</h2>
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-20 animate-fade-up bg-white/40 rounded-3xl shadow-2xl backdrop-blur-lg border-b pb-12 border-white/30">
+          <div className="text-gray-800 text-lg leading-relaxed text-justify px-4 md:px-8">
+  <h2 className="text-xl md:text-2xl font-bold mb-4 text-[#B88A0A] text-center md:text-left leading-tight drop-shadow">{success.title}</h2>
             <p>{success.description}</p>
           </div>
-          <div className="relative overflow-hidden rounded-2xl shadow-xl group">
-            <img src={image.p2} alt="Fin de formation" className="rounded-2xl w-full h-auto transform transition-transform duration-500 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <p className="text-white text-lg font-semibold">{images.end_of_training}</p>
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl group border-4 border-[#FBBF24]/10">
+            <img src={image.p2} alt="Fin de formation" className="rounded-3xl w-full h-auto transform transition-transform duration-500 group-hover:scale-110 group-hover:brightness-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FBBF24]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <p className="text-white text-lg font-semibold drop-shadow-lg">{images.end_of_training}</p>
             </div>
           </div>
         </div>
 
         {/* Highlights carousel */}
-        <h2 className="text-[40px] font-extrabold text-center text-[#1C398E] mt-24 mb-12 relative pb-4 leading-tight">
+  <h2 className="text-[40px] font-extrabold text-center bg-gradient-to-r from-[#181F4B] via-[#3B2F7F] to-[#B88A0A] bg-clip-text text-transparent mt-24 mb-12 relative pb-4 leading-tight drop-shadow-xl">
           {highlights.title}
-          <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-24 h-1 bg-[#1C398E] rounded-full"></span>
+          <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-32 h-1 bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] rounded-full"></span>
         </h2>
 
         <div className="relative max-w-7xl mx-auto mb-20">
-          <div className="relative overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-white/40 backdrop-blur-lg border-4 border-[#1C398E]/10">
             <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
               {Array.from({ length: totalSlides }, (_, slideIndex) => (
                 <div key={slideIndex} className="w-full flex-shrink-0">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 py-8">
                     {galleryImages
                       .slice(slideIndex * itemsPerSlide, (slideIndex + 1) * itemsPerSlide)
                       .map((item, index) => {
                         const globalIndex = slideIndex * itemsPerSlide + index;
                         return (
-                          <div key={globalIndex} className="relative rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
-                            <img src={item.src} alt={`galerie-${globalIndex}`} className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
-                            <div className="absolute bottom-0 w-full bg-blue-700/80 text-white text-center py-3 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <p className="text-sm px-2">{item.text}</p>
+                          <div key={globalIndex} className="relative rounded-3xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group border-2 border-[#6C63FF]/10 bg-white/60 backdrop-blur-md">
+                            <img src={item.src} alt={`galerie-${globalIndex}`} className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110 group-hover:brightness-110 rounded-3xl" />
+                            <div className="absolute bottom-0 w-full bg-gradient-to-r from-[#1C398E]/90 via-[#6C63FF]/80 to-[#FBBF24]/80 text-white text-center py-3 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-3xl">
+                              <p className="text-sm px-2 drop-shadow-lg">{item.text}</p>
                             </div>
                           </div>
                         );
@@ -209,12 +209,12 @@ export default function GaleriePage() {
             </div>
           </div>
 
-          <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl z-10">
+          <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 bg-gradient-to-tr from-[#1C398E] via-[#6C63FF] to-[#FBBF24] text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 z-10 border-2 border-white/60">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl z-10">
+          <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 bg-gradient-to-tr from-[#FBBF24] via-[#6C63FF] to-[#1C398E] text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 z-10 border-2 border-white/60">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
@@ -222,7 +222,7 @@ export default function GaleriePage() {
 
           <div className="flex justify-center mt-8 space-x-2">
             {Array.from({ length: totalSlides }, (_, index) => (
-              <button key={index} onClick={() => goToSlide(index)} className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? "bg-blue-600 w-8" : "bg-gray-300 hover:bg-gray-400"}`} />
+              <button key={index} onClick={() => goToSlide(index)} className={`w-3 h-3 rounded-full transition-all duration-300 border-2 border-[#1C398E]/30 ${currentSlide === index ? "bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] w-8" : "bg-white/60 hover:bg-[#FBBF24]/60"}`} />
             ))}
           </div>
         </div>

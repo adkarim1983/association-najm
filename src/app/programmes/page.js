@@ -8,6 +8,8 @@ import { useTranslation } from '../../hooks/useTranslation';
 export default function ProgrammesPage() {
   const { t } = useTranslation();
   const [showTop, setShowTop] = useState(false);
+  // Pour la modal d'image
+  const [modalImage, setModalImage] = useState(null);
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 300);
@@ -27,11 +29,11 @@ export default function ProgrammesPage() {
   const backToTop = t('programs.backToTop');
 
   const programImages = [
-    { src: "/assets/A.jpg", alt: images.webDev || "Formation développement web" },
-    { src: "/assets/B.jpg", alt: images.marketing || "Marketing digital" },
-    { src: "/assets/C.jpg", alt: images.design || "Design et création visuelle" },
-    { src: "/assets/D.jpg", alt: images.students || "Étudiants en formation" },
-    { src: "/assets/image1a.jpg", alt: images.workshop || "Atelier pratique" },
+    { src: "/images/A.jpg", alt: images.webDev || "Formation développement web" },
+    { src: "/images/B.jpg", alt: images.marketing || "Marketing digital" },
+    { src: "/images/C.jpg", alt: images.design || "Design et création visuelle" },
+    { src: "/images/D.jpg", alt: images.students || "Étudiants en formation" },
+    { src: "/images/image1a.jpg", alt: images.workshop || "Atelier pratique" },
     // Marketing Digital images (mk1, mk2, mk3)
     { src: "/imageFormation/mk1.jpg", alt: images.marketingImage1 || "Marketing digital - Image 1" },
     { src: "/imageFormation/mk2.jpg", alt: images.marketingImage2 || "Marketing digital - Image 2" },
@@ -42,40 +44,37 @@ export default function ProgrammesPage() {
   ];
 
   return (
-    <div className="min-h-screen">
+  <div className="min-h-screen bg-gradient-to-tr from-[#1C398E] via-[#6C63FF] to-[#FBBF24] bg-fixed">
       <Navbar />
       <main className="pt-16">
-        
-        <div className="bg-gray-50 text-gray-800 font-sans">
+        <div className="text-gray-800 font-sans">
           {/* Header */}
-          <header className="relative flex flex-col items-center justify-center min-h-[800px] bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 mb-0 overflow-hidden px-4">
+          <header className="relative flex flex-col items-center justify-center min-h-[700px] md:min-h-[800px] bg-gradient-to-br from-[#FBBF24]/10 via-[#6C63FF]/10 to-[#1C398E]/10 mb-0 overflow-hidden px-4">
             {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-blue-400 rounded-full blur-xl"></div>
-              <div className="absolute top-32 right-20 w-16 h-16 bg-purple-400 rounded-full blur-xl"></div>
-              <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-indigo-400 rounded-full blur-xl"></div>
-              <div className="absolute bottom-32 right-1/3 w-18 h-18 bg-pink-400 rounded-full blur-xl"></div>
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+              <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-[#1C398E]/30 to-[#6C63FF]/30 rounded-full blur-2xl"></div>
+              <div className="absolute top-32 right-20 w-24 h-24 bg-gradient-to-br from-[#FBBF24]/30 to-[#6C63FF]/30 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-gradient-to-br from-[#6C63FF]/30 to-[#1C398E]/30 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-32 right-1/3 w-28 h-28 bg-gradient-to-br from-[#FBBF24]/30 to-[#1C398E]/30 rounded-full blur-2xl"></div>
             </div>
             
-            <div className="relative z-10 text-center px-4 max-w-6xl mb-12">
-              <div className="inline-block mb-6 mt-8">
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium tracking-wide uppercase">
+            <div className="relative z-10 text-center px-4 max-w-4xl mb-12">
+              <div className="inline-block mb-8 mt-10">
+                <span className="bg-gradient-to-r from-[#1C398E] via-[#6C63FF] to-[#FBBF24] text-white px-6 py-2 rounded-full text-base font-semibold tracking-wide uppercase shadow-lg">
                   {header.badge}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-[#1C398E] via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {header.title}
-                </span>
+              <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-8 leading-tight drop-shadow-2xl text-[#181F4B]">
+                {header.title}
               </h1>
-              <p className="text-xl md:text-2xl font-medium text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-2xl md:text-3xl font-medium text-gray-900 max-w-3xl mx-auto leading-relaxed bg-white/70 rounded-2xl px-6 py-4 inline-block shadow-lg backdrop-blur-xl border border-white/40">
                 {header.subtitle}
               </p>
             </div>
 
             {/* Enhanced Programs Card */}
             <div className="relative z-10 w-full max-w-6xl">
-              <div className="bg-white/80 backdrop-blur-lg p-8 md:p-12 rounded-3xl shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500">
+              <div className="bg-white/80 backdrop-blur-2xl p-8 md:p-12 rounded-3xl shadow-2xl border-2 border-[#1C398E]/10 hover:shadow-3xl transition-all duration-500">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {cards.map((card, index) => {
                     const colorSchemes = [
@@ -117,11 +116,11 @@ export default function ProgrammesPage() {
           </header>
 
           {/* Introduction générale */}
-          <section className="py-12 px-6 bg-white mt-16">
+          <section className="py-16 px-6 bg-white/80 mt-16 rounded-3xl shadow-2xl backdrop-blur-xl border-2 border-[#1C398E]/10">
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h2 className="text-[32px] font-extrabold text-[#1C398E] mb-6 leading-tight relative">
+                  <h2 className="text-[32px] font-extrabold text-[#181F4B] mb-6 leading-tight relative">
                     {introduction.title}
                     <span className="absolute left-0 -bottom-3 w-20 h-1 bg-[#1C398E] rounded-full"></span>
                   </h2>
@@ -132,7 +131,7 @@ export default function ProgrammesPage() {
                   ))}
                 </div>
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[0].src)}>
                     <img
                       src={programImages[0].src}
                       alt={programImages[0].alt}
@@ -140,7 +139,7 @@ export default function ProgrammesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[1].src)}>
                     <img
                       src={programImages[1].src}
                       alt={programImages[1].alt}
@@ -149,12 +148,34 @@ export default function ProgrammesPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
                 </div>
+        {/* Modal d'affichage de l'image en grand */}
+        {modalImage && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70" onClick={() => setModalImage(null)}>
+            <div className="relative max-w-3xl w-full flex justify-center">
+              <img
+                src={modalImage}
+                alt="Agrandissement"
+                className="rounded-2xl shadow-2xl max-h-[80vh] max-w-full border-4 border-white"
+                onClick={e => e.stopPropagation()}
+              />
+              <button
+                className="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 text-gray-800 hover:bg-opacity-100 transition"
+                onClick={() => setModalImage(null)}
+                aria-label="Fermer"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
               </div>
             </div>
           </section>
 
           {/* Formation en Développement Web */}
-          <section className="py-12 px-6 bg-gray-100">
+          <section className="py-16 px-6 bg-gradient-to-br from-[#FBBF24]/10 via-[#6C63FF]/10 to-[#1C398E]/10 rounded-3xl shadow-2xl backdrop-blur-xl border-2 border-[#6C63FF]/10">
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="md:order-2">
@@ -169,7 +190,7 @@ export default function ProgrammesPage() {
                   ))}
                 </div>
                 <div className="md:order-1 grid grid-cols-2 gap-6">
-                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[2].src)}>
                     <img
                       src={programImages[2].src}
                       alt={programImages[2].alt}
@@ -177,7 +198,7 @@ export default function ProgrammesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[3].src)}>
                     <img
                       src={programImages[3].src}
                       alt={programImages[3].alt}
@@ -185,7 +206,7 @@ export default function ProgrammesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="col-span-2 relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="col-span-2 relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[4].src)}>
                     <img
                       src={programImages[4].src}
                       alt={programImages[4].alt}
@@ -199,7 +220,7 @@ export default function ProgrammesPage() {
           </section>
 
           {/* Formation en Marketing Digital */}
-          <section className="py-12 px-6 bg-white">
+          <section className="py-16 px-6 bg-white/80 rounded-3xl shadow-2xl backdrop-blur-xl border-2 border-[#FBBF24]/10">
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
@@ -214,7 +235,7 @@ export default function ProgrammesPage() {
                   ))}
                 </div>
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[5].src)}>
                     <img
                       src={programImages[5].src}
                       alt={programImages[5].alt}
@@ -222,7 +243,7 @@ export default function ProgrammesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-purple-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[6].src)}>
                     <img
                       src={programImages[6].src}
                       alt={programImages[6].alt}
@@ -230,7 +251,7 @@ export default function ProgrammesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-purple-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="col-span-2 relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="col-span-2 relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[7].src)}>
                     <img
                       src={programImages[7].src}
                       alt={programImages[7].alt}
@@ -244,7 +265,7 @@ export default function ProgrammesPage() {
           </section>
 
           {/* Formation en Design et Création Visuelle */}
-          <section className="py-12 px-6 bg-gray-100">
+          <section className="py-16 px-6 bg-gradient-to-br from-[#FBBF24]/10 via-[#6C63FF]/10 to-[#1C398E]/10 rounded-3xl shadow-2xl backdrop-blur-xl border-2 border-[#6C63FF]/10">
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="md:order-2">
@@ -259,7 +280,7 @@ export default function ProgrammesPage() {
                   ))}
                 </div>
                 <div className="md:order-1 grid grid-cols-2 gap-6">
-                  <div className="col-span-2 relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="col-span-2 relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[8].src)}>
                     <img
                       src={programImages[8].src}
                       alt={programImages[8].alt}
@@ -267,7 +288,7 @@ export default function ProgrammesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-pink-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage(programImages[9].src)}>
                     <img
                       src={programImages[9].src}
                       alt={programImages[9].alt}
@@ -275,9 +296,9 @@ export default function ProgrammesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-pink-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer" onClick={() => setModalImage('/imageFormation/ds3.jpg')}>
                     <img
-                      src=                    "/imageFormation/ds3.jpg"
+                      src={"/imageFormation/ds3.jpg"}
                       alt={images.designImage3 || "Design et création visuelle - Image 3"}
                       className="w-full h-56 object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                     />
@@ -289,9 +310,9 @@ export default function ProgrammesPage() {
           </section>
 
           {/* Conclusion */}
-          <section className="py-12 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <section className="py-16 px-6 bg-gradient-to-r from-[#FBBF24]/10 via-[#6C63FF]/10 to-[#1C398E]/10 rounded-3xl shadow-2xl backdrop-blur-xl border-2 border-[#1C398E]/10">
             <div className="max-w-7xl mx-auto text-center">
-              <h2 className="text-[32px] font-extrabold text-[#1C398E] mb-8 text-center leading-tight">
+              <h2 className="text-[32px] md:text-[40px] font-extrabold text-[#181F4B] mb-8 text-center leading-tight drop-shadow-xl">
                 {conclusion.title}
                 <span className="block w-32 h-1 bg-[#1C398E] mx-auto mt-4 rounded-full"></span>
               </h2>

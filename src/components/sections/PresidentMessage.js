@@ -5,6 +5,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 const presidentImg = "/images/image2.jpg";
 
 export default function PresidentMessage() {
+  const [showImageModal, setShowImageModal] = useState(false);
   const { t } = useTranslation();
   const scrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -67,9 +68,38 @@ export default function PresidentMessage() {
         ) : (
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-white p-3 sm:p-4 md:p-6 rounded-lg shadow-md w-full mt-2">
             <img
+              src={presidentImg}
               alt="Président"
-              className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg flex-shrink-0"
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg flex-shrink-0 cursor-pointer"
+              onClick={e => {
+                e.stopPropagation();
+                setShowImageModal(true);
+              }}
             />
+      {/* Modal d'agrandissement de l'image */}
+      {showImageModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setShowImageModal(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="relative max-w-xl w-full" onClick={e => e.stopPropagation()}>
+            <img
+              src={presidentImg}
+              alt="Président agrandi"
+              className="w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl border-4 border-white"
+            />
+            <button
+              onClick={() => setShowImageModal(false)}
+              className="absolute top-2 right-2 bg-white/90 text-gray-900 rounded-full px-3 py-1 text-sm shadow hover:bg-white"
+              aria-label="Fermer"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
             <div className="flex-1">
               <p className="text-gray-700 text-xs sm:text-sm md:text-base text-justify leading-relaxed">
                 {t('home.presidentMessage.text1')} {t('home.presidentMessage.text2')} {t('home.presidentMessage.text3')}
