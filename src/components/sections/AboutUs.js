@@ -446,28 +446,69 @@ export default function AboutUs() {
       </section>
 
       {/* Valeurs */}
-      <section className="py-10 px-6 bg-gray-100 mx-6 rounded-lg">
-        <h2 className="text-center text-4xl font-bold text-blue-900 mb-12 leading-tight">
-          {t('about.values.sectionTitle')}
-        </h2>
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center">
-          {valeursData.map((valeur, index) => (
-            <div key={index} className="group perspective w-[340px] h-[380px] cursor-pointer">
-              <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
-                <div className="absolute w-full h-full bg-[#1C398E] text-white rounded-xl shadow-xl px-8 py-12 flex flex-col items-center justify-center backface-hidden">
-                  <img
-                    src={valeur.image}
-                    alt={valeur.titre}
-                    className="w-24 h-24 rounded-full bg-white p-2 mb-6 shadow-lg object-cover"
-                  />
-                  <h3 className="text-3xl font-semibold text-center tracking-wide">{valeur.titre}</h3>
-                </div>
-                <div className="absolute w-full h-full bg-white text-gray-800 rounded-xl shadow-xl p-8 rotate-y-180 backface-hidden overflow-auto flex items-center justify-center">
-                  <p className="text-[18px] leading-relaxed text-justify">{valeur.texte}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+      <section className="py-16 px-6 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 mx-6 rounded-3xl relative overflow-hidden">
+        {/* Éléments décoratifs de fond */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-blue-200/20 to-indigo-300/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-tl from-purple-200/20 to-blue-300/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-blue-100/10 to-indigo-100/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative z-10">
+          <h2 className="text-center text-4xl font-bold text-blue-900 mb-16 leading-tight">
+            {t('about.values.sectionTitle')}
+          </h2>
+          
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center max-w-7xl mx-auto">
+             {valeursData.map((valeur, index) => (
+               <div key={index} className="group relative w-[260px] h-[320px] cursor-pointer">
+                 {/* Bordure lumineuse animée */}
+                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-3xl blur opacity-20 group-hover:opacity-60 transition-all duration-700 animate-pulse"></div>
+                 
+                 {/* Carte principale */}
+                 <div className="relative w-full h-full bg-white/90 backdrop-blur-xl rounded-3xl border border-white/50 overflow-hidden transition-all duration-700 group-hover:scale-105">
+                   
+                   {/* Gradient de fond animé */}
+                   <div className="absolute inset-0 bg-gradient-to-br from-[#1C398E]/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                   
+                   {/* Contenu de la carte */}
+                   <div className="relative z-10 p-6 h-full flex flex-col items-center text-center">
+                     
+                     {/* Icône en haut */}
+                     <div className="relative mb-4 group-hover:scale-110 transition-transform duration-500">
+                       <div className="relative w-16 h-16 bg-gradient-to-br from-[#1C398E] to-indigo-600 rounded-2xl flex items-center justify-center transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                         <img
+                           src={valeur.image}
+                           alt={valeur.titre}
+                           className="w-8 h-8 object-cover filter brightness-0 invert"
+                         />
+                         {/* Reflet glassmorphism */}
+                         <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent rounded-2xl"></div>
+                       </div>
+                     </div>
+                     
+                     {/* Titre */}
+                     <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-[#1C398E] to-indigo-700 bg-clip-text text-transparent tracking-wide leading-tight">
+                       {valeur.titre}
+                     </h3>
+                     
+                     {/* Ligne décorative */}
+                     <div className="w-16 h-1 bg-gradient-to-r from-[#1C398E] to-indigo-500 rounded-full mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                     
+                     {/* Description sans animation */}
+                     <div className="flex-1 flex items-start">
+                       <p className="text-gray-700 text-sm leading-relaxed text-justify">
+                         {valeur.texte}
+                       </p>
+                     </div>
+                   </div>
+                   
+                   {/* Effet de brillance au survol */}
+                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                 </div>
+               </div>
+             ))}
+          </div>
         </div>
       </section>
 
