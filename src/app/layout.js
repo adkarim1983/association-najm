@@ -16,8 +16,8 @@ export const metadata = {
   keywords: 'association, najm, développement, social, économique, entrepreneuriat',
 };
 
-export default function RootLayout({ children }) {
-  const cookieStore = cookies();
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
   let lang = cookieStore.get('najm_lang')?.value || 'fr';
   if (!['fr', 'en', 'ar'].includes(lang)) lang = 'fr';
   const dir = lang === 'ar' ? 'rtl' : 'ltr';

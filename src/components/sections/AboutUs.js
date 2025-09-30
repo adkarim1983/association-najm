@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useTranslation } from '../../hooks/useTranslation';
 
 // Styles CSS pour les animations personnalisées
@@ -439,8 +440,26 @@ export default function AboutUs() {
             </div>
           </div>
           <div className="md:w-1/2 flex flex-col gap-8">
-            <img src="/images/image30.jpg" alt="Objectif 1" className="rounded-2xl shadow-lg w-full h-[400px] object-cover hover:shadow-xl transition-shadow duration-300" />
-            <img src="/images/image32.jpg" alt="Objectif 2" className="rounded-2xl shadow-lg w-full h-[400px] object-cover hover:shadow-xl transition-shadow duration-300" />
+            <Image 
+              src="/images/image30.jpg" 
+              alt="Objectif 1" 
+              width={600}
+              height={400}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              className="rounded-2xl shadow-lg w-full h-[400px] object-cover hover:shadow-xl transition-shadow duration-300" 
+            />
+            <Image 
+              src="/images/image32.jpg" 
+              alt="Objectif 2" 
+              width={600}
+              height={400}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              className="rounded-2xl shadow-lg w-full h-[400px] object-cover hover:shadow-xl transition-shadow duration-300" 
+            />
           </div>
         </div>
       </section>
@@ -477,9 +496,12 @@ export default function AboutUs() {
                      {/* Icône en haut */}
                      <div className="relative mb-4 group-hover:scale-110 transition-transform duration-500">
                        <div className="relative w-16 h-16 bg-gradient-to-br from-[#1C398E] to-indigo-600 rounded-2xl flex items-center justify-center transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                         <img
+                         <Image
                            src={valeur.image}
                            alt={valeur.titre}
+                           width={32}
+                           height={32}
+                           sizes="32px"
                            className="w-8 h-8 object-cover filter brightness-0 invert"
                          />
                          {/* Reflet glassmorphism */}
@@ -529,8 +551,26 @@ export default function AboutUs() {
             </div>
           </div>
           <div className="md:col-span-2 flex flex-col gap-4 pl-2">
-            <img src="/images/image33.jpg" alt="Vision 1" className="rounded-xl shadow-lg object-cover w-full h-[200px]" />
-            <img src="/images/image34.jpg" alt="Vision 2" className="rounded-xl shadow-lg object-cover w-full h-[200px]" />
+            <Image 
+              src="/images/image33.jpg" 
+              alt="Vision 1" 
+              width={600}
+              height={200}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              className="rounded-xl shadow-lg object-cover w-full h-[200px]" 
+            />
+            <Image 
+              src="/images/image34.jpg" 
+              alt="Vision 2" 
+              width={600}
+              height={200}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              className="rounded-xl shadow-lg object-cover w-full h-[200px]" 
+            />
           </div>
         </div>
       </section>
@@ -640,9 +680,15 @@ export default function AboutUs() {
                   
                   {/* Image avec effets avancés */}
                   <div className="relative h-80 overflow-hidden rounded-t-3xl">
-                  <img
+                  <Image
                     src={membre.image}
                     alt={membre.nom}
+                    width={400}
+                    height={320}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index === 0}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                       className={`w-full h-full object-cover transition-all duration-700 ${
                         hoveredCard === index 
                           ? 'scale-110 brightness-110 contrast-110' 
